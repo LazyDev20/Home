@@ -4,34 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blinkle Was Here</title>
+    
+    <!-- YOUR WEBSITE TAB ICON -->
+    <link rel="icon" type="image/png" href="image/texty.png">
+
     <style>
+        /* Centers everything perfectly on the screen */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            color: #333333;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f8f9fa; /* Soft off-white background */
+            color: #212529;            /* Deep dark gray for smooth reading */
         }
+
+        /* The container card holding your content */
         .container {
             text-align: center;
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Modern soft shadow */
+            transition: transform 0.3s ease;
         }
+
+        /* Subtle lift effect when you hover over the card */
+        .container:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Styling for your headline text */
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Modern styling for your main image */
         .my-image {
-            max-width: 300px;
+            display: block;
+            max-width: 280px;
             height: auto;
-            border-radius: 8px;
-            margin-top: 20px;
+            border-radius: 12px;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: filter 0.3s ease;
+        }
+
+        /* Slight hover effect for your image */
+        .my-image:hover {
+            filter: brightness(0.95);
         }
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>blinkle was here</h1>
         
-        <!-- Updated to target your "image" folder. Just change "photo.jpg" to your real file name! -->
-        <img src="images/texty.png" alt="Blinkle's Picture" class="my-image">
+        <!-- YOUR MAIN IMAGE DISPLAY -->
+        <img src="image/texty.png" alt="Blinkle's Picture" class="my-image">
     </div>
+
 </body>
 </html>
