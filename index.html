@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Haircut - Barbershop and Hair Salon Website Template</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="TemplatesJungle">
+  <meta name="keywords" content="Barbershop Hair Salon">
+  <meta name="description" content="Barbershop and Hair Salon Website Template">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Karma:wght@300;400;500;600;700&family=Spline+Sans:wght@300..700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="search" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd"
+        d="M11.5 2.75a8.75 8.75 0 1 0 0 17.5a8.75 8.75 0 0 0 0-17.5M1.25 11.5c0-5.66 4.59-10.25 10.25-10.25S21.75 5.84 21.75 11.5c0 2.56-.939 4.902-2.491 6.698l3.271 3.272a.75.75 0 1 1-1.06 1.06l-3.272-3.271A10.21 10.21 0 0 1 11.5 21.75c-5.66 0-10.25-4.59-10.25-10.25"
+        clip-rule="evenodd" />
+    </symbol>
+    <symbol id="user" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd"
+        d="M12 1.25a4.75 4.75 0 1 0 0 9.5a4.75 4.75 0 0 0 0-9.5M8.75 6a3.25 3.25 0 1 1 6.5 0a3.25 3.25 0 0 1-6.5 0M12 12.25c-2.313 0-4.445.526-6.024 1.414C4.42 14.54 3.25 15.866 3.25 17.5v.102c-.001 1.162-.002 2.62 1.277 3.662c.629.512 1.51.877 2.7 1.117c1.192.242 2.747.369 4.773.369s3.58-.127 4.774-.369c1.19-.24 2.07-.605 2.7-1.117c1.279-1.042 1.277-2.5 1.276-3.662V17.5c0-1.634-1.17-2.96-2.725-3.836c-1.58-.888-3.711-1.414-6.025-1.414M4.75 17.5c0-.851.622-1.775 1.961-2.528c1.316-.74 3.184-1.222 5.29-1.222c2.104 0 3.972.482 5.288 1.222c1.34.753 1.961 1.677 1.961 2.528c0 1.308-.04 2.044-.724 2.6c-.37.302-.99.597-2.05.811c-1.057.214-2.502.339-4.476.339c-1.974 0-3.42-.125-4.476-.339c-1.06-.214-1.68-.509-2.05-.81c-.684-.557-.724-1.293-.724-2.601"
+        clip-rule="evenodd" />
+    </symbol>
+    <symbol id="heart" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd"
+        d="M5.624 4.424C3.965 5.182 2.75 6.986 2.75 9.137c0 2.197.9 3.891 2.188 5.343c1.063 1.196 2.349 2.188 3.603 3.154c.298.23.594.459.885.688c.526.415.995.778 1.448 1.043c.452.264.816.385 1.126.385c.31 0 .674-.12 1.126-.385c.453-.265.922-.628 1.448-1.043c.29-.23.587-.458.885-.687c1.254-.968 2.54-1.959 3.603-3.155c1.289-1.452 2.188-3.146 2.188-5.343c0-2.15-1.215-3.955-2.874-4.713c-1.612-.737-3.778-.542-5.836 1.597a.75.75 0 0 1-1.08 0C9.402 3.882 7.236 3.687 5.624 4.424M12 4.46C9.688 2.39 7.099 2.1 5 3.059C2.786 4.074 1.25 6.426 1.25 9.138c0 2.665 1.11 4.699 2.567 6.339c1.166 1.313 2.593 2.412 3.854 3.382c.286.22.563.434.826.642c.513.404 1.063.834 1.62 1.16c.557.325 1.193.59 1.883.59s1.326-.265 1.883-.59c.558-.326 1.107-.756 1.62-1.16a78.6 78.6 0 0 1 .826-.642c1.26-.97 2.688-2.07 3.854-3.382c1.457-1.64 2.567-3.674 2.567-6.339c0-2.712-1.535-5.064-3.75-6.077c-2.099-.96-4.688-.67-7 1.399"
+        clip-rule="evenodd" />
+    </symbol>
+    <symbol id="cart" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd"
+        d="M2.249 2.292a.75.75 0 1 0-.498 1.416l.262.091c.667.235 1.106.39 1.429.549c.303.149.437.27.525.398c.09.132.16.314.2.677c.04.38.041.875.041 1.615V9.76c0 1.453.014 2.5.151 3.3c.146.854.438 1.466.985 2.042c.594.627 1.346.9 2.243 1.026c.858.122 1.948.122 3.293.122h5.406c.742 0 1.366 0 1.87-.062c.537-.065 1.025-.209 1.452-.556c.426-.348.665-.797.837-1.309c.163-.482.289-1.093.439-1.82l.508-2.469l.002-.005l.01-.052c.165-.825.303-1.519.338-2.077c.036-.586-.031-1.164-.413-1.66c-.235-.306-.565-.479-.866-.584a4.617 4.617 0 0 0-1.002-.21c-.687-.076-1.522-.076-2.34-.076H5.667a5.932 5.932 0 0 0-.01-.108c-.054-.497-.17-.95-.453-1.362c-.284-.416-.662-.682-1.102-.899c-.412-.202-.936-.386-1.553-.603zm3.46 4.578h11.38c.856 0 1.61.001 2.205.067c.296.034.517.08.672.134a.56.56 0 0 1 .176.086c.062.082.128.23.102.651c-.027.444-.143 1.036-.321 1.926v.002l-.5 2.42c-.16.783-.27 1.303-.399 1.688c-.123.366-.239.523-.364.625c-.125.102-.303.184-.685.23c-.404.05-.935.051-1.734.051h-5.303c-1.417 0-2.4-.002-3.14-.107c-.716-.101-1.093-.285-1.366-.573c-.32-.338-.493-.668-.595-1.263c-.11-.65-.129-1.558-.129-3.047zM7.5 21.75a2.25 2.25 0 1 1 0-4.5a2.25 2.25 0 0 1 0 4.5m-.75-2.25a.75.75 0 1 0 1.5 0a.75.75 0 0 0-1.5 0m9.75 2.25a2.25 2.25 0 1 1 0-4.5a2.25 2.25 0 0 1 0 4.5m-.75-2.25a.75.75 0 1 0 1.5 0a.75.75 0 0 0-1.5 0"
+        clip-rule="evenodd" />
+    </symbol>
+    <symbol id="arrow-right-outline" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd" d="M13.47 5.47a.75.75 0 0 1 1.06 0l6 6a.75.75 0 0 1 0 1.06l-6 6a.75.75 0 1 1-1.06-1.06l4.72-4.72H4a.75.75 0 0 1 0-1.5h14.19l-4.72-4.72a.75.75 0 0 1 0-1.06" clip-rule="evenodd"/>
+    </symbol>
+    <symbol id="scissors-thin" viewBox="0 0 256 256">
+      <path fill="currentColor" d="M161 110.87a4 4 0 0 1 1.05-5.56L229.74 59a4 4 0 0 1 4.52 6.61l-67.67 46.3a4 4 0 0 1-5.56-1ZM235.3 196a4 4 0 0 1-5.56 1L136 132.85l-47.53 32.53a32 32 0 1 1-5.84-8c.45.45.89.92 1.31 1.4l45-30.78l-45-30.78c-.42.48-.86 1-1.31 1.4a31.86 31.86 0 1 1 5.84-8l49.69 34l96.09 65.76a4 4 0 0 1 1.05 5.62M77 93a24.4 24.4 0 0 0 2.82-3.38A24 24 0 1 0 77 93m7 87a23.75 23.75 0 0 0-4.15-13.49v-.06A24.5 24.5 0 0 0 77 163a24 24 0 1 0 0 34a23.85 23.85 0 0 0 7-17"/>
+    </symbol>
+    <symbol id="straight-razor" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="38" height="6" x="3.609" y="36.534" rx="2" transform="rotate(-10 3.61 36.534)"/><path d="m44 40l-4-4M8 4l18.385 18.385l-4.243 4.242L9.414 13.9c-2.828-2.83-2.828-4.243-2.828-5.657C6.586 6.828 8 4 8 4m0 0l18 18l9 9"/></g>
+    </symbol>
+    <symbol id="shower-outline-rounded" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M8.076 16.923q-.328 0-.548-.221q-.22-.222-.22-.55t.221-.547t.55-.22t.547.221t.22.55t-.222.547t-.549.22m3.924 0q-.328 0-.548-.221t-.22-.55t.221-.547t.55-.22t.547.221t.22.55t-.221.547t-.55.22m3.924 0q-.328 0-.548-.221t-.22-.55t.222-.547q.221-.22.549-.22t.547.221t.22.55t-.221.547t-.55.22M6.77 13q-.31 0-.54-.23T6 12.23V12q0-2.361 1.594-4.071T11.5 6.023V4.5q0-.213.144-.356T12.001 4t.356.144t.143.356v1.523q2.312.196 3.906 1.906T18 12v.23q0 .31-.23.54t-.54.23zM7 12h10q0-2.075-1.463-3.537T12 7T8.463 8.463T7 12m1.076 7.846q-.328 0-.548-.221q-.22-.222-.22-.55t.221-.547t.55-.22t.547.221t.22.55t-.222.547t-.549.22m3.924 0q-.328 0-.548-.221q-.22-.222-.22-.55t.221-.547t.55-.22t.547.221t.22.55t-.221.547t-.55.22m3.924 0q-.328 0-.548-.221q-.22-.222-.22-.55t.222-.547t.549-.22t.547.221t.22.55t-.221.547t-.55.22M12 12"/>
+    </symbol>
+    <symbol id="hair-dryer-light" viewBox="0 0 256 256">
+      <path fill="currentColor" d="M198 88a30 30 0 1 0-30 30a30 30 0 0 0 30-30m-30 18a18 18 0 1 1 18-18a18 18 0 0 1-18 18m-5.15 108a14 14 0 0 0 12.74-8.21l31.8-69.94A62 62 0 0 0 168 26a6.6 6.6 0 0 0-1 .08L29.7 49A14 14 0 0 0 18 62.78v50.44A14 14 0 0 0 29.7 127L130 143.75V200a14 14 0 0 0 14 14h2v2a38 38 0 0 0 38 38h16a6 6 0 0 0 0-12h-16a26 26 0 0 1-26-26v-2ZM30 113.22V62.78a2 2 0 0 1 1.67-2L168.48 38a50 50 0 0 1 0 100L31.67 115.2a2 2 0 0 1-1.67-1.98M142 200v-54.25l25 4.17a6.6 6.6 0 0 0 1 .08a61.8 61.8 0 0 0 21.53-3.86l-24.86 54.69a2 2 0 0 1-1.82 1.17H144a2 2 0 0 1-2-2"/>
+    </symbol>
+    <symbol id="star" viewBox="0 0 512 512">
+      <path fill="currentColor" d="M394 480a16 16 0 0 1-9.39-3L256 383.76L127.39 477a16 16 0 0 1-24.55-18.08L153 310.35L23 221.2a16 16 0 0 1 9-29.2h160.38l48.4-148.95a16 16 0 0 1 30.44 0l48.4 149H480a16 16 0 0 1 9.05 29.2L359 310.35l50.13 148.53A16 16 0 0 1 394 480"/>
+    </symbol>
+    <symbol id="map-point-outline" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd" d="M3.25 10.143C3.25 5.244 7.155 1.25 12 1.25s8.75 3.994 8.75 8.893c0 2.365-.674 4.905-1.866 7.099c-1.19 2.191-2.928 4.095-5.103 5.112a4.2 4.2 0 0 1-3.562 0c-2.175-1.017-3.913-2.92-5.103-5.112c-1.192-2.194-1.866-4.734-1.866-7.099M12 2.75c-3.992 0-7.25 3.297-7.25 7.393c0 2.097.603 4.392 1.684 6.383c1.082 1.993 2.612 3.624 4.42 4.469a2.7 2.7 0 0 0 2.291 0c1.809-.845 3.339-2.476 4.421-4.469c1.081-1.99 1.684-4.286 1.684-6.383c0-4.096-3.258-7.393-7.25-7.393m0 5a2.25 2.25 0 1 0 0 4.5a2.25 2.25 0 0 0 0-4.5M8.25 10a3.75 3.75 0 1 1 7.5 0a3.75 3.75 0 0 1-7.5 0" clip-rule="evenodd"/>
+    </symbol>
+    <symbol id="letter-outline" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd" d="M9.944 3.25h4.112c1.838 0 3.294 0 4.433.153c1.172.158 2.121.49 2.87 1.238c.748.749 1.08 1.698 1.238 2.87c.153 1.14.153 2.595.153 4.433v.112c0 1.838 0 3.294-.153 4.433c-.158 1.172-.49 2.121-1.238 2.87c-.749.748-1.698 1.08-2.87 1.238c-1.14.153-2.595.153-4.433.153H9.944c-1.838 0-3.294 0-4.433-.153c-1.172-.158-2.121-.49-2.87-1.238c-.748-.749-1.08-1.698-1.238-2.87c-.153-1.14-.153-2.595-.153-4.433v-.112c0-1.838 0-3.294.153-4.433c.158-1.172.49-2.121 1.238-2.87c.749-.748 1.698-1.08 2.87-1.238c1.14-.153 2.595-.153 4.433-.153M5.71 4.89c-1.006.135-1.586.389-2.01.812c-.422.423-.676 1.003-.811 2.009c-.138 1.028-.14 2.382-.14 4.289s.002 3.262.14 4.29c.135 1.005.389 1.585.812 2.008s1.003.677 2.009.812c1.028.138 2.382.14 4.289.14h4c1.907 0 3.262-.002 4.29-.14c1.005-.135 1.585-.389 2.008-.812s.677-1.003.812-2.009c.138-1.028.14-2.382.14-4.289s-.002-3.261-.14-4.29c-.135-1.005-.389-1.585-.812-2.008s-1.003-.677-2.009-.812c-1.027-.138-2.382-.14-4.289-.14h-4c-1.907 0-3.261.002-4.29.14m-.287 2.63a.75.75 0 0 1 1.056-.096L8.64 9.223c.933.777 1.58 1.315 2.128 1.667c.529.34.888.455 1.233.455s.704-.114 1.233-.455c.547-.352 1.195-.89 2.128-1.667l2.159-1.8a.75.75 0 1 1 .96 1.153l-2.196 1.83c-.887.74-1.605 1.338-2.24 1.746c-.66.425-1.303.693-2.044.693s-1.384-.269-2.045-.693c-.634-.408-1.352-1.007-2.239-1.745L5.52 8.577a.75.75 0 0 1-.096-1.057" clip-rule="evenodd"/>
+    </symbol>
+    <symbol id="phone-calling-outline" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd" d="M4.718 3.092c1.226-1.291 3.254-1.05 4.268.384l1.26 1.784c.811 1.147.743 2.74-.225 3.76l-.245.257l-.002.006c-.013.036-.045.152-.013.372c.067.455.418 1.381 1.846 2.884c1.432 1.508 2.3 1.863 2.703 1.929a.6.6 0 0 0 .294-.007l.408-.43c.874-.92 2.236-1.101 3.335-.469l1.91 1.1c1.633.94 2.013 3.239.708 4.613l-1.42 1.495c-.443.467-1.048.866-1.795.94c-1.824.18-6.049-.055-10.478-4.719c-4.134-4.351-4.919-8.136-5.018-9.985l.666-.036l-.666.036c-.049-.914.358-1.697.894-2.262zm3.043 1.25c-.512-.724-1.433-.768-1.956-.217l-1.57 1.652c-.33.35-.505.75-.483 1.149c.08 1.51.731 4.952 4.607 9.032c4.064 4.28 7.809 4.4 9.244 4.259c.283-.028.575-.186.854-.48l1.42-1.495c.614-.646.453-1.808-.368-2.28l-1.91-1.1c-.513-.295-1.114-.204-1.499.202l-.456.48l-.527-.501c.527.5.527.501.526.502l-.001.001l-.003.004l-.007.006l-.014.014a1 1 0 0 1-.136.112c-.08.056-.186.119-.321.172c-.276.109-.64.167-1.091.094c-.878-.142-2.028-.773-3.55-2.376c-1.528-1.608-2.113-2.807-2.243-3.7c-.067-.454-.014-.817.084-1.092a1.6 1.6 0 0 1 .23-.427l.03-.037l.014-.015l.006-.007l.003-.003l.002-.001s0-.002.533.503l-.532-.505l.287-.302c.445-.469.51-1.263.088-1.86z" clip-rule="evenodd"/><path fill="currentColor" d="M13.26 1.88a.75.75 0 0 1 .861-.62c.025.005.107.02.15.03q.129.027.352.09c.297.087.712.23 1.21.458c.996.457 2.321 1.256 3.697 2.631c1.376 1.376 2.175 2.702 2.632 3.698c.228.498.37.912.457 1.21a6 6 0 0 1 .113.454l.005.031a.765.765 0 0 1-.617.878a.75.75 0 0 1-.86-.617a3 3 0 0 0-.081-.327a7.4 7.4 0 0 0-.38-1.004c-.39-.85-1.092-2.024-2.33-3.262s-2.411-1.939-3.262-2.329a7.4 7.4 0 0 0-1.003-.38a6 6 0 0 0-.318-.08a.76.76 0 0 1-.626-.861"/><path fill="currentColor" fill-rule="evenodd" d="M13.486 5.33a.75.75 0 0 1 .927-.516l-.206.721l.207-.72h.002l.004.001l.007.002l.02.007q.023.006.057.019q.067.023.177.07c.145.062.344.158.589.303c.49.29 1.157.77 1.942 1.556c.785.785 1.267 1.453 1.556 1.942c.145.245.241.444.304.59a3 3 0 0 1 .089.233l.006.02l.002.008l.001.003v.002l-.72.207l.721-.206a.75.75 0 0 1-1.44.422l-.003-.01l-.035-.088a4 4 0 0 0-.216-.417c-.223-.376-.625-.946-1.325-1.646s-1.27-1.102-1.646-1.325a4 4 0 0 0-.504-.25l-.01-.004a.75.75 0 0 1-.506-.925" clip-rule="evenodd"/>
+    </symbol>
+    <symbol id="arrow-right-up-outline" viewBox="0 0 24 24">
+      <path fill="currentColor" fill-rule="evenodd" d="M9 6.75a.75.75 0 0 1 0-1.5h9a.75.75 0 0 1 .75.75v9a.75.75 0 0 1-1.5 0V7.81L6.53 18.53a.75.75 0 0 1-1.06-1.06L16.19 6.75z" clip-rule="evenodd"/>
+    </symbol>
+    <symbol id="facebook" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4z"/>
+    </symbol>
+    <symbol id="youtube" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12.244 4c.534.003 1.87.016 3.29.073l.504.022c1.429.067 2.857.183 3.566.38c.945.266 1.687 1.04 1.938 2.022c.4 1.56.45 4.602.456 5.339l.001.152v.174c-.007.737-.057 3.78-.457 5.339c-.254.985-.997 1.76-1.938 2.022c-.709.197-2.137.313-3.566.38l-.504.023c-1.42.056-2.756.07-3.29.072l-.235.001h-.255c-1.13-.007-5.856-.058-7.36-.476c-.944-.266-1.687-1.04-1.938-2.022c-.4-1.56-.45-4.602-.456-5.339v-.326c.006-.737.056-3.78.456-5.339c.254-.985.997-1.76 1.939-2.021c1.503-.419 6.23-.47 7.36-.476zM9.999 8.5v7l6-3.5z"/>
+    </symbol>
+    <symbol id="instagram" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12.001 9a3 3 0 1 0 0 6a3 3 0 0 0 0-6m0-2a5 5 0 1 1 0 10a5 5 0 0 1 0-10m6.5-.25a1.25 1.25 0 0 1-2.5 0a1.25 1.25 0 0 1 2.5 0M12.001 4c-2.474 0-2.878.007-4.029.058c-.784.037-1.31.142-1.798.332a2.9 2.9 0 0 0-1.08.703a2.9 2.9 0 0 0-.704 1.08c-.19.49-.295 1.015-.331 1.798C4.007 9.075 4 9.461 4 12c0 2.475.007 2.878.058 4.029c.037.783.142 1.31.331 1.797c.17.435.37.748.702 1.08c.337.336.65.537 1.08.703c.494.191 1.02.297 1.8.333C9.075 19.994 9.461 20 12 20c2.475 0 2.878-.007 4.029-.058c.782-.037 1.308-.142 1.797-.331a2.9 2.9 0 0 0 1.08-.703c.337-.336.538-.649.704-1.08c.19-.492.296-1.018.332-1.8c.052-1.103.058-1.49.058-4.028c0-2.474-.007-2.878-.058-4.029c-.037-.782-.143-1.31-.332-1.798a2.9 2.9 0 0 0-.703-1.08a2.9 2.9 0 0 0-1.08-.704c-.49-.19-1.016-.295-1.798-.331C14.926 4.006 14.54 4 12 4m0-2c2.717 0 3.056.01 4.123.06c1.064.05 1.79.217 2.427.465c.66.254 1.216.598 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428c.047 1.066.06 1.405.06 4.122s-.01 3.056-.06 4.122s-.218 1.79-.465 2.428a4.9 4.9 0 0 1-1.153 1.772a4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.427.465c-1.067.047-1.406.06-4.123.06s-3.056-.01-4.123-.06c-1.064-.05-1.789-.218-2.427-.465a4.9 4.9 0 0 1-1.772-1.153a4.9 4.9 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.012 15.056 2 14.717 2 12s.01-3.056.06-4.122s.217-1.79.465-2.428a4.9 4.9 0 0 1 1.153-1.772A4.9 4.9 0 0 1 5.45 2.525c.637-.248 1.362-.415 2.427-.465C8.945 2.013 9.284 2 12.001 2"/>
+    </symbol>
+    <symbol id="twitter" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M22.213 5.656a8.4 8.4 0 0 1-2.402.658A4.2 4.2 0 0 0 21.649 4c-.82.488-1.719.83-2.655 1.015a4.182 4.182 0 0 0-7.126 3.814a11.87 11.87 0 0 1-8.621-4.37a4.17 4.17 0 0 0-.566 2.103c0 1.45.739 2.731 1.86 3.481a4.2 4.2 0 0 1-1.894-.523v.051a4.185 4.185 0 0 0 3.355 4.102a4.2 4.2 0 0 1-1.89.072A4.185 4.185 0 0 0 8.02 16.65a8.4 8.4 0 0 1-6.192 1.732a11.83 11.83 0 0 0 6.41 1.88c7.694 0 11.9-6.373 11.9-11.9q0-.271-.012-.541a8.5 8.5 0 0 0 2.086-2.164"/>
+    </symbol>
+    <symbol id="linkedin" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M6.94 5a2 2 0 1 1-4-.002a2 2 0 0 1 4 .002M7 8.48H3V21h4zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91z"/>
+    </symbol>
+    <symbol id="play" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M8 5.14v14l11-7l-11-7Z"/>
+    </symbol>
+    <symbol id="navbar-icon" viewBox="0 0 16 16">
+      <path
+        d="M14 10.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0 0 1h7a.5.5 0 0 0 .5-.5zm0-3a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0 0 1h11a.5.5 0 0 0 .5-.5z" />
+    </symbol>
+  </svg>  
+
+  <div class="search-popup">
+    <div class="search-popup-container">
+
+      <form role="search" method="get" class="search-form" action="">
+        <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value=""
+          name="s" />
+        <button type="submit" class="search-submit"><svg class="search">
+            <use xlink:href="#search"></use>
+          </svg></button>
+      </form>
+
+      <h5 class="cat-list-title">Browse Categories</h5>
+
+      <ul class="cat-list">
+        <li class="cat-list-item">
+          <a href="#" title="Beard Trim">Beard Trim</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Shave">Shave</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Hair Styling">Hair Styling</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Kids Haircut">Kids Haircut</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Hair Wash">Hair Wash</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Facial & Skincare">Facial & Skincare</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Grooming Packages">Grooming Packages</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content rounded-0">
+        <div class="modal-header border-bottom-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="tabs-listing">
+            <nav>
+              <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+                <button class="nav-link text-uppercase active" id="nav-sign-in-tab" data-bs-toggle="tab"
+                  data-bs-target="#nav-sign-in" type="button" role="tab" aria-controls="nav-sign-in"
+                  aria-selected="true">Sign In</button>
+                <button class="nav-link text-uppercase" id="nav-register-tab" data-bs-toggle="tab"
+                  data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register"
+                  aria-selected="false">Register</button>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel"
+                aria-labelledby="nav-sign-in-tab">
+                <div class="form-group py-3">
+                  <label class="mb-2" for="sign-in">Username or email address *</label>
+                  <input type="text" minlength="2" name="username" placeholder="Your Username"
+                    class="form-control w-100 border rounded-0 p-3" required>
+                </div>
+                <div class="form-group pb-3">
+                  <label class="mb-2" for="sign-in">Password *</label>
+                  <input type="password" minlength="2" name="password" placeholder="Your Password"
+                    class="form-control w-100 border rounded-0 p-3" required>
+                </div>
+                <label class="py-3">
+                  <input type="checkbox" required="" class="d-inline">
+                  <span class="label-body">Remember me</span>
+                  <span class="label-body"><a href="#" class="fw-bold">Forgot Password</a></span>
+                </label>
+                <button type="submit" name="submit" class="btn btn-dark w-100 my-3">Login</button>
+              </div>
+              <div class="tab-pane fade" id="nav-register" role="tabpanel"
+                aria-labelledby="nav-register-tab">
+                <div class="form-group py-3">
+                  <label class="mb-2" for="register">Your email address *</label>
+                  <input type="text" minlength="2" name="username" placeholder="Your Email Address"
+                    class="form-control w-100 border rounded-0 p-3" required>
+                </div>
+                <div class="form-group pb-3">
+                  <label class="mb-2" for="sign-in">Password *</label>
+                  <input type="password" minlength="2" name="password" placeholder="Your Password"
+                    class="form-control w-100 border rounded-0 p-3" required>
+                </div>
+                <label class="py-3">
+                  <input type="checkbox" required="" class="d-inline">
+                  <span class="label-body">I agree to the <a href="#" class="fw-bold">Privacy
+                      Policy</a></span>
+                </label>
+                <button type="submit" name="submit" class="btn btn-dark w-100 my-3">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header id="header">
+    <nav id="primary-header" class="navbar navbar-expand-xl py-5">
+      <div class="container-lg">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/main-logo.png" class="logo img-fluid">
+        </a>
+        <button class="navbar-toggler border-0 d-flex d-xl-none order-3 p-2 shadow-none" type="button"
+          data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false">
+          <svg class="navbar-icon" width="60" height="60">
+            <use xlink:href="#navbar-icon"></use>
+          </svg>
+        </button>
+        <div class="header-bottom offcanvas offcanvas-end" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+          <div class="offcanvas-header px-3 mt-3 ">
+            <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"
+              data-bs-target="#bdNavbar"></button>
+          </div>
+          <div class="offcanvas-body align-items-center justify-content-end gap-5">
+            <ul class="navbar-nav mt-1 mb-2 me-5 mb-lg-0">
+              <li class="nav-item px-0 px-lg-4 py-2 py-lg-0">
+                <a class="nav-link active p-0" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item px-0 px-lg-4 py-2 py-lg-0 dropdown">
+                <a class="nav-link p-0 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                  aria-expanded="false">Shop</a>
+                <ul class="dropdown-menu dropdown-menu-end animate slide mt-3 border-dark rounded-0">
+                  <li><a href="shop.html" class="dropdown-item">Shop <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="single-product.html" class="dropdown-item">Single-Product <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="cart.html" class="dropdown-item">Cart <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="wishlist.html" class="dropdown-item">Wishlist <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="checkout.html" class="dropdown-item">Checkout <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                </ul>
+              </li>
+              <li class="nav-item px-0 px-lg-4 py-2 py-lg-0 dropdown">
+                <a class="nav-link p-0 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                  aria-expanded="false">Services</a>
+                <ul class="dropdown-menu dropdown-menu-end animate slide mt-3 border-dark rounded-0">
+                  <li><a href="services.html" class="dropdown-item">Services <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="services-single.html" class="dropdown-item">Service-Details <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                </ul>
+              </li>
+              <li class="nav-item px-0 px-lg-4 py-2 py-lg-0 dropdown">
+                <a class="nav-link p-0 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                  aria-expanded="false">Blog</a>
+                <ul class="dropdown-menu dropdown-menu-end animate slide mt-3 border-dark rounded-0">
+                  <li><a href="blog.html" class="dropdown-item">Blog <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="single-post.html" class="dropdown-item">Single-Post <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                </ul>
+              </li>
+              <li class="nav-item px-0 px-lg-4 py-2 py-lg-0 dropdown">
+                <a class="nav-link p-0 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                  aria-expanded="false">Pages</a>
+                <ul class="dropdown-menu dropdown-menu-end animate slide mt-3 border-dark rounded-0">
+                  <li><a href="about.html" class="dropdown-item">About Us <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="appointment.html" class="dropdown-item">Appointment
+                      <span class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="team.html" class="dropdown-item">Team <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="pricing.html" class="dropdown-item">Price Plan <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="gallery.html" class="dropdown-item">Gallery <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="faq.html" class="dropdown-item">FAQs <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="contact.html" class="dropdown-item">Contact <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="review.html" class="dropdown-item">Reviews <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="thankyou.html" class="dropdown-item">Thankyou <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="error.html" class="dropdown-item">Error 404 <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                  <li><a href="styles.html" class="dropdown-item">Styles <span
+                        class="badge bg-secondary fw-normal">Pro</span></a></li>
+                </ul>
+              </li>
+              <li class="nav-item px-0 px-lg-4 py-2 py-lg-0">
+                <a class="nav-link text-primary p-0 fw-semibold text-uppercase"
+                  href="https://templatesjungle.gumroad.com/l/haircut" target="_blank">Get Pro</a>
+              </li>
+            </ul>
+            <div class="user-items d-flex mt-4 mt-lg-0">
+              <ul class="d-flex justify-content-end align-items-center list-unstyled mb-0">
+                <li class="search-item pe-3">
+                  <a href="#" class="search-button user-item-icon">
+                    <svg class="search" width="24" height="24">
+                      <use xlink:href="#search"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="pe-3">
+                  <a href="#" class="user-item-icon" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <svg class="user" width="24" height="24">
+                      <use xlink:href="#user"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="wishlist-dropdown dropdown pe-3">
+                  <a href="#" class="dropdown-toggle user-item-icon" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                    <svg class="wishlist" width="24" height="24">
+                      <use xlink:href="#heart"></use>
+                    </svg><span class="fs-6 fw-light">(02)</span>
+                  </a>
+                  <div class="dropdown-menu animate slide dropdown-menu-start dropdown-menu-lg-end border-dark rounded-0 p-3">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                      <span class="text-primary">Your wishlist</span>
+                      <span class="badge bg-primary rounded-pill">2</span>
+                    </h4>
+                    <ul class="list-group mb-3 rounded-0">
+                      <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
+                        <div>
+                          <h5 class="text-uppercase">
+                            <a href="single-product.html">Beard Oil - Cedarwood Scent</a>
+                          </h5>
+                          <small>Softens beard with warm cedarwood aroma.</small>
+                          <a href="#" class="d-block text-decoration-underline fw-medium text-capitalize mt-2">Add to cart</a>
+                        </div>
+                        <span class="text-primary">$140</span>
+                      </li>
+                      <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
+                        <div>
+                          <h5 class="text-uppercase">
+                            <a href="single-product.html">Hair Pomade - Matte Finish</a>
+                          </h5>
+                          <small>Strong hold with natural matte look.</small>
+                          <a href="#" class="d-block text-decoration-underline fw-medium text-capitalize mt-2">Add to cart</a>
+                        </div>
+                        <span class="text-primary">$150</span>
+                      </li>
+                      <li class="list-group-item bg-transparent d-flex justify-content-between">
+                        <span class="text-uppercase"><b>Total (USD)</b></span>
+                        <strong>$290</strong>
+                      </li>
+                    </ul>
+                    <div class="d-flex flex-wrap justify-content-center">
+                      <a href="#" class="w-100 btn btn-dark mb-1" type="submit">Add all to cart</a>
+                      <a href="cart.html" class="w-100 btn btn-primary" type="submit">View cart</a>
+                    </div>
+                  </div>
+                </li>
+                <li class="cart-dropdown dropdown">
+                  <a href="cart.html" class="dropdown-toggle user-item-icon" data-bs-toggle="dropdown" role="button"
+                    aria-expanded="false">
+                    <svg class="cart" width="24" height="24">
+                      <use xlink:href="#cart"></use>
+                    </svg><span class="fs-6 fw-light">(02)</span>
+                  </a>
+                  <div class="dropdown-menu animate slide dropdown-menu-start dropdown-menu-lg-end border-dark rounded-0 p-3">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                      <span class="text-primary">Your cart</span>
+                      <span class="badge bg-primary rounded-pill">2</span>
+                    </h4>
+                    <ul class="list-group mb-3 rounded-0">
+                      <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
+                        <div>
+                          <h5 class="text-uppercase">
+                            <a href="single-product.html">Beard Oil - Cedarwood Scent</a>
+                          </h5>
+                          <small>Softens beard with warm cedarwood aroma.</small>
+                        </div>
+                        <span class="text-primary">$140</span>
+                      </li>
+                      <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
+                        <div>
+                          <h5 class="text-uppercase">
+                            <a href="single-product.html">Hair Pomade - Matte Finish</a>
+                          </h5>
+                          <small>Strong hold with natural matte look.</small>
+                        </div>
+                        <span class="text-primary">$150</span>
+                      </li>
+                      <li class="list-group-item bg-transparent d-flex justify-content-between">
+                        <span class="text-uppercase"><b>Total (USD)</b></span>
+                        <strong>$290</strong>
+                      </li>
+                    </ul>
+                    <div class="d-flex flex-wrap justify-content-center">
+                      <a href="cart.html" class="w-100 btn btn-dark mb-1" type="submit">View Cart</a>
+                      <a href="checkout.html" class="w-100 btn btn-primary" type="submit">Go to checkout</a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section id="billboard" class="mt-4">
+    <div class="container">
+      <div class="row flex-row-reverse align-items-center">
+        <div class="col-md-6">
+          <img src="images/main.jpg" alt="main" class="img-fluid mb-5 mb-md-0">
+        </div>
+        <div class="col-md-6">
+          <h1 class="display-3 text-uppercase mb-5">Classic tradition meets modern flair at Haircut <span class="text-primary">Barbershop.</span></h1>
+          <a href="appointment.html" class="btn btn-outline-dark">Fix your date
+            <svg class="arrow-right-outline mb-1" width="24" height="24">
+              <use xlink:href="#arrow-right-outline"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="we-offer" class="padding-large">
+    <div class="container">
+      <div class="row">
+        <div class="section-title col-md-8 offset-md-2 text-center">
+          <h5 class="text-uppercase mb-4">We Offer</h5>
+          <h2 class="display-5 text-uppercase mb-5">We don't just cut hair — we craft <span class="text-primary">style and confidence.</span></h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 my-3">
+          <div class="text-center">
+            <svg class="scissors-thin text-primary mb-1" width="48" height="48">
+              <use xlink:href="#scissors-thin"></use>
+            </svg>
+            <h5 class="text-uppercase mt-3">Hair Cutting</h5>
+            <p>Precise, stylish, and tailored cuts designed to match your personality.</p>
+          </div>
+        </div>
+        <div class="col-md-3 my-3">
+          <div class="text-center">
+            <svg class="straight-razor text-primary mb-1" width="48" height="48">
+              <use xlink:href="#straight-razor"></use>
+            </svg>
+            <h5 class="text-uppercase mt-3">Razor Shave</h5>
+            <p>Experience the smooth, refreshing finish of a traditional straight shave.</p>
+          </div>
+        </div>
+        <div class="col-md-3 my-3">
+          <div class="text-center">
+            <svg class="shower-outline-rounded text-primary mb-1" width="48" height="48">
+              <use xlink:href="#shower-outline-rounded"></use>
+            </svg>
+            <h5 class="text-uppercase mt-3">Shower & Wash</h5>
+            <p>A relaxing head wash and scalp massage for total rejuvenation.</p>
+          </div>
+        </div>
+        <div class="col-md-3 my-3">
+          <div class="text-center">
+            <svg class="hair-dryer-light text-primary mb-1" width="48" height="48">
+              <use xlink:href="#hair-dryer-light"></use>
+            </svg>
+            <h5 class="text-uppercase mt-3">Blow Dryer Styling</h5>
+            <p>Get that perfect finish with our expert blow-dry and styling techniques.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about-us" class="padding-large pt-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="images/about-us.jpg" alt="about-us" class="img-fluid mb-5 mb-md-0">
+        </div>
+        <div class="col-md-6">
+          <div class="text-content ms-0 ms-lg-5 mt-0 mt-lg-5">
+            <div class="section-title">
+              <h5 class="text-uppercase mb-4">About us</h5>
+              <h2 class="display-5 text-uppercase mb-5">Classic & Authentic <span class="text-primary">Barbershop Feel.</span></h2>
+            </div>
+            <p>At Haircut, we believe a great haircut is more than just style it's confidence. Our skilled barbers combine precision, creativity, and years of experience to give every client a personalized look that fits their lifestyle.
+              <br>
+              From classic cuts to trendy fades, we deliver the perfect grooming experience every time.</p>
+              <a href="about.html" class="btn btn-outline-dark mt-5">Read more about us
+                <svg class="arrow-right-outline mb-1" width="24" height="24">
+                  <use xlink:href="#arrow-right-outline"></use>
+                </svg>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-title col-md-8 offset-md-2 text-center">
+        <h5 class="text-uppercase mb-4">Our Services</h5>
+        <h2 class="display-5 text-uppercase mb-5">Professional Grooming for Every <span class="text-primary">Gentleman.</span></h2>
+      </div>
+
+      <div class="row my-0">
+        <div class="col-md-6 col-lg-3 my-4">
+          <div class="text-center">
+            <a href="services-single.html">
+              <div class="zoom-effect">
+                <img src="images/service-img1.jpg" class="img-fluid " alt="image">
+              </div>
+            </a>
+            <a href="services-single.html">
+              <h5 class="text-uppercase mt-4">Beard Trimming</h5>
+            </a>
+            <p class="mb-3">Keep your beard neat, defined, and shaped to enhance your features.</p>
+            <p class="text-primary fs-5 fw-bold">$50</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 my-4">
+          <div class="text-center">
+            <a href="services-single.html">
+              <div class="zoom-effect">
+                <img src="images/service-img2.jpg" class="img-fluid " alt="image">
+              </div>
+            </a>
+            <a href="services-single.html">
+              <h5 class="text-uppercase mt-4">Hair Coloring</h5>
+            </a>
+            <p class="mb-3">Subtle tones or bold transformations our coloring experts bring your vision to life.</p>
+            <p class="text-primary fs-5 fw-bold">$80</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 my-4">
+          <div class="text-center">
+            <a href="services-single.html">
+              <div class="zoom-effect">
+                <img src="images/service-img3.jpg" class="img-fluid " alt="image">
+              </div>
+            </a>
+            <a href="services-single.html">
+              <h5 class="text-uppercase mt-4">Classic Haircut</h5>
+            </a>
+            <p class="mb-3">A timeless trim perfected by skilled hands. Get a clean, fresh style.</p>
+            <p class="text-primary fs-5 fw-bold">$90</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 my-4">
+          <div class="text-center">
+            <a href="services-single.html">
+              <div class="zoom-effect">
+                <img src="images/service-img4.jpg" class="img-fluid " alt="image">
+              </div>
+            </a>
+            <a href="services-single.html">
+              <h5 class="text-uppercase mt-4">Hot Towel Shave</h5>
+            </a>
+            <p class="mb-3">Indulge in the ultimate relaxing shave with a soothing hot towel finish.</p>
+            <p class="text-primary fs-5 fw-bold">$40</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 my-4">
+          <div class="text-center">
+            <a href="services-single.html">
+              <div class="zoom-effect">
+                <img src="images/service-img5.jpg" class="img-fluid " alt="image">
+              </div>
+            </a>
+            <a href="services-single.html">
+              <h5 class="text-uppercase mt-4">Facial & Skin Care</h5>
+            </a>
+            <p class="mb-3">Refresh and revitalize your skin with our deep-cleaning facial treatments.</p>
+            <p class="text-primary fs-5 fw-bold">$79</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 my-4">
+          <div class="text-center">
+            <a href="services-single.html">
+              <div class="zoom-effect">
+                <img src="images/service-img6.jpg" class="img-fluid " alt="image">
+              </div>
+            </a>
+            <a href="services-single.html">
+              <h5 class="text-uppercase mt-4">Head Massage</h5>
+            </a>
+            <p class="mb-3">Ease tension and improve scalp health with a calming head massage.</p>
+            <p class="text-primary fs-5 fw-bold">$39</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 my-4">
+          <div class="text-center">
+            <a href="services-single.html">
+              <div class="zoom-effect">
+                <img src="images/service-img7.jpg" class="img-fluid " alt="image">
+              </div>
+            </a>
+            <a href="services-single.html">
+              <h5 class="text-uppercase mt-4">Wax & Groom</h5>
+            </a>
+            <p class="mb-3">From eyebrows to neckline, we keep your edges clean and sharp.</p>
+            <p class="text-primary fs-5 fw-bold">$95</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 my-4">
+          <div class="text-center">
+            <a href="services-single.html">
+              <div class="zoom-effect">
+                <img src="images/service-img8.jpg" class="img-fluid " alt="image">
+              </div>
+            </a>
+            <a href="services-single.html">
+              <h5 class="text-uppercase mt-4">Kids Haircut</h5>
+            </a>
+            <p class="mb-3">Gentle and patient barbers ensure your little one gets the perfect cut with care.</p>
+            <p class="text-primary fs-5 fw-bold">$45</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center">
+        <a href="services.html" class="btn btn-outline-dark">More Services
+          <svg class="arrow-right-outline mb-1" width="24" height="24">
+            <use xlink:href="#arrow-right-outline"></use>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="testimonial" class="padding-large">
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-1 col-md-10">
+          <div class="swiper testimonial-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="review">
+                  <div class="review-rating d-flex gap-2 align-items-center justify-content-center">
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                  </div>
+                  <p class="text-center my-5 fs-2 lh-base fw-light text-dark">“Absolutely the best barbershop in town! The team at Haircut knows exactly what style suits you. The atmosphere is chill, the barbers are professional, and I always leave looking my best.”</p>
+                  <div class="review-content d-flex align-items-center justify-content-center">
+                    <img src="images/reviewer1.jpg" alt="reviewer" class="img-fluid rounded-circle">
+                    <div class="ms-2 mt-0">
+                      <h5 class="name m-0 text-uppercase">Jason M.</h5>
+                      <p class="m-0">2 months ago</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="review">
+                  <div class="review-rating d-flex gap-2 align-items-center justify-content-center">
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                  </div>
+                  <p class="text-center my-5 fs-2 lh-base fw-light text-dark">“I've been to a lot of barbers, but this place really stands out. The attention to detail is insane — they actually listen to what you want and deliver it perfectly.”</p>
+                  <div class="review-content d-flex align-items-center justify-content-center">
+                    <img src="images/reviewer2.jpg" alt="reviewer" class="img-fluid rounded-circle">
+                    <div class="ms-2 mt-0">
+                      <h5 class="name m-0 text-uppercase">Kelvin M.</h5>
+                      <p class="m-0">2 months ago</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="review">
+                  <div class="review-rating d-flex gap-2 align-items-center justify-content-center">
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                    <svg class="star text-dark mb-1" width="24" height="24">
+                      <use xlink:href="#star"></use>
+                    </svg>
+                  </div>
+                  <p class="text-center my-5 fs-2 lh-base fw-light text-dark">“Best haircut experience I've had in years. The barber knew exactly how to shape my hair to suit my face. Loved how professional yet friendly the staff were. You can tell they take pride in their work.”</p>
+                  <div class="review-content d-flex align-items-center justify-content-center">
+                    <img src="images/reviewer3.jpg" alt="reviewer" class="img-fluid rounded-circle">
+                    <div class="ms-2 mt-0">
+                      <h5 class="name m-0 text-uppercase">David L.</h5>
+                      <p class="m-0">2 months ago</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-pagination position-relative pt-4 pt-md-5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="container">
+      <div class="section-title col-md-8 offset-md-2 text-center">
+        <h5 class="text-uppercase mb-4">Our specialists</h5>
+        <h2 class="display-5 text-uppercase mb-5">Meet our <span class="text-primary">barbers.</span></h2>
+      </div>
+      <div class="swiper team-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="team-member position-relative">
+              <div class="image-holder zoom-effect">
+                <img src="images/team1.jpg" alt="team member" class="img-fluid">
+              </div>
+              <div class="member-info text-center">              
+                <a href="team.html">
+                  <h5 class="text-uppercase mt-4">Ryan Cole</h5>
+                </a>
+                <p class="mb-3">Master barber with a passion for precision and detail.</p>
+                <ul class="social-links list-unstyled d-flex gap-2 justify-content-center">
+                  <li>
+                    <a href="#">
+                      <svg class="facebook" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#facebook"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="twitter" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="instagram" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#instagram"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="team-member position-relative">
+              <div class="image-holder zoom-effect">
+                <img src="images/team2.jpg" alt="team member" class="img-fluid">
+              </div>
+              <div class="member-info text-center">              
+                <a href="team.html">
+                  <h5 class="text-uppercase mt-4">Liam Parker</h5>
+                </a>
+                <p class="mb-3">Expert in modern fades and clean razor finishes.</p>
+                <ul class="social-links list-unstyled d-flex gap-2 justify-content-center">
+                  <li>
+                    <a href="#">
+                      <svg class="facebook" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#facebook"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="twitter" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="instagram" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#instagram"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="team-member position-relative">
+              <div class="image-holder zoom-effect">
+                <img src="images/team3.jpg" alt="team member" class="img-fluid">
+              </div>
+              <div class="member-info text-center">              
+                <a href="team.html">
+                  <h5 class="text-uppercase mt-4">Ethan James</h5>
+                </a>
+                <p class="mb-3">Known for his classic scissor work and friendly vibe.</p>
+                <ul class="social-links list-unstyled d-flex gap-2 justify-content-center">
+                  <li>
+                    <a href="#">
+                      <svg class="facebook" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#facebook"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="twitter" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="instagram" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#instagram"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="team-member position-relative">
+              <div class="image-holder zoom-effect">
+                <img src="images/team4.jpg" alt="team member" class="img-fluid">
+              </div>
+              <div class="member-info text-center">              
+                <a href="team.html">
+                  <h5 class="text-uppercase mt-4">Noah Reed</h5>
+                </a>
+                <p class="mb-3">Styling specialist who can transform any look effortlessly.</p>
+                <ul class="social-links list-unstyled d-flex gap-2 justify-content-center">
+                  <li>
+                    <a href="#">
+                      <svg class="facebook" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#facebook"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="twitter" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="instagram" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#instagram"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="team-member position-relative">
+              <div class="image-holder zoom-effect">
+                <img src="images/team2.jpg" alt="team member" class="img-fluid">
+              </div>
+              <div class="member-info text-center">              
+                <a href="team.html">
+                  <h5 class="text-uppercase mt-4">Liam Parker</h5>
+                </a>
+                <p class="mb-3">Expert in modern fades and clean razor finishes.</p>
+                <ul class="social-links list-unstyled d-flex gap-2 justify-content-center">
+                  <li>
+                    <a href="#">
+                      <svg class="facebook" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#facebook"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="twitter" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="instagram" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#instagram"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="team-member position-relative">
+              <div class="image-holder zoom-effect">
+                <img src="images/team1.jpg" alt="team member" class="img-fluid">
+              </div>
+              <div class="member-info text-center">              
+                <a href="team.html">
+                  <h5 class="text-uppercase mt-4">Ryan Cole</h5>
+                </a>
+                <p class="mb-3">Master barber with a passion for precision and detail.</p>
+                <ul class="social-links list-unstyled d-flex gap-2 justify-content-center">
+                  <li>
+                    <a href="#">
+                      <svg class="facebook" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#facebook"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="twitter" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#twitter"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <svg class="instagram" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#instagram"></use>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination position-relative pt-4 pt-md-5"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book-now" class="padding-large">
+    <div class="container-fluid">
+      <div class="row bg-body-secondary align-items-center">
+        <div class="col-lg-6 g-0">
+          <img src="images/book-now.jpg" alt="book-now" class="img-fluid mb-5 mb-md-0">
+        </div>
+        <div class="col-lg-6 col-xl-4 py-5">
+          <div class="text-content ms-0 ms-lg-5">
+            <div class="section-title">
+              <h5 class="text-uppercase mb-4">Book Your Next Cut</h5>
+              <h2 class="display-5 text-uppercase mb-5">Look Sharp. Feel Fresh. <span class="text-primary">Every Day.</span></h2>
+            </div>
+            <p>Ready for a new style or just a clean trim? Schedule your appointment today and let our expert barbers give you the perfect cut and grooming experience you deserve. Walk out confident — because at Haircut, your style speaks before you do.</p>
+            <a href="#" class="btn btn-outline-dark mt-5">Fix your date now
+              <svg class="arrow-right-outline mb-1" width="24" height="24">
+                <use xlink:href="#arrow-right-outline"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="container">
+      <div class="section-title col-md-8 offset-md-2 text-center">
+        <h5 class="text-uppercase mb-4">Our Shop</h5>
+        <h2 class="display-5 text-uppercase mb-5">Exceptional cuts and luxurious shaves at our <span class="text-primary">barbershop.</span></h2>
+      </div>
+
+      <div class="swiper swiper-carousel">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="product-item ">
+              <div class="image-holder position-relative">
+                <a href="single-product.html">
+                  <img src="images/item-1.jpg" alt="Professional Hair Clipper" class="product-image img-fluid">
+                </a>
+                <a href="wishlist.html" class="btn-icon btn-wishlist rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <a href="cart.html" class="btn-icon btn-cart rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#cart"></use>
+                  </svg>
+                </a>
+                <div class="product-content text-center">
+                  <a href="single-product.html">
+                    <h5 class="text-uppercase mt-4">Aftershave Balm</h5>
+                  </a>
+                  <p class="text-primary fs-5 fw-bold">$100</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="product-item ">
+              <div class="image-holder position-relative">
+                <a href="single-product.html">
+                  <img src="images/item-2.jpg" alt="Beard Trimming Kit" class="product-image img-fluid">
+                </a>
+                <a href="wishlist.html" class="btn-icon btn-wishlist rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <a href="cart.html" class="btn-icon btn-cart rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#cart"></use>
+                  </svg>
+                </a>
+                <div class="product-content text-center">
+                  <a href="single-product.html">
+                    <h5 class="text-uppercase mt-4">Beard Oil - Cedarwood Scent</h5>
+                  </a>
+                  <p class="text-primary fs-5 fw-bold">$140</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="product-item ">
+              <div class="image-holder position-relative">
+                <a href="single-product.html">
+                  <img src="images/item-3.jpg" alt="Salon Hair Dryer" class="product-image img-fluid">
+                </a>
+                <a href="wishlist.html" class="btn-icon btn-wishlist rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <a href="cart.html" class="btn-icon btn-cart rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#cart"></use>
+                  </svg>
+                </a>
+                <div class="product-content text-center">
+                  <a href="single-product.html">
+                    <h5 class="text-uppercase mt-4">Men's Styling Gel</h5>
+                  </a>
+                  <p class="text-primary fs-5 fw-bold">$120</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="product-item ">
+              <div class="image-holder position-relative">
+                <a href="single-product.html">
+                  <img src="images/item-4.jpg" alt="Professional Hair Shears" class="product-image img-fluid">
+                </a>
+                <a href="wishlist.html" class="btn-icon btn-wishlist rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <a href="cart.html" class="btn-icon btn-cart rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#cart"></use>
+                  </svg>
+                </a>
+                <div class="product-content text-center">
+                  <a href="single-product.html">
+                    <h5 class="text-uppercase mt-4">Hair Pomade - Matte Finish</h5>
+                  </a>
+                  <p class="text-primary fs-5 fw-bold">$150</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="product-item ">
+              <div class="image-holder position-relative">
+                <a href="single-product.html">
+                  <img src="images/item-2.jpg" alt="Electric Shaver" class="product-image img-fluid">
+                </a>
+                <a href="wishlist.html" class="btn-icon btn-wishlist rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <a href="cart.html" class="btn-icon btn-cart rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#cart"></use>
+                  </svg>
+                </a>
+                <div class="product-content text-center">
+                  <a href="single-product.html">
+                    <h5 class="text-uppercase mt-4">Beard Oil - Cedarwood Scent</h5>
+                  </a>
+                  <p class="text-primary fs-5 fw-bold">$140</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="product-item ">
+              <div class="image-holder position-relative">
+                <a href="single-product.html">
+                  <img src="images/item-1.jpg" alt="Barber Cape" class="product-image img-fluid">
+                </a>
+                <a href="wishlist.html" class="btn-icon btn-wishlist rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <a href="cart.html" class="btn-icon btn-cart rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#cart"></use>
+                  </svg>
+                </a>
+                <div class="product-content text-center">
+                  <a href="single-product.html">
+                    <h5 class="text-uppercase mt-4">Aftershave Balm</h5>
+                  </a>
+                  <p class="text-primary fs-5 fw-bold">$100</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="product-item ">
+              <div class="image-holder position-relative">
+                <a href="single-product.html">
+                  <img src="images/item-3.jpg" alt="Hair Styling Pomade" class="product-image img-fluid">
+                </a>
+                <a href="wishlist.html" class="btn-icon btn-wishlist rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <a href="cart.html" class="btn-icon btn-cart rounded-circle">
+                  <svg width="20" height="20">
+                    <use xlink:href="#cart"></use>
+                  </svg>
+                </a>
+                <div class="product-content text-center">
+                  <a href="single-product.html">
+                    <h5 class="text-uppercase mt-4">Men's Styling Gel</h5>
+                  </a>
+                  <p class="text-primary fs-5 fw-bold">$120</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blogs" class="padding-large pb-0">
+    <div class="container">
+      <div class="section-title col-md-8 offset-md-2 text-center">
+        <h5 class="text-uppercase mb-4">Our Blog</h5>
+        <h2 class="display-5 text-uppercase mb-5">From the <span class="text-primary">barber's chair.</span></h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-lg-0">
+          <div class="card border-0 rounded-0">
+            <a href="single-post.html"><img src="images/blog-1.jpg" class="img-fluid" alt="image"></a>
+            <div class="card-body p-0 ps-3">
+              <p class="m-0 pt-3">10 Feb, Sun</p>
+              <a href="single-post.html">
+                <h5 class="text-uppercase">Top 5 Haircuts Every Man Should Try This Year</h5>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-lg-0">
+          <div class="card border-0 rounded-0 ">
+            <a href="single-post.html"><img src="images/blog-3.jpg" class="img-fluid" alt="image"></a>
+            <div class="card-body p-0 ps-3">
+              <p class="m-0 pt-3">15 Mar, Mon</p>
+              <a href="single-post.html">
+                <h5 class="text-uppercase">The Art of Beard Maintenance: Pro Tips from Our Barbers</h5>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 mb-lg-0">
+          <div class="card border-0 rounded-0 ">
+            <a href="single-post.html"><img src="images/blog-2.jpg" class="img-fluid" alt="image"></a>
+            <div class="card-body p-0 ps-3">
+              <p class="m-0 pt-3">22 Feb, Fri</p>
+              <a href="single-post.html">
+                <h5 class="text-uppercase">Why a Good Haircut Boosts Your Confidence Instantly</h5>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>      
+      
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-outline-dark">More Blog Posts
+          <svg class="arrow-right-outline mb-1" width="24" height="24">
+            <use xlink:href="#arrow-right-outline"></use>
+          </svg>
+        </a>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section id="brands" class="padding-large">
+    <div class="container">
+      <div class="row align-items-center justify-content-between text-center">
+        <div class="w-auto">
+          <a href="#" class="brand-logo"><img src="images/logo1.png" class="img-fluid" alt="brands"></a>
+        </div>
+        <div class="w-auto">
+          <a href="#" class="brand-logo"><img src="images/logo2.png" class="img-fluid" alt="brands"></a>
+        </div>
+        <div class="w-auto">
+          <a href="#" class="brand-logo"><img src="images/logo3.png" class="img-fluid" alt="brands"></a>
+        </div>
+        <div class="w-auto">
+          <a href="#" class="brand-logo"><img src="images/logo4.png" class="img-fluid" alt="brands"></a>
+        </div>
+        <div class="w-auto">
+          <a href="#" class="brand-logo"><img src="images/logo5.png" class="img-fluid" alt="brands"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" class="bg-dark text-light padding-large pb-0">
+    <div class="container">
+      <div class="row gap-4 gap-md-0 contact-info padding-medium pt-0">
+        <div class="col-md-4">
+          <div class="d-flex align-items-center justify-content-left justify-content-md-center">
+            <svg class="map-point-outline text-primary mb-1" width="60" height="60">
+              <use xlink:href="#map-point-outline"></use>
+            </svg>
+            <p class="ps-2 m-0 text-light">123 Innovation Street, New York, NY</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex align-items-center justify-content-left justify-content-md-center">
+            <svg class="letter-outline text-primary mb-1" width="60" height="60">
+              <use xlink:href="#letter-outline"></use>
+            </svg>
+            <p class="ps-2 m-0 text-light">youremail@gmail.com</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex align-items-center justify-content-left justify-content-md-center">
+            <svg class="phone-calling-outline text-primary mb-1" width="60" height="60">
+              <use xlink:href="#phone-calling-outline"></use>
+            </svg>
+            <p class="ps-2 m-0 text-light">888 333 9999</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 my-4">
+          <div class="footer-menu">
+            <a class="navbar-brand" href="index.html">
+              <img src="images/main-logo-white.png" class="logo img-fluid">
+            </a>
+            <p class="mt-4 text-light">At Haircut, we combine classic barbering with modern style to help men look sharp. Precision cuts, expert grooming, and good vibes.</p>
+            <form class="form-control d-flex align-items-center justify-content-between p-0 border-bottom border-light">
+              <input type="text" name="email" placeholder="Write Your Email Here" class="form-control text-light w-100 rounded-0 border-0">
+              <button href="#" class="border-0 bg-transparent">
+                <svg class="arrow-right-up-outline mb-1" width="42" height="42">
+                  <use xlink:href="#arrow-right-up-outline"></use>
+                </svg>
+              </button>
+            </form>
+            <div class="social-links mt-4">
+              <ul class="d-flex list-unstyled gap-5 m-0">
+                <li class="social">
+                  <a href="#">
+                    <svg class="facebook mb-1" width="20" height="20">
+                      <use xlink:href="#facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social">
+                  <a href="#">
+                    <svg class="instagram mb-1" width="20" height="20">
+                      <use xlink:href="#instagram"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social">
+                  <a href="#">
+                    <svg class="twitter mb-1" width="20" height="20">
+                      <use xlink:href="#twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social">
+                  <a href="#">
+                    <svg class="linkedin mb-1" width="20" height="20">
+                      <use xlink:href="#linkedin"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social">
+                  <a href="#">
+                    <svg class="youtube mb-1" width="20" height="20">
+                      <use xlink:href="#youtube"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 offset-lg-1 my-4 ">
+          <div class="footer-menu">
+            <h6 class="text-uppercase fw-bold text-light mb-4">Quick Links</h6>
+            <ul class="menu-list list-unstyled">
+              <li class="menu-item">
+                <a href="index.html" class="footer-link">Home</a>
+              </li>
+              <li class="menu-item">
+                <a href="about.html" class="footer-link">About Us</a>
+              </li>
+              <li class="menu-item">
+                <a href="services.html" class="footer-link">Our Services</a>
+              </li>
+              <li class="menu-item">
+                <a href="shop.html" class="footer-link">Shop</a>
+              </li>
+              <li class="menu-item">
+                <a href="blog.html" class="footer-link">Blog</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 offset-lg-1 my-4">
+          <div class="footer-menu">
+            <h6 class="text-uppercase fw-bold text-light mb-4">Our Services</h6>
+            <ul class="menu-list list-unstyled">
+              <li class="menu-item">
+                <a href="services-single.html" class="footer-link">Hair Cutting</a>
+              </li>
+              <li class="menu-item">
+                <a href="services-single.html" class="footer-link">Razor Shave</a>
+              </li>
+              <li class="menu-item">
+                <a href="services-single.html" class="footer-link">Shower & Wash</a>
+              </li>
+              <li class="menu-item">
+                <a href="services-single.html" class="footer-link">Blow Dryer Styling</a>
+              </li>
+              <li class="menu-item">
+                <a href="services-single.html" class="footer-link">Beard Trim</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 offset-lg-1 my-4 ">
+          <div class="footer-menu">
+            <h6 class="text-uppercase fw-bold text-light mb-4">More Offers</h6>
+            <ul class="menu-list list-unstyled">
+              <li class="menu-item">
+                <a href="services-single.html" class="footer-link">Hair Coloring</a>
+              </li>
+              <li class="menu-item">
+                <a href="services-single.html" class="footer-link">Facial & Skin Care</a>
+              </li>
+              <li class="menu-item">
+                <a href="services-single.html" class="footer-link">Head Massage</a>
+              </li>
+              <li class="menu-item">
+                <a href="services-single.html" class="footer-link">Grey Blending</a>
+              </li>
+              <li class="menu-item">
+                <a href="services-single.html" class="footer-link">Modern Fade</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="text-center py-5">
+        <p class="mb-0">©2025 Haircut. HTML Website Template by: <a href="https://templatesjungle.com/"
+            target="_blank" class="text-decoration-underline fw-bold"> TemplatesJungle</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/jquery-1.11.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/plugins.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</body>
+
+</html>
