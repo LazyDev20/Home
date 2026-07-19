@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blinkle.fun - Premium Update</title>
+    <!-- LINK TO YOUR CSS -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -13,23 +14,26 @@
     <header class="top-bar"><span>Blinkle.fun</span></header>
 
     <section class="hero">
-        <div class="hero-content">
+        <div>
             <h1>WELCOME TO BLINKLE.FUN!</h1>
-            <button class="scroll-btn" onclick="scrollToContent()">Explore <span>↓</span></button>
+            <button class="scroll-btn" onclick="scrollToContent()">Explore ↓</button>
         </div>
     </section>
 
     <main id="main-content" class="content-area">
-        <a href="https://your-link-here.com" class="clickable-area">
-            <h2 class="section-title">Stay Connected</h2>
-            <div class="social-grid">
-                <div class="social-pill"><div class="social-icon"><img src="images/discord.png" alt="Discord"></div><div class="social-text"><h3>Discord Server</h3><p>Join the Belno Fan Club</p></div></div>
-                <div class="social-pill"><div class="social-icon"><img src="images/steam.png" alt="Steam"></div><div class="social-text"><h3>Steam Profile</h3><p>Add me if you want!</p></div></div>
-                <div class="social-pill"><div class="social-icon"><img src="images/tiktok.png" alt="TikTok"></div><div class="social-text"><h3>TikTok</h3><p>My tiktok account!</p></div></div>
-                <div class="social-pill"><div class="social-icon"><img src="images/roblox.png" alt="Roblox"></div><div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div></div>
-            </div>
-        </a>
+        <h2 class="section-title">Stay Connected</h2>
+        <div class="social-grid">
+            <a href="https://discord.gg/xzTR7yYUQK" class="social-pill"><div class="social-icon"><img src="images/discord.png" alt="Discord"></div><div class="social-text"><h3>Discord Server</h3><p>Join the Belno Fan Club</p></div></a>
+            <a href="https://steamcommunity.com/id/Varloxy/" class="social-pill"><div class="social-icon"><img src="images/steam.png" alt="Steam"></div><div class="social-text"><h3>Steam Profile</h3><p>Add me if you want!</p></div></a>
+            <a href="https://www.tiktok.com/@whatheheck15" class="social-pill"><div class="social-icon"><img src="images/tiktok.png" alt="TikTok"></div><div class="social-text"><h3>TikTok</h3><p>My tiktok account!</p></div></a>
+            <a href="https://www.roblox.com/users/1408113086/profile" class="social-pill"><div class="social-icon"><img src="images/roblox.png" alt="Roblox"></div><div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div></a>
+        </div>
+        <div class="showcase-container">
+            <img src="images/wow.png" alt="Showcase" class="showcase-image" onclick="openLightbox()">
+        </div>
     </main>
+
+    <div id="lightbox" onclick="this.style.display='none'"><img src="images/wow.png" alt="Full Preview"></div>
 
     <footer class="bottom-bar">
         <div class="footer-logo">Blinkle.fun Premium</div>
@@ -38,6 +42,8 @@
 
     <script>
         function scrollToContent() { document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' }); }
+        function openLightbox() { document.getElementById('lightbox').style.display = 'flex'; }
+
         window.addEventListener('scroll', function() {
             const char = document.getElementById('scroll-char');
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
