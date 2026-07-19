@@ -13,17 +13,16 @@
         html { scroll-behavior: smooth; }
         body { background-color: #1a1a1a; color: #f0f0f0; overflow-x: hidden; }
 
-        /* --- CHARACTER ANIMATION (Fixed Z-Index) --- */
+        /* --- CHARACTER ANIMATION --- */
         #scroll-char {
             position: fixed;
             bottom: -800px; 
             left: 20px;
             width: 350px;
-            z-index: 5; /* Lowered so it tucks behind the footer */
+            z-index: 5;
             pointer-events: none;
             transition: bottom 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        
         #scroll-char.visible { bottom: 0; }
 
         /* --- MOBILE OPTIMIZATION --- */
@@ -41,6 +40,7 @@
         .hero h1 { font-size: 5rem; font-weight: 900; color: white; letter-spacing: 3px; text-shadow: 0 6px 15px rgba(0,0,0,0.9); margin-bottom: 30px; }
         
         .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; }
+        .scroll-btn img { vertical-align: middle; }
         .scroll-btn:hover { background-color: #8c7a67; }
 
         .content-area { background-color: #242424; padding: 120px 40px; min-height: 100vh; position: relative; overflow: hidden; }
@@ -64,7 +64,6 @@
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; cursor: zoom-out; }
         #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; }
         
-        /* Footer fixed with higher z-index */
         .bottom-bar { width: 100%; background-color: #121212; padding: 30px 40px; border-top: 2px solid #3a3a3a; position: relative; z-index: 10; }
         .footer-logo { font-weight: 900; color: #a38f78; }
     </style>
@@ -77,7 +76,10 @@
     <section class="hero">
         <div class="hero-content">
             <h1>WELCOME TO BLINKLE.FUN!</h1>
-            <button class="scroll-btn" onclick="scrollToContent()">Explore <span></span></button>
+            <button class="scroll-btn" onclick="scrollToContent()">
+                <img src="images/icon.png" alt="Explore" style="width: 20px; height: 20px;">
+                Explore
+            </button>
         </div>
     </section>
 
