@@ -4,57 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blinkle.fun - Premium Update</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
     <style>
         /* --- GLOBAL SETTINGS --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background-color: #1a1a1a; color: #f0f0f0; overflow-x: hidden; position: relative; }
+        body { background-color: #1a1a1a; color: #f0f0f0; overflow-x: hidden; }
 
-        /* --- AWESOME: ANIMATED BACKGROUND LINES --- */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(45deg, rgba(163, 143, 120, 0.03) 25%, transparent 25%, transparent 50%, rgba(163, 143, 120, 0.03) 50%, rgba(163, 143, 120, 0.03) 75%, transparent 75%, transparent);
-            background-size: 60px 60px;
-            animation: moveLines 5s linear infinite;
-            z-index: -1;
-            pointer-events: none;
-        }
-        @keyframes moveLines { from { background-position: 0 0; } to { background-position: 60px 60px; } }
+        /* --- MODERN SCROLLBAR --- */
+        ::-webkit-scrollbar { width: 14px; }
+        ::-webkit-scrollbar-track { background: #242424; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #a38f78; border-radius: 10px; border: 4px solid #242424; }
+        ::-webkit-scrollbar-thumb:hover { background: #b6a48f; }
 
-        /* --- AWESOME: LIGHTBOX PREVIEW --- */
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; cursor: zoom-out; }
-        #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 0 50px rgba(163, 143, 120, 0.2); }
-
-        /* --- YOUR ORIGINAL STYLING --- */
+        /* --- TOP BAR --- */
         .top-bar { background-color: #a38f78; color: white; padding: 15px 30px; font-weight: 900; font-size: 1.4rem; position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.4); display: flex; justify-content: space-between; align-items: center; }
+
+        /* --- HERO SECTION --- */
         .hero { height: 100vh; position: relative; background-image: url('images/image_93eb2c.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; background-blend-mode: multiply; background-color: rgba(0, 0, 0, 0.45); }
         .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%); z-index: 1; }
         .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; width: 90%; }
         .hero h1 { font-size: 5rem; font-weight: 900; color: white; letter-spacing: 3px; text-shadow: 0 6px 15px rgba(0,0,0,0.9); margin-bottom: 30px; }
+
         .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; }
         .scroll-btn:hover { background-color: #c4ae95; transform: translateY(-5px); }
-        .content-area { background-color: #242424; padding: 120px 40px; min-height: 100vh; }
-        .section-title { text-align: center; font-size: 3rem; font-weight: 900; color: #a38f78; margin-bottom: 60px; text-transform: uppercase; }
-        .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 900px; margin: 0 auto; }
+
+        /* --- CONTENT AREA WITH MOVING LINES --- */
+        .content-area { 
+            background-color: #242424; 
+            padding: 120px 40px; 
+            min-height: 100vh; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .content-area::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(45deg, rgba(163,143,120,0.05) 25%, transparent 25%, transparent 50%, rgba(163,143,120,0.05) 50%, rgba(163,143,120,0.05) 75%, transparent 75%, transparent);
+            background-size: 50px 50px;
+            animation: moveLines 4s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes moveLines { from { background-position: 0 0; } to { background-position: 50px 50px; } }
+
+        .section-title { text-align: center; font-size: 3rem; font-weight: 900; color: #a38f78; margin-bottom: 60px; text-transform: uppercase; z-index: 1; position: relative; }
+
+        .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
         .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #333333, #262626); border-radius: 60px; padding: 10px; padding-right: 30px; text-decoration: none; border: 1px solid #444; transition: 0.3s; }
         .social-pill:hover { transform: translateY(-5px) scale(1.02); background: linear-gradient(145deg, #3a3a3a, #2a2a2a); }
+
         .social-icon { width: 80px; height: 80px; border-radius: 50%; background-color: #1a1a1a; flex-shrink: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 2px solid #555; }
         .social-icon img { width: 60%; height: 60%; object-fit: contain; }
-        .icon-discord { width: 70%; } .icon-tiktok { width: 55%; } .icon-roblox { width: 80%; }
+        .icon-discord { width: 70%; }
+        .icon-tiktok { width: 55%; }
+        .icon-roblox { width: 80%; }
+
         .social-text { margin-left: 20px; }
         .social-text h3 { font-size: 1.5rem; color: #ffffff; font-weight: 700; }
         .social-text p { font-size: 0.85rem; color: #a38f78; text-transform: uppercase; font-weight: 700; }
-        
-        /* UPDATED: Showcase Image cursor */
-        .showcase-container { max-width: 1000px; margin: 80px auto 0 auto; padding: 0 20px; }
+
+        /* --- LIGHTBOX & IMAGE --- */
+        .showcase-container { max-width: 1000px; margin: 80px auto 0 auto; padding: 0 20px; position: relative; z-index: 1; }
         .showcase-image { width: 100%; border-radius: 20px; transition: 0.4s; cursor: zoom-in; }
         .showcase-image:hover { transform: scale(1.02); }
 
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; }
+
         .bottom-bar { width: 100%; background-color: #121212; padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #3a3a3a; }
         .footer-logo { font-weight: 900; color: #a38f78; }
+
         @media (max-width: 768px) { .social-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
@@ -72,12 +94,23 @@
     <main id="main-content" class="content-area">
         <h2 class="section-title">Stay Connected</h2>
         <div class="social-grid">
-            <a href="https://discord.gg/xzTR7yYUQK" target="_blank" class="social-pill"><div class="social-icon"><img src="images/discord.png" alt="Discord" class="icon-discord"></div><div class="social-text"><h3>Discord Server</h3><p>Join the Belno Fan Club</p></div></a>
-            <a href="https://steamcommunity.com/id/Varloxy/" target="_blank" class="social-pill"><div class="social-icon"><img src="images/steam.png" alt="Steam"></div><div class="social-text"><h3>Steam Profile</h3><p>Add me if you want!</p></div></a>
-            <a href="https://www.tiktok.com/@whatheheck15" target="_blank" class="social-pill"><div class="social-icon"><img src="images/tiktok.png" alt="TikTok" class="icon-tiktok"></div><div class="social-text"><h3>TikTok</h3><p>My tiktok account!</p></div></a>
-            <a href="https://www.roblox.com/users/1408113086/profile" target="_blank" class="social-pill"><div class="social-icon"><img src="images/roblox.png" alt="Roblox" class="icon-roblox"></div><div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div></a>
+            <a href="https://discord.gg/xzTR7yYUQK" target="_blank" class="social-pill">
+                <div class="social-icon"><img src="images/discord.png" alt="Discord" class="icon-discord"></div>
+                <div class="social-text"><h3>Discord Server</h3><p>Join the Belno Fan Club</p></div>
+            </a>
+            <a href="https://steamcommunity.com/id/Varloxy/" target="_blank" class="social-pill">
+                <div class="social-icon"><img src="images/steam.png" alt="Steam"></div>
+                <div class="social-text"><h3>Steam Profile</h3><p>Add me if you want!</p></div>
+            </a>
+            <a href="https://www.tiktok.com/@whatheheck15" target="_blank" class="social-pill">
+                <div class="social-icon"><img src="images/tiktok.png" alt="TikTok" class="icon-tiktok"></div>
+                <div class="social-text"><h3>TikTok</h3><p>My tiktok account!</p></div>
+            </a>
+            <a href="https://www.roblox.com/users/1408113086/profile" target="_blank" class="social-pill">
+                <div class="social-icon"><img src="images/roblox.png" alt="Roblox" class="icon-roblox"></div>
+                <div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div>
+            </a>
         </div>
-        <!-- Lightbox Trigger -->
         <div class="showcase-container">
             <img src="images/wow.png" alt="Showcase" class="showcase-image" onclick="openLightbox()">
         </div>
