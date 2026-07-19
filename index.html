@@ -1,78 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blinkle Was Here</title>
+<style>
+    /* ... Keep your existing CSS ... */
+
+    /* NEW: Animation class for the exit transition */
+    .fade-out {
+        animation: fadeOut 0.4s ease-in-out forwards;
+    }
+
+    @keyframes fadeOut {
+        from { opacity: 1; transform: scale(1); }
+        to { opacity: 0; transform: scale(0.95); }
+    }
+</style>
+
+<!-- ... Inside your body tag ... -->
+<div class="container" id="main-card">
+    <h1>Blinkle was here</h1>
     
-    <!-- YOUR WEBSITE TAB ICON -->
-    <link rel="icon" type="images/png" href="images/texty.png">
+    <!-- Updated Link: Removed href and added onclick -->
+    <a href="javascript:void(0)" onclick="transitionAndRedirect('https://blinkle.fun/ai')">
+        <img src="images/texty.png" alt="Blinkle's Picture" class="my-image">
+    </a>
+</div>
 
-    <style>
-        /* Centers everything perfectly on the screen */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f8f9fa; /* Soft off-white background */
-            color: #212529;            /* Deep dark gray for smooth reading */
-        }
-
-        /* The container card holding your content */
-        .container {
-            text-align: center;
-            background: #ffffff;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Modern soft shadow */
-            transition: transform 0.3s ease;
-        }
-
-        /* Subtle lift effect when you hover over the card */
-        .container:hover {
-            transform: translateY(-4px);
-        }
-
-        /* Styling for your headline text */
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Modern styling for your main image */
-        .my-image {
-            display: block;
-            max-width: 280px;
-            height: auto;
-            border-radius: 12px;
-            margin: 0 auto;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: filter 0.3s ease;
-            cursor: pointer; /* Added to show it is a link */
-        }
-
-        /* Slight hover effect for your image */
-        .my-image:hover {
-            filter: brightness(0.95);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <h1>Blinkle was here</h1>
+<script>
+    function transitionAndRedirect(url) {
+        const card = document.getElementById('main-card');
+        // Add the animation class
+        card.classList.add('fade-out');
         
-        <!-- CLICKABLE IMAGE LINK -->
-        <a href="https://blinkle.fun/ai">
-            <img src="images/texty.png" alt="Blinkle's Picture" class="my-image">
-        </a>
-    </div>
-
-</body>
-</html>
+        // Wait for the animation to finish (0.4s) before navigating
+        setTimeout(() => {
+            window.location.href = url;
+        }, 400);
+    }
+</script>
