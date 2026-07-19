@@ -40,21 +40,20 @@
         .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; width: 90%; }
         .hero h1 { font-size: 5rem; font-weight: 900; color: white; letter-spacing: 3px; text-shadow: 0 6px 15px rgba(0,0,0,0.9); margin-bottom: 30px; }
         
-        /* UPDATED BUTTON WITH PULSE ANIMATION */
-        .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; animation: pulse 2s infinite; }
-        .scroll-btn:hover { transform: scale(1.1); animation: none; }
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(163, 143, 120, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(163, 143, 120, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(163, 143, 120, 0); }
-        }
+        /* STATIC EXPLORE BUTTON WITH HOVER SCALE */
+        .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; }
+        .scroll-btn:hover { transform: scale(1.05); background-color: #8c7a67; }
 
-        /* UPDATED CONTENT AREA WITH GRID LINES */
+        /* CONTENT AREA WITH GRID LINES */
         .content-area { background-color: #242424; padding: 120px 40px; min-height: 100vh; position: relative; overflow: hidden; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px; }
         
         .section-title { text-align: center; font-size: 3rem; font-weight: 900; color: #a38f78; margin-bottom: 60px; text-transform: uppercase; z-index: 1; position: relative; }
         .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
-        .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #333333, #262626); border-radius: 60px; padding: 10px; padding-right: 30px; text-decoration: none; border: 1px solid #444; transition: 0.3s; }
+        
+        /* SOCIAL PILL WITH HOVER LIFT EFFECT */
+        .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #333333, #262626); border-radius: 60px; padding: 10px; padding-right: 30px; text-decoration: none; border: 1px solid #444; transition: all 0.3s ease; }
+        .social-pill:hover { transform: translateY(-5px) scale(1.02); border-color: #a38f78; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        
         .social-icon { width: 80px; height: 80px; border-radius: 50%; background-color: #1a1a1a; flex-shrink: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 2px solid #555; }
         .social-icon img { width: 60%; height: 60%; object-fit: contain; }
         .social-text { margin-left: 20px; }
@@ -69,7 +68,6 @@
     </style>
 </head>
 <body>
-    <!-- (Rest of your HTML remains exactly the same) -->
     <img id="scroll-char" src="images/belnooo.png" alt="Character">
     <header class="top-bar"><span>Blinkle.fun - isnt it cool?</span></header>
 
