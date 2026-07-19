@@ -3,144 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Tech Page</title>
+    <title>Game Presentation Template</title>
     <style>
-        /* CSS RESET */
+        /* Modern CSS Reset & Fonts */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Poppins', -apple-system, system-ui, sans-serif;
         }
 
-        /* GLOBAL STYLES */
         body {
-            background-color: #0d0e12;
-            color: #f3f4f6;
+            background-color: #0d0e12; /* Darkest charcoal background */
+            color: #ffffff;
+            overflow-x: hidden;
             min-height: 100vh;
+        }
+
+        /* Top Orange Header Bar */
+        header {
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to right, #b04e21, #e17e57); /* Orange gradient from image */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: fixed;
+            top: 0;
+            z-index: 100;
+        }
+
+        .studio-name {
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #f3f4f6;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Hexagonal Central Logo Frame */
+        .header-center {
+            width: 70px;
+            height: 70px;
+            background-color: #0d0e12;
+            border-radius: 12px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gamepad icon placeholder */
+        .game-icon {
+            color: #ffffff;
+            font-size: 24px;
+        }
+
+        /* Mobile Hamburger (right side) */
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hamburger-icon span {
+            width: 24px;
+            height: 2px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* MAIN HERO CONTENT */
+        main {
+            margin-top: 100px; /* Accounts for fixed header */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .presentation-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #d1d5db;
+            margin-bottom: 30px;
+        }
+
+        /* Massive 'Game Online' Typography (Layered) */
+        .game-online-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 20px;
+        }
+
+        .base-text {
+            font-size: 120px; /* Adjust based on viewport */
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #1a1c22; /* Darker grey layer */
+            position: relative;
+            z-index: 10;
+        }
+
+        .overlay-text {
+            font-size: 120px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #ffffff, #d1d5db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: absolute;
+            top: 10px; /* Adjust layered offset */
+            left: 5px;
+            z-index: 11;
+        }
+
+        /* Soldier Image Placeholder (Centered) */
+        .soldier-placeholder {
+            width: 60vw;
+            height: 350px;
+            background-color: #1a1c22; /* Dark filler color */
+            border-radius: 24px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
+            z-index: 12;
         }
 
-        /* Gradient background accents */
-        body::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: #6366f1;
-            filter: blur(150px);
-            border-radius: 50%;
-            top: 20%;
-            left: 20%;
-            opacity: 0.3;
-            z-index: -1;
+        .soldier-label {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+            text-transform: uppercase;
         }
 
-        body::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: #a855f7;
-            filter: blur(150px);
-            border-radius: 50%;
-            bottom: 20%;
-            right: 20%;
-            opacity: 0.2;
-            z-index: -1;
-        }
-
-        /* CONTAINER/CARD */
-        .container {
-            width: 90%;
-            max-width: 450px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
-            border-color: rgba(99, 102, 241, 0.3);
-        }
-
-        /* CONTENT */
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            margin-bottom: 30px;
-            background: linear-gradient(to right, #ffffff, #d1d5db);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Link Stack */
-        .links-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        /* Button/Link style */
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        /* CTA BUTTON (Orange Gradient) */
+        .cta-button {
+            padding: 16px 32px;
+            background: linear-gradient(to right, #b04e21, #e17e57);
+            border: none;
             border-radius: 12px;
-            color: #f3f4f6;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 100px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .btn:hover {
-            background: #f3f4f6;
-            color: #0d0e12;
-            transform: scale(1.02);
-            border-color: #f3f4f6;
+        .cta-button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(225, 126, 87, 0.3);
         }
 
-        /* Special style for the first link */
-        .btn:first-child {
-            background: #6366f1;
-            border-color: #6366f1;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-        }
-
-        .btn:first-child:hover {
-            background: #4f46e5;
-            border-color: #4f46e5;
-            color: #ffffff;
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 20px;
+            }
+            .header-center {
+                display: none; /* Hide complex logo frame on mobile */
+            }
+            .studio-name {
+                display: none; /* Keep simple on mobile */
+            }
+            .base-text, .overlay-text {
+                font-size: 60px; /* Scale down type */
+            }
+            .soldier-placeholder {
+                width: 90vw;
+                height: 250px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Try it out</h1>
+    <header>
+        <div class="studio-name">STUDIO SHODWE</div>
         
-        <div class="links-stack">
-            <a href="#" class="btn">View Demo</a>
-            <a href="#" class="btn">Learn More</a>
-            <a href="#" class="btn">Documentation</a>
-            <a href="#" class="btn">Contact Sales</a>
+        <!-- Central Logo Frame -->
+        <div class="header-center">
+            <div class="game-icon">🎮</div> <!-- Placeholder Emoji -->
         </div>
-    </div>
+
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <main>
+        <p class="presentation-title">Game Presentation Template</p>
+        
+        <div class="game-online-wrapper">
+            <div class="base-text">Game Online</div>
+            <div class="overlay-text">Game Online</div>
+        </div>
+        
+        <!-- Soldier image area placeholder -->
+        <div class="soldier-placeholder">
+            <p class="soldier-label">[ Soldier Image Area ]</p>
+        </div>
+
+        <button class="cta-button">Press Any Key</button>
+    </main>
 
 </body>
 </html>
