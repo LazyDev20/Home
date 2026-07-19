@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blinkle.fun - Enhanced</title>
+    <title>Blinkle.fun - Premium Update</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
@@ -130,7 +130,7 @@
         }
 
         /* --- CONTENT AREA (SOCIAL LINKS) --- */
-        .content-test {
+        .content-area {
             background-color: #242424;
             padding: 120px 40px;
             min-height: 100vh;
@@ -155,7 +155,6 @@
             margin: 0 auto;
         }
 
-        /* --- PILL SHAPED BUTTONS --- */
         .social-pill {
             display: flex;
             align-items: center;
@@ -175,7 +174,6 @@
             background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
         }
 
-        /* Logo Circle (Supports 200x200 images, scales down to fit) */
         .social-icon {
             width: 80px;
             height: 80px;
@@ -196,7 +194,6 @@
             object-fit: cover;
         }
 
-        /* Text Area Inside Button */
         .social-text {
             margin-left: 20px;
             display: flex;
@@ -216,6 +213,29 @@
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 1px;
+        }
+
+        /* --- FEATURED SHOWCASE IMAGE --- */
+        .showcase-container {
+            max-width: 1000px;
+            margin: 80px auto 0 auto; /* Adds spacing between the buttons and the image */
+            padding: 0 20px;
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 2px solid #3a3a3a;
+            display: block;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .showcase-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border-color: #a38f78;
         }
 
         /* --- STANDARD BOTTOM BAR --- */
@@ -252,7 +272,7 @@
             color: white;
         }
 
-        /* --- RESPONSIVE DESIGN (Turns to 1 column on phones) --- */
+        /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 3rem;
@@ -261,7 +281,7 @@
                 font-size: 2.2rem;
             }
             .social-grid {
-                grid-template-columns: 1fr; /* Stacks the buttons vertically */
+                grid-template-columns: 1fr;
             }
             .bottom-bar {
                 flex-direction: column;
@@ -290,13 +310,13 @@
         </div>
     </section>
 
-    <!-- New Social Grid Area -->
-    <main id="main-content" class="content-test">
+    <!-- Content Area -->
+    <main id="main-content" class="content-area">
         <h2 class="section-title">Stay Connected</h2>
         
+        <!-- Social Links Grid -->
         <div class="social-grid">
             
-            <!-- Discord Button -->
             <a href="#" class="social-pill">
                 <div class="social-icon">
                     <img src="images/discord.png" alt="Discord Logo">
@@ -307,7 +327,6 @@
                 </div>
             </a>
 
-            <!-- Steam Button -->
             <a href="#" class="social-pill">
                 <div class="social-icon">
                     <img src="images/steam.png" alt="Steam Logo">
@@ -318,7 +337,6 @@
                 </div>
             </a>
 
-            <!-- TikTok Button -->
             <a href="#" class="social-pill">
                 <div class="social-icon">
                     <img src="images/tiktok.png" alt="TikTok Logo">
@@ -329,7 +347,6 @@
                 </div>
             </a>
 
-            <!-- Roblox Button -->
             <a href="#" class="social-pill">
                 <div class="social-icon">
                     <img src="images/roblox.png" alt="Roblox Logo">
@@ -341,6 +358,12 @@
             </a>
 
         </div>
+
+        <!-- NEW: Featured Community Image Section -->
+        <div class="showcase-container">
+            <img src="images/image_94d444.jpg" alt="Community Showcase" class="showcase-image">
+        </div>
+
     </main>
 
     <!-- Standard Footer -->
