@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blinkle.fun - Enhanced</title>
     
-    <!-- Using a more modern and premium Sans-Serif font (e.g., Montserrat) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
@@ -14,21 +13,20 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif; /* Modern Font */
+            font-family: 'Montserrat', sans-serif; 
         }
 
         html {
-            scroll-behavior: smooth; /* Modern smooth scrolling */
+            scroll-behavior: smooth; 
         }
 
         body {
-            background-color: #1a1a1a; /* Darkened for modern look */
+            background-color: #1a1a1a; 
             color: #f0f0f0;
-            padding-bottom: 70px; /* Space for the enhanced bottom bar */
             overflow-x: hidden;
         }
 
-        /* --- MODERN SCROLLBAR (Enhanced) --- */
+        /* --- MODERN SCROLLBAR --- */
         ::-webkit-scrollbar {
             width: 14px;
         }
@@ -37,15 +35,15 @@
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #a38f78; /* Primary theme color for thumb */
+            background: #a38f78; 
             border-radius: 10px;
-            border: 4px solid #242424; /* Creates a padded inset look */
+            border: 4px solid #242424; 
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #b6a48f; 
         }
 
-        /* --- TOP BAR (Sleeker) --- */
+        /* --- TOP BAR --- */
         .top-bar {
             background-color: #a38f78; 
             color: white;
@@ -62,19 +60,18 @@
             align-items: center;
         }
 
-        /* --- HERO SECTION WITH FIXED PNG BACKGROUND --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             position: relative;
-            /* Using the verbatim file name with PNG extension */
+            
+            /* Updated to use "images/" folder */
             background-image: url('images/image_93eb2c.png');
+            
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            /* MAGIC EFFECT: The image is fixed, content scrolls over it */
             background-attachment: fixed;
-            
-            /* Enhanced modern overlay for text clarity */
             background-blend-mode: multiply;
             background-color: rgba(0, 0, 0, 0.45);
         }
@@ -87,7 +84,6 @@
             z-index: 1;
         }
 
-        /* Hero text is standard text, it will scroll with the page */
         .hero-content {
             position: absolute;
             top: 50%;
@@ -103,35 +99,44 @@
             font-weight: 900;
             color: white;
             letter-spacing: 3px;
-            
-            /* Clean, modern text effect, no harsh outline */
             text-shadow: 0 6px 15px rgba(0,0,0,0.9);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
-        .scroll-down {
-            font-size: 1.8rem;
+        /* --- NICE AUTO-SCROLL BUTTON --- */
+        .scroll-btn {
+            background-color: #a38f78;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #d1b896; /* Subtle accent color */
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            animation: bounce 2s infinite;
-            display: flex;
-            justify-content: center;
+            letter-spacing: 2px;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
         }
 
-        .scroll-down .arrow {
-            font-size: 2.5rem;
-            font-weight: 900;
+        .scroll-btn:hover {
+            background-color: #c4ae95;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
         }
 
-        /* --- DUMMY CONTENT AREA (Better Design) --- */
+        .scroll-btn:active {
+            transform: translateY(0);
+        }
+
+        /* --- CONTENT AREA --- */
         .content-test {
             background-color: #242424;
             padding: 120px 40px;
-            min-height: 150vh;
+            min-height: 100vh;
         }
 
         .section-title {
@@ -175,20 +180,17 @@
             line-height: 1.6;
         }
 
-        /* --- ENHANCED BOTTOM BAR (Footer) --- */
+        /* --- STANDARD BOTTOM BAR (No longer fixed) --- */
         .bottom-bar {
-            position: fixed;
-            bottom: 0;
             width: 100%;
-            background-color: #1a1a1a;
+            background-color: #121212;
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
+            padding: 30px 40px;
             font-size: 1rem;
             border-top: 2px solid #3a3a3a;
-            z-index: 1000;
         }
 
         .footer-logo {
@@ -212,20 +214,10 @@
             color: white;
         }
 
-        /* --- ANIMATIONS --- */
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-15px); }
-            60% { transform: translateY(-7px); }
-        }
-
         /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 3rem;
-            }
-            .scroll-down {
-                font-size: 1.3rem;
             }
             .section-title {
                 font-size: 2.2rem;
@@ -233,28 +225,33 @@
             .bottom-bar {
                 flex-direction: column;
                 gap: 15px;
-                padding: 15px;
+                padding: 20px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Ssleeker Top Bar -->
+    <!-- Top Navigation -->
     <header class="top-bar">
         <span>Blinkle.fun</span>
     </header>
 
-    <!-- Main Hero Section with Fixed Background and Scrolling Text -->
+    <!-- Main Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>WELCOME TO BLINKLE.FUN!</h1>
-            <p class="scroll-down">Scroll down <span class="arrow">↓</span></p>
+            
+            <!-- New Auto-Scroll Button -->
+            <button class="scroll-btn" onclick="scrollToContent()">
+                Explore <span>↓</span>
+            </button>
         </div>
     </section>
 
-    <!-- Better Designed Content Area for Scrolling -->
-    <main class="content-test">
+    <!-- Content Area (Added ID so the button knows where to scroll) -->
+    <main id="main-content" class="content-test">
         <h2 class="section-title">Test the New Scroll</h2>
         <div class="card-container">
             <div class="modern-card">
@@ -266,13 +263,13 @@
                 <p>Montserrat font is used for a cooler, highly readable experience.</p>
             </div>
             <div class="modern-card">
-                <h3>Sleek Scrolling</h3>
-                <p>The whole page scrolls, and the image remains fixed for a premium feel.</p>
+                <h3>Sleek Auto-Scroll</h3>
+                <p>Click the button above to seamlessly glide down the page.</p>
             </div>
         </div>
     </main>
 
-    <!-- Enhanced Fixed Bottom Bar -->
+    <!-- Standard Footer (Now at the bottom of the page) -->
     <footer class="bottom-bar">
         <div class="footer-logo">Blinkle.fun Premium</div>
         <div class="footer-copy">&copy; 2026 Blinkle.fun | Premium Update</div>
@@ -282,6 +279,13 @@
             <a href="#">Support</a>
         </div>
     </footer>
+
+    <!-- JavaScript to make the button scroll smoothly -->
+    <script>
+        function scrollToContent() {
+            document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
 
 </body>
 </html>
