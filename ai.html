@@ -64,10 +64,7 @@
         .hero {
             height: 100vh;
             position: relative;
-            
-            /* Updated to use "images/" folder */
             background-image: url('images/image_93eb2c.png');
-            
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -132,7 +129,7 @@
             transform: translateY(0);
         }
 
-        /* --- CONTENT AREA --- */
+        /* --- CONTENT AREA (SOCIAL LINKS) --- */
         .content-test {
             background-color: #242424;
             padding: 120px 40px;
@@ -145,42 +142,83 @@
             font-weight: 900;
             color: #a38f78;
             margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .card-container {
+        /* --- 2x2 SOCIAL GRID --- */
+        .social-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .modern-card {
-            background-color: #2e2e2e;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            border: 1px solid #3a3a3a;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* --- PILL SHAPED BUTTONS --- */
+        .social-pill {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(145deg, #333333, #262626);
+            border-radius: 60px;
+            padding: 10px;
+            padding-right: 30px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 1px solid #444;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
         }
 
-        .modern-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        .social-pill:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+            background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
         }
 
-        .modern-card h3 {
-            font-size: 1.8rem;
-            color: white;
-            margin-bottom: 15px;
+        /* Logo Circle (Supports 200x200 images, scales down to fit) */
+        .social-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #1a1a1a;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.6);
+            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #555;
         }
 
-        .modern-card p {
-            color: #b0b0b0;
-            line-height: 1.6;
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* --- STANDARD BOTTOM BAR (No longer fixed) --- */
+        /* Text Area Inside Button */
+        .social-text {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .social-text h3 {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .social-text p {
+            font-size: 0.85rem;
+            color: #a38f78;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* --- STANDARD BOTTOM BAR --- */
         .bottom-bar {
             width: 100%;
             background-color: #121212;
@@ -214,13 +252,16 @@
             color: white;
         }
 
-        /* --- RESPONSIVE DESIGN --- */
+        /* --- RESPONSIVE DESIGN (Turns to 1 column on phones) --- */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 3rem;
             }
             .section-title {
                 font-size: 2.2rem;
+            }
+            .social-grid {
+                grid-template-columns: 1fr; /* Stacks the buttons vertically */
             }
             .bottom-bar {
                 flex-direction: column;
@@ -243,33 +284,66 @@
         <div class="hero-content">
             <h1>WELCOME TO BLINKLE.FUN!</h1>
             
-            <!-- New Auto-Scroll Button -->
             <button class="scroll-btn" onclick="scrollToContent()">
                 Explore <span>↓</span>
             </button>
         </div>
     </section>
 
-    <!-- Content Area (Added ID so the button knows where to scroll) -->
+    <!-- New Social Grid Area -->
     <main id="main-content" class="content-test">
-        <h2 class="section-title">Test the New Scroll</h2>
-        <div class="card-container">
-            <div class="modern-card">
-                <h3>Premium Performance</h3>
-                <p>Enjoy unrivaled speeds and modern design, now with PNG background support.</p>
-            </div>
-            <div class="modern-card">
-                <h3>Modern Typography</h3>
-                <p>Montserrat font is used for a cooler, highly readable experience.</p>
-            </div>
-            <div class="modern-card">
-                <h3>Sleek Auto-Scroll</h3>
-                <p>Click the button above to seamlessly glide down the page.</p>
-            </div>
+        <h2 class="section-title">Stay Connected</h2>
+        
+        <div class="social-grid">
+            
+            <!-- Discord Button -->
+            <a href="#" class="social-pill">
+                <div class="social-icon">
+                    <img src="images/discord.png" alt="Discord Logo">
+                </div>
+                <div class="social-text">
+                    <h3>Discord Server</h3>
+                    <p>Join Our Community</p>
+                </div>
+            </a>
+
+            <!-- Steam Button -->
+            <a href="#" class="social-pill">
+                <div class="social-icon">
+                    <img src="images/steam.png" alt="Steam Logo">
+                </div>
+                <div class="social-text">
+                    <h3>Steam Community</h3>
+                    <p>Connect & Join Us</p>
+                </div>
+            </a>
+
+            <!-- TikTok Button -->
+            <a href="#" class="social-pill">
+                <div class="social-icon">
+                    <img src="images/tiktok.png" alt="TikTok Logo">
+                </div>
+                <div class="social-text">
+                    <h3>TikTok Profile</h3>
+                    <p>Follow Our Feed</p>
+                </div>
+            </a>
+
+            <!-- Roblox Button -->
+            <a href="#" class="social-pill">
+                <div class="social-icon">
+                    <img src="images/roblox.png" alt="Roblox Logo">
+                </div>
+                <div class="social-text">
+                    <h3>Roblox Group</h3>
+                    <p>Explore Our Content</p>
+                </div>
+            </a>
+
         </div>
     </main>
 
-    <!-- Standard Footer (Now at the bottom of the page) -->
+    <!-- Standard Footer -->
     <footer class="bottom-bar">
         <div class="footer-logo">Blinkle.fun Premium</div>
         <div class="footer-copy">&copy; 2026 Blinkle.fun | Premium Update</div>
