@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Portfolio</title>
+    <style>
+        /* Modern CSS Reset & Variable Setup */
+        :root {
+            --bg-color: #0d0e12;
+            --accent-color: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.15);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Subtle modern background glow */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent-color);
+            filter: blur(150px);
+            border-radius: 50%;
+            z-index: -1;
+            top: 10%;
+            left: 10%;
+            opacity: 0.3;
+        }
+
+        /* Glassmorphism Card Wrapper */
+        .container {
+            width: 90%;
+            max-width: 480px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 48px rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        /* Profile image element style */
+        .avatar-placeholder {
+            width: 88px;
+            height: 88px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            border-radius: 50%;
+            margin: 0 auto 24px auto;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 8px;
+            background: linear-gradient(to right, #ffffff, #d1d5db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        /* Clean Link/Button Stack */
+        .links-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--text-main);
+            color: var(--bg-color);
+            border-color: var(--text-main);
+            transform: scale(1.01);
+        }
+
+        /* Primary Call-to-Action Link */
+        .btn.primary {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+
+        .btn.primary:hover {
+            background: #4f46e5;
+            border-color: #4f46e5;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="avatar-placeholder"></div>
+        <h1>Welcome Space</h1>
+        <p class="subtitle">Creator, Gamer & Developer</p>
+        
+        <div class="links-stack">
+            <a href="#" class="btn primary">Latest Content</a>
+            <a href="#" class="btn">Gaming Setup</a>
+            <a href="#" class="btn">GitHub Repositories</a>
+            <a href="#" class="btn">TikTok Live Stream</a>
+        </div>
+    </div>
+
+</body>
+</html>
+
