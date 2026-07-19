@@ -21,13 +21,10 @@
             width: 350px;
             z-index: 50;
             pointer-events: none;
-            /* This ensures it slides down when it goes away */
             transition: bottom 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55), transform 0.5s ease;
         }
         
-        #scroll-char.visible { 
-            bottom: 0;
-        }
+        #scroll-char.visible { bottom: 0; }
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
@@ -37,13 +34,24 @@
             .top-bar { padding: 10px 20px; font-size: 1.1rem; }
         }
 
-        /* --- STYLES (Kept for layout) --- */
+        /* --- STYLES --- */
         .top-bar { background-color: #a38f78; color: white; padding: 15px 30px; font-weight: 900; font-size: 1.4rem; position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.4); display: flex; justify-content: space-between; align-items: center; }
         .hero { height: 100vh; position: relative; background-image: url('images/image_93eb2c.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; background-blend-mode: multiply; background-color: rgba(0, 0, 0, 0.45); }
         .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; width: 90%; }
         .hero h1 { font-size: 5rem; font-weight: 900; color: white; letter-spacing: 3px; text-shadow: 0 6px 15px rgba(0,0,0,0.9); margin-bottom: 30px; }
-        .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; }
-        .content-area { background-color: #242424; padding: 120px 40px; min-height: 100vh; position: relative; overflow: hidden; }
+        
+        /* UPDATED BUTTON WITH PULSE ANIMATION */
+        .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; animation: pulse 2s infinite; }
+        .scroll-btn:hover { transform: scale(1.1); animation: none; }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(163, 143, 120, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(163, 143, 120, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(163, 143, 120, 0); }
+        }
+
+        /* UPDATED CONTENT AREA WITH GRID LINES */
+        .content-area { background-color: #242424; padding: 120px 40px; min-height: 100vh; position: relative; overflow: hidden; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px; }
+        
         .section-title { text-align: center; font-size: 3rem; font-weight: 900; color: #a38f78; margin-bottom: 60px; text-transform: uppercase; z-index: 1; position: relative; }
         .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
         .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #333333, #262626); border-radius: 60px; padding: 10px; padding-right: 30px; text-decoration: none; border: 1px solid #444; transition: 0.3s; }
@@ -61,7 +69,7 @@
     </style>
 </head>
 <body>
-
+    <!-- (Rest of your HTML remains exactly the same) -->
     <img id="scroll-char" src="images/belnooo.png" alt="Character">
     <header class="top-bar"><span>Blinkle.fun - isnt it cool?</span></header>
 
@@ -95,11 +103,8 @@
     <script>
         function scrollToContent() { document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' }); }
         function openLightbox() { document.getElementById('lightbox').style.display = 'flex'; }
-
-        // Logic to make character slide down when scrolling up
         window.addEventListener('scroll', function() {
             const char = document.getElementById('scroll-char');
-            // Add class if at the very bottom, remove it to slide down if scrolling up
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
                 char.classList.add('visible');
             } else {
