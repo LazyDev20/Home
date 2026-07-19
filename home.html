@@ -13,17 +13,16 @@
         html { scroll-behavior: smooth; }
         body { background-color: #1a1a1a; color: #f0f0f0; overflow-x: hidden; }
 
-        /* --- SMOOTH CHARACTER ANIMATION --- */
+        /* --- CHARACTER ANIMATION (Fixed Logic) --- */
         #scroll-char {
             position: fixed;
             bottom: -800px; 
             left: 20px;
-            width: 350px;
+            width: 300px;
             z-index: 50;
             pointer-events: none;
-            /* Added will-change for smoother GPU rendering */
             will-change: bottom;
-            transition: bottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: bottom 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
         
         #scroll-char.visible { bottom: 0; }
@@ -43,7 +42,8 @@
         .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; width: 90%; }
         .hero h1 { font-size: 5rem; font-weight: 900; color: white; letter-spacing: 3px; text-shadow: 0 6px 15px rgba(0,0,0,0.9); margin-bottom: 30px; }
         
-        .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; touch-action: manipulation; }
+        /* REVERTED BUTTON SIZE */
+        .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 12px 30px; font-size: 1rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; touch-action: manipulation; }
         .scroll-btn:hover { transform: scale(1.05); background-color: #8c7a67; }
 
         .content-area { background-color: #242424; padding: 120px 40px; min-height: 100vh; position: relative; overflow: hidden; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px; }
@@ -54,7 +54,6 @@
         .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #333333, #262626); border-radius: 60px; padding: 10px; padding-right: 30px; text-decoration: none; border: 1px solid #444; transition: all 0.3s ease; }
         .social-pill:hover { transform: translateY(-5px) scale(1.02); border-color: #a38f78; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
         
-        /* SHOWCASE IMAGE HOVER EFFECT */
         .showcase-container { max-width: 1000px; margin: 80px auto 0 auto; padding: 0 20px; position: relative; z-index: 1; }
         .showcase-image { width: 100%; border-radius: 20px; transition: all 0.4s ease; cursor: zoom-in; border: 2px solid transparent; }
         .showcase-image:hover { transform: scale(1.02); border-color: #a38f78; box-shadow: 0 0 30px rgba(163, 143, 120, 0.3); }
@@ -100,13 +99,14 @@
         function scrollToContent() { document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' }); }
         function openLightbox() { document.getElementById('lightbox').style.display = 'flex'; }
         
-        // Optimized scroll listener
+        // Fixed Scroll Logic: Appears after scrolling past the hero (100vh)
         let ticking = false;
         window.addEventListener('scroll', function() {
             if (!ticking) {
                 window.requestAnimationFrame(function() {
                     const char = document.getElementById('scroll-char');
-                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+                    // Show when user scrolls past 500px, hide if they scroll back to top
+                    if (window.scrollY > 500) {
                         char.classList.add('visible');
                     } else {
                         char.classList.remove('visible');
