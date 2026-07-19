@@ -19,14 +19,14 @@
         ::-webkit-scrollbar-thumb { background: #a38f78; border-radius: 10px; border: 4px solid #242424; }
         ::-webkit-scrollbar-thumb:hover { background: #b6a48f; }
 
-        /* --- SCROLLING CHARACTER (ROCK BOTTOM ONLY) --- */
+        /* --- SCROLLING CHARACTER --- */
         #scroll-char {
             position: fixed;
-            bottom: -400px; /* Hidden deeper initially */
+            bottom: -300px;
             left: 20px;
-            width: 300px; /* Big size */
+            width: 180px;
             transition: bottom 0.5s ease-in-out;
-            z-index: 999;
+            z-index: 50; /* Lower z-index so it sits behind bars */
             pointer-events: none;
         }
         #scroll-char.visible { bottom: 0; }
@@ -43,8 +43,25 @@
         .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; }
         .scroll-btn:hover { background-color: #c4ae95; transform: translateY(-5px); }
 
-        /* --- CONTENT AREA --- */
-        .content-area { background-color: #242424; padding: 120px 40px; min-height: 100vh; position: relative; overflow: hidden; }
+        /* --- CONTENT AREA WITH MOVING LINES --- */
+        .content-area { 
+            background-color: #242424; 
+            padding: 120px 40px; 
+            min-height: 100vh; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        .content-area::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(45deg, rgba(163,143,120,0.1) 25%, transparent 25%, transparent 50%, rgba(163,143,120,0.1) 50%, rgba(163,143,120,0.1) 75%, transparent 75%, transparent);
+            background-size: 50px 50px;
+            animation: moveLines 4s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes moveLines { from { background-position: 0 0; } to { background-position: 50px 50px; } }
+
         .section-title { text-align: center; font-size: 3rem; font-weight: 900; color: #a38f78; margin-bottom: 60px; text-transform: uppercase; z-index: 1; position: relative; }
 
         .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
@@ -53,8 +70,15 @@
 
         .social-icon { width: 80px; height: 80px; border-radius: 50%; background-color: #1a1a1a; flex-shrink: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; border: 2px solid #555; }
         .social-icon img { width: 60%; height: 60%; object-fit: contain; }
+        .icon-discord { width: 70%; }
+        .icon-tiktok { width: 55%; }
+        .icon-roblox { width: 80%; }
 
-        /* --- LIGHTBOX --- */
+        .social-text { margin-left: 20px; }
+        .social-text h3 { font-size: 1.5rem; color: #ffffff; font-weight: 700; }
+        .social-text p { font-size: 0.85rem; color: #a38f78; text-transform: uppercase; font-weight: 700; }
+
+        /* --- LIGHTBOX & IMAGE --- */
         .showcase-container { max-width: 1000px; margin: 80px auto 0 auto; padding: 0 20px; position: relative; z-index: 1; }
         .showcase-image { width: 100%; border-radius: 20px; transition: 0.4s; cursor: zoom-in; }
         .showcase-image:hover { transform: scale(1.02); }
@@ -62,8 +86,7 @@
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; cursor: zoom-out; }
         #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; }
 
-        /* --- FOOTER --- */
-        .bottom-bar { width: 100%; background-color: #121212; padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #3a3a3a; }
+        .bottom-bar { width: 100%; background-color: #121212; padding: 30px 40px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #3a3a3a; z-index: 100; position: relative; }
         .footer-logo { font-weight: 900; color: #a38f78; }
 
         @media (max-width: 768px) { .social-grid { grid-template-columns: 1fr; } }
@@ -71,9 +94,7 @@
 </head>
 <body>
 
-    <!-- CHARACTER IMAGE -->
     <img id="scroll-char" src="images/belnooo.png" alt="Character">
-    
     <header class="top-bar"><span>Blinkle.fun</span></header>
 
     <section class="hero">
@@ -87,12 +108,20 @@
         <h2 class="section-title">Stay Connected</h2>
         <div class="social-grid">
             <a href="https://discord.gg/xzTR7yYUQK" target="_blank" class="social-pill">
-                <div class="social-icon"><img src="images/discord.png" alt="Discord"></div>
+                <div class="social-icon"><img src="images/discord.png" alt="Discord" class="icon-discord"></div>
                 <div class="social-text"><h3>Discord Server</h3><p>Join the Belno Fan Club</p></div>
             </a>
             <a href="https://steamcommunity.com/id/Varloxy/" target="_blank" class="social-pill">
                 <div class="social-icon"><img src="images/steam.png" alt="Steam"></div>
                 <div class="social-text"><h3>Steam Profile</h3><p>Add me if you want!</p></div>
+            </a>
+            <a href="https://www.tiktok.com/@whatheheck15" target="_blank" class="social-pill">
+                <div class="social-icon"><img src="images/tiktok.png" alt="TikTok" class="icon-tiktok"></div>
+                <div class="social-text"><h3>TikTok</h3><p>My tiktok account!</p></div>
+            </a>
+            <a href="https://www.roblox.com/users/1408113086/profile" target="_blank" class="social-pill">
+                <div class="social-icon"><img src="images/roblox.png" alt="Roblox" class="icon-roblox"></div>
+                <div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div>
             </a>
         </div>
         <div class="showcase-container">
@@ -100,6 +129,7 @@
         </div>
     </main>
 
+    <!-- Lightbox -->
     <div id="lightbox" onclick="this.style.display='none'">
         <img src="images/wow.png" alt="Full Preview">
     </div>
@@ -113,11 +143,10 @@
         function scrollToContent() { document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' }); }
         function openLightbox() { document.getElementById('lightbox').style.display = 'flex'; }
 
-        // Rock Bottom Trigger Logic
+        // Scroll character logic
         window.addEventListener('scroll', function() {
             const char = document.getElementById('scroll-char');
-            // Check if user has hit the absolute bottom of the page
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 5) {
+            if (window.scrollY > 300) {
                 char.classList.add('visible');
             } else {
                 char.classList.remove('visible');
