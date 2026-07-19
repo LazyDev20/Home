@@ -1,36 +1,36 @@
-<style>
-    /* ... Keep your existing CSS ... */
-
-    /* NEW: Animation class for the exit transition */
-    .fade-out {
-        animation: fadeOut 0.4s ease-in-out forwards;
-    }
-
-    @keyframes fadeOut {
-        from { opacity: 1; transform: scale(1); }
-        to { opacity: 0; transform: scale(0.95); }
-    }
-</style>
-
-<!-- ... Inside your body tag ... -->
-<div class="container" id="main-card">
-    <h1>Blinkle was here</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blinkle Was Here</title>
     
-    <!-- Updated Link: Removed href and added onclick -->
-    <a href="javascript:void(0)" onclick="transitionAndRedirect('https://blinkle.fun/ai')">
-        <img src="images/texty.png" alt="Blinkle's Picture" class="my-image">
-    </a>
-</div>
+    <!-- LINK TO YOUR EXTERNAL CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
 
-<script>
-    function transitionAndRedirect(url) {
-        const card = document.getElementById('main-card');
-        // Add the animation class
-        card.classList.add('fade-out');
+    <div class="container" id="main-card">
+        <h1>Blinkle was here</h1>
         
-        // Wait for the animation to finish (0.4s) before navigating
-        setTimeout(() => {
-            window.location.href = url;
-        }, 400);
-    }
-</script>
+        <!-- CLICKABLE IMAGE LINK -->
+        <a href="javascript:void(0)" onclick="transitionAndRedirect('https://blinkle.fun/ai')">
+            <img src="images/texty.png" alt="Blinkle's Picture" class="my-image">
+        </a>
+    </div>
+
+    <script>
+        function transitionAndRedirect(url) {
+            const card = document.getElementById('main-card');
+            // Add the animation class
+            card.classList.add('fade-out');
+            
+            // Wait 400ms for the animation to finish
+            setTimeout(() => {
+                window.location.href = url;
+            }, 400);
+        }
+    </script>
+
+</body>
+</html>
