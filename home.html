@@ -13,16 +13,17 @@
         html { scroll-behavior: smooth; }
         body { background-color: #1a1a1a; color: #f0f0f0; overflow-x: hidden; }
 
-        /* --- CHARACTER ANIMATION (Bounce) --- */
+        /* --- CHARACTER ANIMATION (Fixed Z-Index) --- */
         #scroll-char {
             position: fixed;
             bottom: -800px; 
             left: 20px;
             width: 350px;
-            z-index: 50;
+            z-index: 5; /* Lowered so it tucks behind the footer */
             pointer-events: none;
             transition: bottom 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
+        
         #scroll-char.visible { bottom: 0; }
 
         /* --- MOBILE OPTIMIZATION --- */
@@ -40,11 +41,11 @@
         .hero h1 { font-size: 5rem; font-weight: 900; color: white; letter-spacing: 3px; text-shadow: 0 6px 15px rgba(0,0,0,0.9); margin-bottom: 30px; }
         
         .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; }
+        .scroll-btn:hover { background-color: #8c7a67; }
 
         .content-area { background-color: #242424; padding: 120px 40px; min-height: 100vh; position: relative; overflow: hidden; }
         .section-title { text-align: center; font-size: 3rem; font-weight: 900; color: #a38f78; margin-bottom: 60px; text-transform: uppercase; }
         
-        /* Social Buttons Hover */
         .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 900px; margin: 0 auto; }
         .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #333333, #262626); border-radius: 60px; padding: 10px; padding-right: 30px; text-decoration: none; border: 1px solid #444; transition: 0.3s; }
         .social-pill:hover { transform: translateY(-5px); border-color: #a38f78; box-shadow: 0 5px 15px rgba(163, 143, 120, 0.3); }
@@ -52,19 +53,19 @@
         .social-icon { width: 80px; height: 80px; border-radius: 50%; background-color: #1a1a1a; display: flex; justify-content: center; align-items: center; border: 2px solid #555; flex-shrink: 0; }
         .social-icon img { width: 60%; height: 60%; object-fit: contain; }
         
-        /* Fixed text colors */
         .social-text { margin-left: 20px; }
         .social-text h3 { font-size: 1.5rem; color: #ffffff; font-weight: 700; }
         .social-text p { font-size: 0.85rem; color: #a38f78; text-transform: uppercase; font-weight: 700; }
         
-        /* Showcase Image Hover */
         .showcase-container { max-width: 1000px; margin: 80px auto 0 auto; padding: 0 20px; }
         .showcase-image { width: 100%; border-radius: 20px; transition: 0.4s; cursor: zoom-in; }
         .showcase-image:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; cursor: zoom-out; }
         #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; }
-        .bottom-bar { width: 100%; background-color: #121212; padding: 30px 40px; border-top: 2px solid #3a3a3a; }
+        
+        /* Footer fixed with higher z-index */
+        .bottom-bar { width: 100%; background-color: #121212; padding: 30px 40px; border-top: 2px solid #3a3a3a; position: relative; z-index: 10; }
         .footer-logo { font-weight: 900; color: #a38f78; }
     </style>
 </head>
