@@ -13,35 +13,30 @@
         html { scroll-behavior: smooth; }
         body { background-color: #1a1a1a; color: #f0f0f0; overflow-x: hidden; }
 
-        /* --- MODERN SCROLLBAR --- */
-        ::-webkit-scrollbar { width: 14px; }
-        ::-webkit-scrollbar-track { background: #242424; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: #a38f78; border-radius: 10px; border: 4px solid #242424; }
-        ::-webkit-scrollbar-thumb:hover { background: #b6a48f; }
-
         /* --- BOUNCING CHARACTER --- */
         #scroll-char {
             position: fixed;
-            bottom: -600px; 
+            /* Pushed much lower to guarantee it stays hidden */
+            bottom: -800px; 
             left: 20px;
-            width: 350px; /* Slightly bigger */
+            width: 350px;
             z-index: 50;
             pointer-events: none;
-            transition: bottom 0.6s ease-out;
+            /* Smoother exit */
+            transition: bottom 0.5s ease-in, transform 0.3s ease;
         }
         
-        /* The bounce animation */
-        @keyframes bounceIn {
-            0% { bottom: -600px; }
-            50% { bottom: 20px; } /* Pops up slightly above 0 */
-            70% { bottom: 0px; }
-            85% { bottom: 10px; }
-            100% { bottom: 0px; }
+        /* The "Cooler" Bounce Animation */
+        @keyframes popUp {
+            0% { bottom: -800px; transform: scale(0.8); }
+            60% { bottom: 20px; transform: scale(1.05); }
+            80% { bottom: -5px; transform: scale(0.98); }
+            100% { bottom: 0px; transform: scale(1); }
         }
 
         #scroll-char.visible { 
             bottom: 0;
-            animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: popUp 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         /* --- TOP BAR --- */
@@ -117,9 +112,10 @@
         function scrollToContent() { document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' }); }
         function openLightbox() { document.getElementById('lightbox').style.display = 'flex'; }
 
-        // Bouncy character logic
+        // Logic for the popping character
         window.addEventListener('scroll', function() {
             const char = document.getElementById('scroll-char');
+            // Check if we are at the bottom (within 50 pixels)
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
                 char.classList.add('visible');
             } else {
