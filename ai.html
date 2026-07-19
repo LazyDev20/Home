@@ -194,6 +194,11 @@
             object-fit: cover;
         }
 
+        /* --- NEW: SCALING CLASS TO FIX ICON SIZES --- */
+        .zoom-icon {
+            transform: scale(1.5);
+        }
+
         .social-text {
             margin-left: 20px;
             display: flex;
@@ -218,7 +223,7 @@
         /* --- FEATURED SHOWCASE IMAGE --- */
         .showcase-container {
             max-width: 1000px;
-            margin: 80px auto 0 auto; /* Adds spacing between the buttons and the image */
+            margin: 80px auto 0 auto;
             padding: 0 20px;
         }
 
@@ -317,9 +322,10 @@
         <!-- Social Links Grid -->
         <div class="social-grid">
             
-            <a href="#" class="social-pill">
+            <!-- Discord -->
+            <a href="https://discord.com/invite/your-invite-code" target="_blank" class="social-pill">
                 <div class="social-icon">
-                    <img src="images/discord.png" alt="Discord Logo">
+                    <img src="images/discord.png" alt="Discord Logo" class="zoom-icon">
                 </div>
                 <div class="social-text">
                     <h3>Discord Server</h3>
@@ -327,7 +333,8 @@
                 </div>
             </a>
 
-            <a href="#" class="social-pill">
+            <!-- Steam -->
+            <a href="https://steamcommunity.com/groups/your-group-url" target="_blank" class="social-pill">
                 <div class="social-icon">
                     <img src="images/steam.png" alt="Steam Logo">
                 </div>
@@ -337,9 +344,10 @@
                 </div>
             </a>
 
-            <a href="#" class="social-pill">
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@your-profile" target="_blank" class="social-pill">
                 <div class="social-icon">
-                    <img src="images/tiktok.png" alt="TikTok Logo">
+                    <img src="images/tiktok.png" alt="TikTok Logo" class="zoom-icon">
                 </div>
                 <div class="social-text">
                     <h3>TikTok Profile</h3>
@@ -347,9 +355,10 @@
                 </div>
             </a>
 
-            <a href="#" class="social-pill">
+            <!-- Roblox -->
+            <a href="https://www.roblox.com/groups/your-group-id" target="_blank" class="social-pill">
                 <div class="social-icon">
-                    <img src="images/roblox.png" alt="Roblox Logo">
+                    <img src="images/roblox.svg" alt="Roblox Logo" class="zoom-icon">
                 </div>
                 <div class="social-text">
                     <h3>Roblox Group</h3>
@@ -359,7 +368,7 @@
 
         </div>
 
-        <!-- NEW: Featured Community Image Section -->
+        <!-- Featured Community Image Section -->
         <div class="showcase-container">
             <img src="images/image_94d444.jpg" alt="Community Showcase" class="showcase-image">
         </div>
