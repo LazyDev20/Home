@@ -39,7 +39,6 @@
         .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; width: 90%; }
         .hero h1 { font-size: 5rem; font-weight: 900; color: white; letter-spacing: 3px; text-shadow: 0 6px 15px rgba(0,0,0,0.9); margin-bottom: 30px; }
         
-        /* Explore Button (No Hover Highlight) */
         .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; }
 
         .content-area { background-color: #242424; padding: 120px 40px; min-height: 100vh; position: relative; overflow: hidden; }
@@ -47,11 +46,16 @@
         
         /* Social Buttons Hover */
         .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 900px; margin: 0 auto; }
-        .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #333333, #262626); border-radius: 60px; padding: 10px 30px 10px 10px; text-decoration: none; border: 1px solid #444; transition: 0.3s; }
+        .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #333333, #262626); border-radius: 60px; padding: 10px; padding-right: 30px; text-decoration: none; border: 1px solid #444; transition: 0.3s; }
         .social-pill:hover { transform: translateY(-5px); border-color: #a38f78; box-shadow: 0 5px 15px rgba(163, 143, 120, 0.3); }
         
-        .social-icon { width: 80px; height: 80px; border-radius: 50%; background-color: #1a1a1a; display: flex; justify-content: center; align-items: center; border: 2px solid #555; }
+        .social-icon { width: 80px; height: 80px; border-radius: 50%; background-color: #1a1a1a; display: flex; justify-content: center; align-items: center; border: 2px solid #555; flex-shrink: 0; }
         .social-icon img { width: 60%; height: 60%; object-fit: contain; }
+        
+        /* Fixed text colors */
+        .social-text { margin-left: 20px; }
+        .social-text h3 { font-size: 1.5rem; color: #ffffff; font-weight: 700; }
+        .social-text p { font-size: 0.85rem; color: #a38f78; text-transform: uppercase; font-weight: 700; }
         
         /* Showcase Image Hover */
         .showcase-container { max-width: 1000px; margin: 80px auto 0 auto; padding: 0 20px; }
@@ -79,10 +83,10 @@
     <main id="main-content" class="content-area">
         <h2 class="section-title">Socials</h2>
         <div class="social-grid">
-            <a href="https://discord.gg/xzTR7yYUQK" target="_blank" class="social-pill"><div class="social-icon"><img src="images/discord.png" alt="Discord"></div><div class="social-text"><h3>Discord</h3></div></a>
-            <a href="https://steamcommunity.com/id/Varloxy/" target="_blank" class="social-pill"><div class="social-icon"><img src="images/steam.png" alt="Steam"></div><div class="social-text"><h3>Steam</h3></div></a>
-            <a href="https://www.tiktok.com/@whatheheck15" target="_blank" class="social-pill"><div class="social-icon"><img src="images/tiktok.png" alt="TikTok"></div><div class="social-text"><h3>TikTok</h3></div></a>
-            <a href="https://www.roblox.com/users/1408113086/profile" target="_blank" class="social-pill"><div class="social-icon"><img src="images/roblox.png" alt="Roblox"></div><div class="social-text"><h3>Roblox</h3></div></a>
+            <a href="https://discord.gg/xzTR7yYUQK" target="_blank" class="social-pill"><div class="social-icon"><img src="images/discord.png" alt="Discord"></div><div class="social-text"><h3>Discord Server</h3><p>Join the Belno Fan Club</p></div></a>
+            <a href="https://steamcommunity.com/id/Varloxy/" target="_blank" class="social-pill"><div class="social-icon"><img src="images/steam.png" alt="Steam"></div><div class="social-text"><h3>Steam Profile</h3><p>Add me if you want!</p></div></a>
+            <a href="https://www.tiktok.com/@whatheheck15" target="_blank" class="social-pill"><div class="social-icon"><img src="images/tiktok.png" alt="TikTok"></div><div class="social-text"><h3>TikTok</h3><p>My tiktok account!</p></div></a>
+            <a href="https://www.roblox.com/users/1408113086/profile" target="_blank" class="social-pill"><div class="social-icon"><img src="images/roblox.png" alt="Roblox"></div><div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div></a>
         </div>
         <div class="showcase-container">
             <img src="images/wow.png" alt="Showcase" class="showcase-image" onclick="openLightbox()">
