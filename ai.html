@@ -3,237 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Presentation Template</title>
+    <title>Blinkle.fun</title>
+    
+    <!-- Importing the "Cooler" Modern Font (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+
     <style>
-        /* Modern CSS Reset & Fonts */
+        /* --- GLOBAL SETTINGS --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', -apple-system, system-ui, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: #0d0e12; /* Darkest charcoal background */
+            background-color: #121212;
             color: #ffffff;
-            overflow-x: hidden;
-            min-height: 100vh;
+            /* Added padding at the bottom so content isn't hidden behind the fixed bottom bar */
+            padding-bottom: 60px; 
         }
 
-        /* Top Orange Header Bar */
-        header {
-            width: 100%;
-            height: 60px;
-            background: linear-gradient(to right, #b04e21, #e17e57); /* Orange gradient from image */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
+        /* --- MODERN SCROLLBAR --- */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+            border-radius: 6px;
+            border: 3px solid #1a1a1a; /* Creates a padded look */
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            background-color: #a38f78; /* Matches the beige/brown from your image */
+            color: white;
+            padding: 12px 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
             position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            z-index: 1000;
         }
 
-        .studio-name {
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        nav ul {
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
             display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #f3f4f6;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        /* Hexagonal Central Logo Frame */
-        .header-center {
-            width: 70px;
-            height: 70px;
-            background-color: #0d0e12;
-            border-radius: 12px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Gamepad icon placeholder */
-        .game-icon {
-            color: #ffffff;
-            font-size: 24px;
-        }
-
-        /* Mobile Hamburger (right side) */
-        .hamburger-icon {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .hamburger-icon span {
-            width: 24px;
-            height: 2px;
-            background-color: #ffffff;
-            border-radius: 2px;
-        }
-
-        /* MAIN HERO CONTENT */
-        main {
-            margin-top: 100px; /* Accounts for fixed header */
-            display: flex;
-            flex-direction: column;
             align-items: center;
             text-align: center;
+            
+            /* Updated to look inside the "image" folder */
+            background-image: url('images/image_93eb2c.png');
+            
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            /* Adds a slight dark overlay so the text is easier to read */
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
             position: relative;
+            padding-top: 50px; /* Accounts for the top bar */
         }
 
-        .presentation-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #d1d5db;
-            margin-bottom: 30px;
-        }
-
-        /* Massive 'Game Online' Typography (Layered) */
-        .game-online-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin-bottom: 20px;
-        }
-
-        .base-text {
-            font-size: 120px; /* Adjust based on viewport */
+        .hero h1 {
+            font-size: 4rem;
             font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #1a1c22; /* Darker grey layer */
-            position: relative;
-            z-index: 10;
-        }
-
-        .overlay-text {
-            font-size: 120px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, #ffffff, #d1d5db);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: absolute;
-            top: 10px; /* Adjust layered offset */
-            left: 5px;
-            z-index: 11;
-        }
-
-        /* Soldier Image Placeholder (Centered) */
-        .soldier-placeholder {
-            width: 60vw;
-            height: 350px;
-            background-color: #1a1c22; /* Dark filler color */
-            border-radius: 24px;
-            margin-bottom: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 12;
-        }
-
-        .soldier-label {
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 14px;
-            text-transform: uppercase;
-        }
-
-        /* CTA BUTTON (Orange Gradient) */
-        .cta-button {
-            padding: 16px 32px;
-            background: linear-gradient(to right, #b04e21, #e17e57);
-            border: none;
-            border-radius: 12px;
             color: white;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 100px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            letter-spacing: 2px;
+            
+            /* Creates the black outline effect seen in your image */
+            -webkit-text-stroke: 2px black;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.7);
+            margin-bottom: 10px;
         }
 
-        .cta-button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(225, 126, 87, 0.3);
+        .hero .scroll-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            -webkit-text-stroke: 1.5px black;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            animation: bounce 2s infinite;
         }
 
-        /* Media Queries for Responsiveness */
+        /* --- DUMMY CONTENT TO TEST SCROLLING --- */
+        .content {
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 150vh; /* Forces the page to be long enough to scroll */
+            background-color: #1a1a1a;
+        }
+
+        .content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #a38f78;
+        }
+
+        /* --- BOTTOM BAR --- */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #0f0f0f;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9rem;
+            border-top: 2px solid #333;
+            z-index: 1000;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
-            header {
-                padding: 0 20px;
+            .hero h1 {
+                font-size: 2.5rem;
             }
-            .header-center {
-                display: none; /* Hide complex logo frame on mobile */
-            }
-            .studio-name {
-                display: none; /* Keep simple on mobile */
-            }
-            .base-text, .overlay-text {
-                font-size: 60px; /* Scale down type */
-            }
-            .soldier-placeholder {
-                width: 90vw;
-                height: 250px;
+            .hero .scroll-text {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="studio-name">STUDIO SHODWE</div>
-        
-        <!-- Central Logo Frame -->
-        <div class="header-center">
-            <div class="game-icon">🎮</div> <!-- Placeholder Emoji -->
-        </div>
+    <!-- Top Navigation -->
+    <div class="top-bar">
+        Blinkle.fun
+    </div>
 
-        <div class="hamburger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+    <!-- Main Hero Image Section -->
+    <header class="hero">
+        <h1>WELCOME TO BLINKLE.FUN!</h1>
+        <div class="scroll-text">Scroll down ↓</div>
     </header>
 
-    <main>
-        <p class="presentation-title">Game Presentation Template</p>
-        
-        <div class="game-online-wrapper">
-            <div class="base-text">Game Online</div>
-            <div class="overlay-text">Game Online</div>
-        </div>
-        
-        <!-- Soldier image area placeholder -->
-        <div class="soldier-placeholder">
-            <p class="soldier-label">[ Soldier Image Area ]</p>
-        </div>
-
-        <button class="cta-button">Press Any Key</button>
+    <!-- Scrollable Content Area -->
+    <main class="content">
+        <h2>Keep Scrolling!</h2>
+        <p>This space is here so you can test out the brand new modern scrollbar styling.</p>
     </main>
+
+    <!-- Fixed Bottom Bar -->
+    <div class="bottom-bar">
+        &copy; 2026 Blinkle.fun | Modern UI Update
+    </div>
 
 </body>
 </html>
