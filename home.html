@@ -57,15 +57,19 @@
             left: 20px;
             width: clamp(180px, 25vw, 350px);
             z-index: 5;
-            pointer-events: none;
-            /* Ultra smooth, clean acceleration curve when sliding DOWN out of sight */
-            transition: bottom 0.55s cubic-bezier(0.32, 0, 0.67, 0);
+            pointer-events: auto;
+            cursor: pointer;
+            transition: bottom 0.55s cubic-bezier(0.32, 0, 0.67, 0), filter 0.3s ease, transform 0.3s ease;
             will-change: bottom;
+            filter: drop-shadow(0 0 0px rgba(163, 143, 120, 0));
+        }
+        #scroll-char:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(163, 143, 120, 0.6));
         }
         #scroll-char.visible { 
             bottom: 0; 
-            /* Snappy elastic bounce curve applied ONLY when springing UP into sight */
-            transition: bottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: bottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease, transform 0.3s ease;
         }
 
         /* --- GENERAL BLOCK LAYOUT STYLES --- */
@@ -100,17 +104,16 @@
             align-items: center;
             justify-content: space-between;
             background: linear-gradient(145deg, #111116, #09090b);
-            border: 2px solid #a38f78; /* Matches the Socials brown */
+            border: 2px solid #a38f78;
             border-radius: 24px;
             padding: clamp(25px, 5vw, 60px);
-            max-width: 1000px; /* Made wider */
+            max-width: 1000px;
             width: 100%;
             margin: 0 auto clamp(60px, 10vw, 80px) auto;
             gap: clamp(25px, 5vw, 50px);
-            /* Clean base shadow */
             box-shadow: 0 0 30px rgba(163, 143, 120, 0.2), inset 0 0 15px rgba(163, 143, 120, 0.05);
             transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-            user-select: none; /* Prevents text highlighting on click */
+            user-select: none;
         }
 
         .intro-container:hover {
@@ -124,11 +127,11 @@
         .typewriter-cursor {
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 900;
-            color: #a38f78; /* Matches Theme */
+            color: #a38f78;
             text-shadow: 0 0 15px rgba(163, 143, 120, 0.3);
             margin-bottom: 15px;
             display: inline-block;
-            position: relative; /* Added to position the new cursor */
+            position: relative;
             padding-right: 12px;
             min-height: 1.2em;
         }
@@ -160,11 +163,11 @@
 
         .intro-image-wrapper {
             flex-shrink: 0;
-            width: clamp(140px, 30vw, 220px); /* Slightly optimized for mobile width */
+            width: clamp(140px, 30vw, 220px);
             height: clamp(140px, 30vw, 220px);
             border-radius: 50%;
             overflow: hidden;
-            border: 4px solid #a38f78; /* Matches theme */
+            border: 4px solid #a38f78;
             box-shadow: 0 0 25px rgba(163, 143, 120, 0.3);
             background-color: #ffffff;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -174,7 +177,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
-            pointer-events: none; /* Stops image dragging/clicking */
+            pointer-events: none;
         }
         .intro-container:hover .intro-image-wrapper {
             box-shadow: 0 0 35px rgba(163, 143, 120, 0.5);
@@ -256,6 +259,98 @@
         .bottom-bar { width: 100%; background-color: #0b0b0d; padding: 35px 40px; border-top: 1px solid #1a1a1f; position: relative; z-index: 10; }
         .footer-logo { font-weight: 900; color: #a38f78; letter-spacing: 0.5px; text-align: left; }
 
+        /* --- SECRET POPUP UI --- */
+        #secret-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        #secret-modal.show {
+            opacity: 1;
+        }
+
+        .secret-content {
+            background: linear-gradient(145deg, #18181c, #111115);
+            border: 2px solid #a38f78;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 0 40px rgba(163, 143, 120, 0.15);
+            transform: translateY(30px) scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            max-width: 420px;
+            width: 90%;
+        }
+
+        #secret-modal.show .secret-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #5a5a64;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+            line-height: 1;
+        }
+        .close-btn:hover {
+            color: #f0f0f0;
+            transform: scale(1.1);
+        }
+
+        .secret-content h3 {
+            color: #a38f78;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .secret-content p {
+            color: #b0b0b8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .visit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #a38f78, #8c7a67);
+            color: white;
+            text-decoration: none;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .visit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(163, 143, 120, 0.4);
+        }
+        .visit-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
         /* --- MOBILE RESPONSIVE LAYOUT MOTOR ENGINE OVERRIDES --- */
         @media (max-width: 768px) {
             .intro-container { flex-direction: column-reverse; text-align: center; gap: 20px; }
@@ -277,7 +372,7 @@
 </head>
 <body>
 
-    <img id="scroll-char" src="images/belnooo.png" alt="Character">
+    <img id="scroll-char" src="images/belnooo.png" alt="Character" title="Click me!">
     <header class="top-bar"><span>Blinkle.fun</span></header>
 
     <section class="hero">
@@ -328,6 +423,22 @@
 
     <div id="lightbox" onclick="this.style.display='none'"><img src="images/wow.png" alt="Full Preview"></div>
 
+    <!-- SECRET POPUP UI -->
+    <div id="secret-modal">
+        <div class="secret-content">
+            <span class="close-btn" onclick="closeSecretModal()">&times;</span>
+            <h3>You found something!</h3>
+            <p>You discovered a hidden secret on the page by clicking Belnooo.</p>
+            <a href="https://blinkle.fun/secretegg" class="visit-btn" target="_blank">
+                Visit
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+
     <footer class="bottom-bar">
         <div class="footer-logo">Belno is the best uma bro</div>
     </footer>
@@ -342,6 +453,31 @@
                 char.classList.add('visible');
             } else {
                 char.classList.remove('visible');
+            }
+        });
+
+        /* --- SECRET POPUP LOGIC --- */
+        const charImg = document.getElementById('scroll-char');
+        const secretModal = document.getElementById('secret-modal');
+
+        charImg.addEventListener('click', () => {
+            secretModal.style.display = 'flex';
+            void secretModal.offsetWidth;
+            secretModal.classList.add('show');
+        });
+
+        function closeSecretModal() {
+            secretModal.classList.remove('show');
+            setTimeout(() => {
+                if (!secretModal.classList.contains('show')) {
+                    secretModal.style.display = 'none';
+                }
+            }, 300);
+        }
+
+        secretModal.addEventListener('click', (e) => {
+            if (e.target === secretModal) {
+                closeSecretModal();
             }
         });
 
