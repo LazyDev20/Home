@@ -14,7 +14,55 @@
         /* --- GLOBAL SETTINGS --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; -webkit-tap-highlight-color: transparent; }
         html { scroll-behavior: smooth; }
-        body { background-color: #1a1a1a; color: #f0f0f0; overflow-x: hidden; }
+        body { background-color: #0f0f11; color: #f0f0f0; overflow-x: hidden; }
+
+        /* --- INTRO & CORE ANIMATIONS --- */
+        @keyframes heroContentReveal {
+            0% { opacity: 0; transform: translate(-50%, -48%) scale(0.99); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+        @keyframes textTrackingReveal {
+            0% { letter-spacing: -2px; opacity: 0; }
+            100% { letter-spacing: 4px; opacity: 1; }
+        }
+        @keyframes buttonStaggeredReveal {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- ANTI-MOTION SICKNESS SCROLL REVEAL SYSTEM --- */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(15px); /* Gentle, low-impact structural shift */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+
+        /* Dynamic activation classes */
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered entry timing for items */
+        .social-pill:nth-child(1) { transition-delay: 0.0s; }
+        .social-pill:nth-child(2) { transition-delay: 0.08s; }
+        .social-pill:nth-child(3) { transition-delay: 0.12s; }
+        .social-pill:nth-child(4) { transition-delay: 0.16s; }
+
+        /* Strict fallback rules protecting users with vestibular disorders */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-element, 
+            .hero-content, 
+            .scroll-btn, 
+            .hero h1 {
+                animation: none !important;
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                letter-spacing: normal !important;
+            }
+        }
 
         /* --- CHARACTER ANIMATION --- */
         #scroll-char {
@@ -24,7 +72,7 @@
             width: 350px;
             z-index: 5;
             pointer-events: none;
-            transition: bottom 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: bottom 0.6s ease-out;
         }
         #scroll-char.visible { bottom: 0; }
 
@@ -32,53 +80,137 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem !important; }
             #scroll-char { width: 180px; left: 0px; }
-            .social-grid { grid-template-columns: 1fr !important; padding: 0 20px; }
+            .social-grid { grid-template-columns: 1fr !important; gap: 20px; padding: 0 20px; }
             .top-bar { padding: 10px 20px; font-size: 1.1rem; }
+            .player-outer-wrapper { gap: 10px; padding: 0 10px; }
+            .nav-side-btn { width: 45px; height: 60px; font-size: 1.5rem; }
+            .player-card { padding: 25px 20px !important; }
+            .player-top-row { flex-direction: column; text-align: center; gap: 20px; }
+            .player-art-wrapper { margin: 0 auto; }
+            .player-bottom-row { flex-direction: column; gap: 25px; }
+            .player-title { font-size: 1.8rem !important; }
+            .reveal-element { transform: translateY(10px); }
         }
 
-        /* --- STYLES --- */
-        .top-bar { background-color: #a38f78; color: white; padding: 15px 30px; font-weight: 900; font-size: 1.4rem; position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.4); display: flex; justify-content: space-between; align-items: center; }
-        .hero { height: 100vh; position: relative; background-image: url('images/image_93eb2c.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; background-blend-mode: multiply; background-color: rgba(0, 0, 0, 0.45); }
-        .hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; width: 90%; }
-        .hero h1 { font-size: 5rem; font-weight: 900; color: white; letter-spacing: 3px; text-shadow: 0 6px 15px rgba(0,0,0,0.9); margin-bottom: 30px; }
+        /* --- GENERAL BLOCK LAYOUT STYLES --- */
+        .top-bar { background: rgba(163, 143, 120, 0.85); backdrop-filter: blur(10px); color: white; padding: 15px 30px; font-weight: 900; font-size: 1.4rem; position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 4px 30px rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+        .hero { height: 100vh; position: relative; background-image: url('images/image_93eb2c.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; background-blend-mode: multiply; background-color: rgba(0, 0, 0, 0.5); }
         
-        .scroll-btn { background-color: #a38f78; color: white; border: none; padding: 15px 40px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.5); transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; }
-        .scroll-btn:hover { background-color: #8c7a67; }
+        .hero-content { 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; width: 90%; 
+            animation: heroContentReveal 0.8s ease-out forwards;
+        }
+        
+        .hero h1 { 
+            font-size: 5rem; font-weight: 900; color: white; letter-spacing: 4px; text-shadow: 0 8px 25px rgba(0,0,0,0.9); margin-bottom: 30px; 
+            animation: textTrackingReveal 1s ease-out forwards;
+        }
+        
+        .scroll-btn { 
+            background: linear-gradient(135deg, #a38f78, #8c7a67); color: white; border: none; padding: 16px 45px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 8px 25px rgba(163, 143, 120, 0.3); transition: 0.2s ease-out; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; opacity: 0;
+            animation: buttonStaggeredReveal 0.8s ease-out 0.4s forwards;
+        }
+        .scroll-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(163, 143, 120, 0.5); }
 
         .content-area { 
-            background-color: #242424; 
-            background-image: linear-gradient(45deg, #2a2a2a 25%, transparent 25%, transparent 50%, #2a2a2a 50%, #2a2a2a 75%, transparent 75%, transparent);
-            background-size: 40px 40px;
-            padding: 120px 40px; 
-            min-height: 100vh; 
-            position: relative; 
-            overflow: hidden; 
+            background-color: #141416; 
+            background-image: linear-gradient(45deg, #19191c 25%, transparent 25%, transparent 50%, #19191c 50%, #19191c 75%, transparent 75%, transparent);
+            background-size: 44px 44px; padding: 120px 40px; min-height: 100vh; position: relative; overflow: hidden; 
         }
-        .section-title { text-align: center; font-size: 3rem; font-weight: 900; color: #a38f78; margin-bottom: 60px; text-transform: uppercase; }
+        .section-title { text-align: center; font-size: 3rem; font-weight: 900; color: #a38f78; margin-bottom: 60px; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 20px rgba(163, 143, 120, 0.2); }
         
         .social-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 900px; margin: 0 auto; }
-        .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #333333, #262626); border-radius: 60px; padding: 10px; padding-right: 30px; text-decoration: none; border: 1px solid #444; transition: 0.3s; }
-        .social-pill:hover { transform: translateY(-5px); border-color: #a38f78; box-shadow: 0 5px 15px rgba(163, 143, 120, 0.3); }
+        .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #222226, #17171a); border-radius: 60px; padding: 10px; padding-right: 30px; text-decoration: none; border: 1px solid rgba(255,255,255,0.03); transition: transform 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out; }
+        .social-pill:hover { transform: translateY(-4px); border-color: rgba(163, 143, 120, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(163, 143, 120, 0.15); }
         
-        .social-icon { width: 80px; height: 80px; border-radius: 50%; background-color: #1a1a1a; display: flex; justify-content: center; align-items: center; border: 2px solid #555; flex-shrink: 0; }
-        .social-icon img { width: 60%; height: 60%; object-fit: contain; }
+        .social-icon { width: 80px; height: 80px; border-radius: 50%; background-color: #0f0f11; display: flex; justify-content: center; align-items: center; border: 2px solid #2b2b30; flex-shrink: 0; transition: border-color 0.2s; }
+        .social-pill:hover .social-icon { border-color: #a38f78; }
+        .social-icon img { width: 55%; height: 55%; object-fit: contain; }
         
         .social-text { margin-left: 20px; }
         .social-text h3 { font-size: 1.5rem; color: #ffffff; font-weight: 700; }
-        .social-text p { font-size: 0.85rem; color: #a38f78; text-transform: uppercase; font-weight: 700; }
+        .social-text p { font-size: 0.85rem; color: #a38f78; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; }
+
+        /* --- VISUAL INTERFACE DESIGN CONFIGURATION --- */
+        .player-title { text-align: center; font-size: 3rem; font-weight: 900; color: #a38f78; margin: 90px auto 45px auto; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 0 30px rgba(163, 143, 120, 0.15); }
         
+        .player-outer-wrapper { display: flex; align-items: center; justify-content: center; gap: 20px; max-width: 980px; margin: 0 auto; position: relative; }
+        
+        /* Clean Symmetrical Navigation Buttons FIXED in place */
+        .nav-side-btn {
+            background: rgba(20, 20, 24, 0.6); border: 2px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(8px); color: #8e8e9a; font-size: 2rem; font-weight: 900; width: 60px; height: 75px; 
+            cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease-out; box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border-radius: 16px;
+        }
+        
+        .nav-side-btn:hover { 
+            color: #ffffff; border-color: rgba(163, 143, 120, 0.6); background-color: rgba(28, 28, 34, 0.9); 
+            box-shadow: 0 0 25px rgba(163, 143, 120, 0.35), 0 10px 30px rgba(0,0,0,0.6);
+            transform: scale(1.03);
+        }
+        .nav-side-btn:active { transform: scale(0.97); }
+
+        .player-card { 
+            background: linear-gradient(135deg, rgba(26,26,32,0.85), rgba(18,18,22,0.95)); 
+            border: 1px solid rgba(255, 255, 255, 0.06); 
+            backdrop-filter: blur(14px);
+            border-radius: 32px; padding: 40px; flex-grow: 1; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05); 
+            transition: border-color 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        .player-card:hover { 
+            border-color: rgba(163, 143, 120, 0.35); 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(163, 143, 120, 0.12); 
+        }
+        
+        .player-top-row { display: flex; align-items: center; gap: 35px; margin-bottom: 30px; }
+        .player-art-wrapper { position: relative; width: 140px; height: 140px; flex-shrink: 0; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6)); }
+        .player-art { width: 100%; height: 100%; border-radius: 22px; object-fit: cover; border: 1px solid rgba(255,255,255,0.05); background-color: #1a1a1f; }
+        .art-label { position: absolute; top: 12px; left: 15px; color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; font-weight: 700; pointer-events: none; letter-spacing: 0.5px; }
+        
+        .player-details-block { flex-grow: 1; }
+        .player-details-block h3 { font-size: 2.2rem; font-weight: 900; color: #ffffff; margin-bottom: 2px; letter-spacing: 0.5px; }
+        .player-details-block p { font-size: 0.95rem; color: #a38f78; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 22px; }
+        
+        .timeline-container { display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 0.85rem; color: #52525e; }
+        .slider { flex-grow: 1; -webkit-appearance: none; appearance: none; height: 5px; background: #2b2b33; border-radius: 6px; outline: none; cursor: pointer; position: relative; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 14px; height: 14px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 10px #a38f78; cursor: pointer; transition: transform 0.1s; }
+        .slider::-webkit-slider-thumb:hover { transform: scale(1.2); background: #a38f78; }
+
+        .player-bottom-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+        .left-controls { display: flex; align-items: center; gap: 24px; }
+        .right-controls { display: flex; align-items: center; gap: 14px; }
+        
+        .action-btn { background: none; border: none; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: transform 0.2s; }
+        .action-btn svg { fill: #8e8e9a; transition: fill 0.2s; }
+        .action-btn:hover svg { fill: #ffffff; }
+        .action-btn:hover { transform: scale(1.05); }
+        
+        .play-circle-btn { background: linear-gradient(135deg, #a38f78, #baab98); width: 56px; height: 56px; border-radius: 50%; box-shadow: 0 6px 20px rgba(163,143,120,0.4); }
+        .play-circle-btn svg { fill: #0f0f11 !important; }
+        .play-circle-btn:hover { background: linear-gradient(135deg, #bfae99, #d1c5b4); box-shadow: 0 6px 25px rgba(163,143,120,0.6); }
+
+        .volume-slider { width: 85px; }
+        .volume-slider::-webkit-slider-thumb { background: #8e8e9a; box-shadow: none; }
+        .volume-slider::-webkit-slider-thumb:hover { background: #ffffff; }
+        
+        /* --- SHOWCASE IMAGE --- */
         .showcase-container { max-width: 1000px; margin: 80px auto 0 auto; padding: 0 20px; }
-        .showcase-image { width: 100%; border-radius: 20px; transition: 0.4s; cursor: zoom-in; }
-        .showcase-image:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .showcase-image { width: 100%; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; cursor: zoom-in; }
+        .showcase-image:hover { transform: scale(1.01); box-shadow: 0 20px 45px rgba(0,0,0,0.6); border-color: rgba(163, 143, 120, 0.3); }
         
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; cursor: zoom-out; }
-        #lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; }
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,10,12,0.96); z-index: 2000; justify-content: center; align-items: center; cursor: zoom-out; backdrop-filter: blur(8px); }
+        #lightbox img { max-width: 90%; max-height: 90%; border-radius: 14px; box-shadow: 0 25px 60px rgba(0,0,0,0.7); }
         
-        .bottom-bar { width: 100%; background-color: #121212; padding: 30px 40px; border-top: 2px solid #3a3a3a; position: relative; z-index: 10; }
-        .footer-logo { font-weight: 900; color: #a38f78; }
+        .bottom-bar { width: 100%; background-color: #0b0b0d; padding: 35px 40px; border-top: 1px solid #1a1a1f; position: relative; z-index: 10; }
+        .footer-logo { font-weight: 900; color: #a38f78; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
+
+    <!-- Hidden Core Audio Engine Pipeline Element -->
+    <audio id="audio-element"></audio>
 
     <img id="scroll-char" src="images/belnooo.png" alt="Character">
     <header class="top-bar"><span>Blinkle.fun</span></header>
@@ -91,14 +223,74 @@
     </section>
 
     <main id="main-content" class="content-area">
-        <h2 class="section-title">Socials</h2>
+        <!-- SCROLL REVEAL TARGET: SECTION TITLE -->
+        <h2 class="section-title reveal-element">Socials</h2>
+        
         <div class="social-grid">
-            <a href="https://discord.gg/xzTR7yYUQK" target="_blank" class="social-pill"><div class="social-icon"><img src="images/discord.png" alt="Discord"></div><div class="social-text"><h3>Discord Server</h3><p>Join the Belno Fan Club</p></div></a>
-            <a href="https://steamcommunity.com/id/Varloxy/" target="_blank" class="social-pill"><div class="social-icon"><img src="images/steam.png" alt="Steam"></div><div class="social-text"><h3>Steam Profile</h3><p>Add me if you want!</p></div></a>
-            <a href="https://www.tiktok.com/@whatheheck15" target="_blank" class="social-pill"><div class="social-icon"><img src="images/tiktok.png" alt="TikTok"></div><div class="social-text"><h3>TikTok</h3><p>My tiktok account!</p></div></a>
-            <a href="https://www.roblox.com/users/1408113086/profile" target="_blank" class="social-pill"><div class="social-icon"><img src="images/roblox.png" alt="Roblox"></div><div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div></a>
+            <!-- SCROLL REVEAL TARGETS: GENTLE DELAYED FLY-UP PILLS -->
+            <a href="https://discord.gg/xzTR7yYUQK" target="_blank" class="social-pill reveal-element"><div class="social-icon"><img src="images/discord.png" alt="Discord"></div><div class="social-text"><h3>Discord Server</h3><p>Join the Belno Fan Club</p></div></a>
+            <a href="https://steamcommunity.com/id/Varloxy/" target="_blank" class="social-pill reveal-element"><div class="social-icon"><img src="images/steam.png" alt="Steam"></div><div class="social-text"><h3>Steam Profile</h3><p>Add me if you want!</p></div></a>
+            <a href="https://www.tiktok.com/@whatheheck15" target="_blank" class="social-pill reveal-element"><div class="social-icon"><img src="images/tiktok.png" alt="TikTok"></div><div class="social-text"><h3>TikTok</h3><p>My tiktok account!</p></div></a>
+            <a href="https://www.roblox.com/users/1408113086/profile" target="_blank" class="social-pill reveal-element"><div class="social-icon"><img src="images/roblox.png" alt="Roblox"></div><div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div></a>
         </div>
-        <div class="showcase-container">
+
+        <!-- SCROLL REVEAL TARGET: CORRECTED TITLE ACCENT COLOR -->
+        <h2 class="player-title reveal-element">Blinkle favorite music</h2>
+
+        <!-- SCROLL REVEAL TARGET: ALIGNED MUSIC PLAYER CARD SYSTEM -->
+        <div class="player-outer-wrapper reveal-element">
+            <button class="nav-side-btn" id="outer-prev-btn" title="Previous Track">&lt;</button>
+
+            <div class="player-card">
+                <div class="player-top-row">
+                    <div class="player-art-wrapper">
+                        <img src="images/wow.png" alt="Album Art" class="player-art">
+                        <span class="art-label">Album Art</span>
+                    </div>
+                    <div class="player-details-block">
+                        <h3 id="track-name">No Surprises</h3>
+                        <p id="track-artist">Radiohead</p>
+                        
+                        <div class="timeline-container">
+                            <span id="current-time">0:00</span>
+                            <input type="range" id="progress-bar" class="slider" value="0" min="0" max="100">
+                            <span id="duration-time">0:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="player-bottom-row">
+                    <div class="left-controls">
+                        <button class="action-btn" id="mute-btn" title="Mute/Unmute">
+                            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M5 9v6h4l5 5V4L9 9H5zm11.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+                        </button>
+                        
+                        <button class="action-btn" id="prev-btn" title="Previous Track">
+                            <svg width="20" height="20" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                        </button>
+
+                        <button class="action-btn play-circle-btn" id="play-btn" title="Play/Pause">
+                            <svg id="play-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <svg id="pause-icon" width="22" height="22" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+
+                        <button class="action-btn" id="next-btn" title="Next Track">
+                            <svg width="20" height="20" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6zm9-12h2v12h-2z"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="right-controls">
+                        <svg width="16" height="16" viewBox="0 0 24 24" style="fill:#52525e;"><path d="M3 9v6h4l5 5V4L7 9H3z"/></svg>
+                        <input type="range" id="volume-bar" class="slider volume-slider" value="80" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-side-btn" id="outer-next-btn" title="Next Track">&gt;</button>
+        </div>
+
+        <!-- SCROLL REVEAL TARGET: SHOWCASE WRAPPER -->
+        <div class="showcase-container reveal-element">
             <img src="images/wow.png" alt="Showcase" class="showcase-image" onclick="openLightbox()">
         </div>
     </main>
@@ -112,6 +304,7 @@
     <script>
         function scrollToContent() { document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' }); }
         function openLightbox() { document.getElementById('lightbox').style.display = 'flex'; }
+        
         window.addEventListener('scroll', function() {
             const char = document.getElementById('scroll-char');
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
@@ -120,6 +313,145 @@
                 char.classList.remove('visible');
             }
         });
+
+        /* --- CONTINUOUS RESET INTERSECTION OBSERVER PIPELINE --- */
+        const revealElements = document.querySelectorAll('.reveal-element');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    // Instantly resets elements when scrolled out of view to re-trigger on downscroll safely
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, {
+            threshold: 0.05,
+            rootMargin: "0px 0px -10px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        /* --- PLAYLIST DATA CONFIGURATION (10 TRACKS) --- */
+        const playlist = [
+            { name: "No Surprises", artist: "RADIOHEAD", src: "audio/track1.mp3" },
+            { name: "Come What May", artist: "AIR SUPPLY", src: "audio/track2.mp3" },
+            { name: "Karma Police", artist: "RADIOHEAD", src: "audio/track3.mp3" },
+            { name: "All Out of Love", artist: "AIR SUPPLY", src: "audio/track4.mp3" },
+            { name: "High and Dry", artist: "RADIOHEAD", src: "audio/track5.mp3" },
+            { name: "Making Love Out of Nothing at All", artist: "AIR SUPPLY", src: "audio/track6.mp3" },
+            { name: "Creep", artist: "RADIOHEAD", src: "audio/track7.mp3" },
+            { name: "Lost in Love", artist: "AIR SUPPLY", src: "audio/track8.mp3" },
+            { name: "Fake Plastic Trees", artist: "RADIOHEAD", src: "audio/track9.mp3" },
+            { name: "Goodbye", artist: "AIR SUPPLY", src: "audio/track10.mp3" }
+        ];
+
+        let currentTrackIndex = 0;
+        let isPlaying = false;
+
+        const audio = document.getElementById('audio-element');
+        const playBtn = document.getElementById('play-btn');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+        
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const outerPrevBtn = document.getElementById('outer-prev-btn');
+        const outerNextBtn = document.getElementById('outer-next-btn');
+        
+        const progressBar = document.getElementById('progress-bar');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationTimeEl = document.getElementById('duration-time');
+        const volumeBar = document.getElementById('volume-bar');
+        const muteBtn = document.getElementById('mute-btn');
+
+        function loadTrack(index) {
+            currentTrackIndex = index;
+            audio.src = playlist[index].src;
+            document.getElementById('track-name').textContent = playlist[index].name;
+            document.getElementById('track-artist').textContent = playlist[index].artist;
+            progressBar.value = 0;
+            currentTimeEl.textContent = "0:00";
+            audio.load();
+        }
+
+        function playTrack() {
+            audio.play().then(() => {
+                isPlaying = true;
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            }).catch(e => console.log("Audio file initialization ready."));
+        }
+
+        function pauseTrack() {
+            audio.pause();
+            isPlaying = false;
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) { pauseTrack(); } else { playTrack(); }
+        });
+
+        function handlePrevTrack() {
+            let nextIndex = currentTrackIndex - 1;
+            if (nextIndex < 0) nextIndex = playlist.length - 1;
+            loadTrack(nextIndex);
+            if (isPlaying) playTrack();
+        }
+
+        function handleNextTrack() {
+            let nextIndex = (currentTrackIndex + 1) % playlist.length;
+            loadTrack(nextIndex);
+            if (isPlaying) playTrack();
+        }
+
+        prevBtn.addEventListener('click', handlePrevTrack);
+        outerPrevBtn.addEventListener('click', handlePrevTrack);
+        nextBtn.addEventListener('click', handleNextTrack);
+        outerNextBtn.addEventListener('click', handleNextTrack);
+
+        audio.addEventListener('ended', () => {
+            handleNextTrack();
+            playTrack();
+        });
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "0:00";
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        audio.addEventListener('loadedmetadata', () => {
+            durationTimeEl.textContent = formatTime(audio.duration);
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            if (!audio.duration) return;
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            progressBar.value = progressPercent;
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+        });
+
+        progressBar.addEventListener('input', () => {
+            if (!audio.duration) return;
+            const newTime = (progressBar.value / 100) * audio.duration;
+            audio.currentTime = newTime;
+        });
+
+        volumeBar.addEventListener('input', () => {
+            audio.volume = volumeBar.value / 100;
+            audio.muted = false;
+        });
+
+        muteBtn.addEventListener('click', () => {
+            audio.muted = !audio.muted;
+            muteBtn.style.opacity = audio.muted ? '0.3' : '1';
+        });
+
+        loadTrack(0);
     </script>
 </body>
 </html>
