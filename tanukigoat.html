@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>W Tanuki</title>
+    <title>W Tanuki!</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            width: 1vw;
-            height: 1vh;
-            /* White background as a fallback or base */
+            width: 100vw;
+            height: 100vh;
+            /* White background base */
             background-color: #ffffff; 
             /* Set the background image */
             background-image: url('images/background.png');
-            /* Scale the image to cover the entire viewport */
-            background-size: cover; 
-            /* Center the image */
+            /* Scale the width to 100% and let height scale automatically to preserve aspect ratio */
+            background-size: 100% auto; 
+            /* Position it nicely (e.g., center or top) */
             background-position: center;
-            /* Prevent the image from repeating */
+            /* Prevent the image from repeating vertically */
             background-repeat: no-repeat;
         }
     </style>
