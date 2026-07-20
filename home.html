@@ -75,24 +75,26 @@
             display: block;
         }
 
-        /* Tooltip style */
+        /* Tooltip style centered over her head */
         .char-tooltip {
             position: absolute;
-            top: -45px;
+            top: 20px;
+            left: 60%;
+            transform: translateX(-50%) translateY(8px);
             background: #a38f78;
             color: #ffffff;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             opacity: 0;
-            transform: translateY(8px);
             transition: opacity 0.25s ease, transform 0.25s ease;
             pointer-events: none;
             white-space: nowrap;
             letter-spacing: 0.5px;
             text-transform: uppercase;
+            z-index: 10;
         }
         
         /* Tooltip little arrow */
@@ -109,7 +111,7 @@
 
         .char-wrapper:hover .char-tooltip {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(-50%) translateY(0);
         }
 
         /* --- GENERAL BLOCK LAYOUT STYLES --- */
@@ -472,9 +474,9 @@
         <div class="secret-content">
             <span class="close-btn" onclick="closeSecretModal()">&times;</span>
             <h3>You found something!</h3>
-            <p>You discovered a hidden secret on the page 👀 </p>
+            <p>You discovered a hidden secret on the page by clicking Belnooo.</p>
             <a href="https://blinkle.fun/secretegg" class="visit-btn" target="_blank">
-                Click me!
+                Visit
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>
