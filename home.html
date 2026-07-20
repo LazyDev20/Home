@@ -75,29 +75,31 @@
             display: block;
         }
 
-        /* Tooltip style positioned where the red dot is */
         .char-tooltip {
             position: absolute;
-            top: 25px;
-            left: 85%;
-            transform: translateX(-50%) translateY(8px);
+            top: 2px;
+            left: 77%;
+            transform: translateX(-50%) translateY(12px);
             background: #a38f78;
             color: #ffffff;
             font-size: 0.85rem;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            font-weight: 900;
+            /* Increased padding makes the bubble physically wider left & right */
+            padding: 5px 30px; 
+            border-radius: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
             opacity: 0;
-            transition: opacity 0.25s ease, transform 0.25s ease;
+            /* Pinches the tooltip in the dead center so it's invisible */
+            clip-path: inset(-20px 50% -20px 50%);
+            /* Adds a bouncy cubic-bezier transition to the expansion */
+            transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), clip-path 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             pointer-events: none;
             white-space: nowrap;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             z-index: 10;
         }
         
-        /* Tooltip little arrow */
         .char-tooltip::after {
             content: '';
             position: absolute;
@@ -112,6 +114,8 @@
         .char-wrapper:hover .char-tooltip {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
+            /* Unfolds perfectly to the left and right */
+            clip-path: inset(-20px -20px -20px -20px); 
         }
 
         /* --- GENERAL BLOCK LAYOUT STYLES --- */
@@ -415,7 +419,7 @@
 <body>
 
     <div class="char-wrapper" id="char-wrapper">
-        <div class="char-tooltip">Click me!</div>
+        <div class="char-tooltip">Hi its me belno light!</div>
         <img id="scroll-char" src="images/belnooo.png" alt="Character">
     </div>
     
