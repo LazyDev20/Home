@@ -55,16 +55,18 @@
             .reveal-element, 
             .hero-content, 
             .scroll-btn, 
-            .hero h1 {
+            .hero h1,
+            #scroll-char {
                 animation: none !important;
                 transition: none !important;
                 opacity: 1 !important;
                 transform: none !important;
                 letter-spacing: normal !important;
+                bottom: 0 !important;
             }
         }
 
-        /* --- CHARACTER ANIMATION --- */
+        /* --- CHARACTER HIGH-ENERGY BOUNCE POP ANIMATION --- */
         #scroll-char {
             position: fixed;
             bottom: -800px; 
@@ -72,7 +74,9 @@
             width: 350px;
             z-index: 5;
             pointer-events: none;
-            transition: bottom 0.6s ease-out;
+            /* Custom spring physics curve creates the dramatic pop up and bounce settle effect */
+            transition: bottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: bottom;
         }
         #scroll-char.visible { bottom: 0; }
 
