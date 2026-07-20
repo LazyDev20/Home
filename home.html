@@ -12,7 +12,7 @@
 
     <style>
         /* --- GLOBAL SETTINGS --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; -webkit-tap-highlight-color: transparent; outline: none; }
         html { scroll-behavior: smooth; }
         body { background-color: #0f0f11; color: #f0f0f0; overflow-x: hidden; width: 100%; }
 
@@ -95,6 +95,7 @@
         .scroll-btn { 
             background: linear-gradient(135deg, #a38f78, #8c7a67); color: white; border: none; padding: 16px 45px; font-size: 1.2rem; font-weight: 700; border-radius: 50px; cursor: pointer; box-shadow: 0 8px 25px rgba(163, 143, 120, 0.3); transition: 0.2s ease-out; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; opacity: 0;
             animation: buttonStaggeredReveal 0.8s ease-out 0.4s forwards;
+            user-select: none;
         }
         .scroll-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(163, 143, 120, 0.5); }
 
@@ -103,13 +104,109 @@
             background-image: linear-gradient(45deg, #19191c 25%, transparent 25%, transparent 50%, #19191c 50%, #19191c 75%, transparent 75%, transparent);
             background-size: 44px 44px; padding: clamp(80px, 10vw, 120px) max(20px, 4vw); min-height: 100vh; position: relative; overflow: hidden; 
         }
+        
+        /* --- THEME-MATCHED WIDE INTRODUCTION SECTION --- */
+        .intro-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(145deg, #111116, #09090b);
+            border: 2px solid #a38f78; /* Matches the Socials brown */
+            border-radius: 24px;
+            padding: clamp(25px, 5vw, 60px);
+            max-width: 1000px; /* Made wider */
+            width: 100%;
+            margin: 0 auto clamp(60px, 10vw, 80px) auto;
+            gap: clamp(25px, 5vw, 50px);
+            /* Breathing Brown Pulse Effect */
+            animation: themePulse 3s infinite alternate;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            user-select: none; /* Prevents text highlighting on click */
+        }
+        
+        @keyframes themePulse {
+            from { box-shadow: 0 0 15px rgba(163, 143, 120, 0.2), inset 0 0 15px rgba(163, 143, 120, 0.05); border-color: #a38f78; }
+            to { box-shadow: 0 0 30px rgba(163, 143, 120, 0.4), inset 0 0 25px rgba(163, 143, 120, 0.15); border-color: #c4b19c; }
+        }
+
+        .intro-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 45px rgba(163, 143, 120, 0.5);
+        }
+
+        .intro-text-content { flex: 1; }
+        
+        /* --- NEW CLEAN CURSOR ANIMATION --- */
+        .typewriter-cursor {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: #a38f78; /* Matches Theme */
+            text-shadow: 0 0 15px rgba(163, 143, 120, 0.3);
+            margin-bottom: 15px;
+            display: inline-block;
+            position: relative; /* Added to position the new cursor */
+            padding-right: 12px;
+            min-height: 1.2em;
+        }
+        
+        .typewriter-cursor::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10%;
+            height: 80%;
+            width: 4px;
+            background-color: #a38f78;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(163, 143, 120, 0.8), 0 0 20px rgba(163, 143, 120, 0.4);
+            animation: cool-blink 0.85s step-end infinite;
+        }
+        
+        @keyframes cool-blink {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .intro-desc {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #b0b0b8;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .intro-image-wrapper {
+            flex-shrink: 0;
+            width: clamp(140px, 30vw, 220px); /* Slightly optimized for mobile width */
+            height: clamp(140px, 30vw, 220px);
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #a38f78; /* Matches theme */
+            box-shadow: 0 0 25px rgba(163, 143, 120, 0.3);
+            background-color: #ffffff;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .intro-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            pointer-events: none; /* Stops image dragging/clicking */
+        }
+        .intro-container:hover .intro-image-wrapper {
+            box-shadow: 0 0 35px rgba(163, 143, 120, 0.5);
+        }
+        .intro-container:hover .intro-image-wrapper img {
+            transform: scale(1.08);
+        }
+
         .section-title { text-align: center; font-size: clamp(2rem, 6vw, 3rem); font-weight: 900; color: #a38f78; margin-bottom: clamp(40px, 8vw, 60px); text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 0 20px rgba(163, 143, 120, 0.2); }
         
+        /* --- SOCIAL GRID --- */
         .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; width: 100%; }
         
         @media (max-width: 360px) { .social-grid { grid-template-columns: 1fr; } }
 
-        .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #222226, #17171a); border-radius: 60px; padding: 10px; padding-right: 24px; text-decoration: none; border: 1px solid rgba(255,255,255,0.03); transition: transform 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out; width: 100%; }
+        .social-pill { display: flex; align-items: center; background: linear-gradient(145deg, #222226, #17171a); border-radius: 60px; padding: 10px; padding-right: 24px; text-decoration: none; border: 1px solid rgba(255,255,255,0.03); transition: transform 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out; width: 100%; user-select: none; }
         .social-pill:hover { transform: translateY(-4px); border-color: rgba(163, 143, 120, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(163, 143, 120, 0.15); }
         
         .social-icon { width: clamp(65px, 10vw, 80px); height: clamp(65px, 10vw, 80px); border-radius: 50%; background-color: #0f0f11; display: flex; justify-content: center; align-items: center; border: 2px solid #2b2b30; flex-shrink: 0; transition: border-color 0.2s; }
@@ -166,16 +263,22 @@
 
         /* --- SHOWCASE IMAGE --- */
         .showcase-container { max-width: 1000px; margin: clamp(50px, 8vw, 80px) auto 0 auto; padding: 0; width: 100%; }
-        .showcase-image { width: 100%; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; cursor: zoom-in; display: block; }
+        .showcase-image { width: 100%; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; cursor: zoom-in; display: block; user-select: none; -webkit-user-drag: none; }
         .showcase-image:hover { transform: scale(1.01); box-shadow: 0 20px 45px rgba(0,0,0,0.6); border-color: rgba(163, 143, 120, 0.3); }
         
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,10,12,0.96); z-index: 2000; justify-content: center; align-items: center; cursor: zoom-out; backdrop-filter: blur(8px); padding: 20px; }
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,10,12,0.96); z-index: 2000; justify-content: center; align-items: center; cursor: zoom-out; backdrop-filter: blur(8px); padding: 20px; user-select: none; }
         #lightbox img { max-width: 100%; max-height: 90%; border-radius: 14px; box-shadow: 0 25px 60px rgba(0,0,0,0.7); object-fit: contain; }
         
         .bottom-bar { width: 100%; background-color: #0b0b0d; padding: 35px 40px; border-top: 1px solid #1a1a1f; position: relative; z-index: 10; }
         .footer-logo { font-weight: 900; color: #a38f78; letter-spacing: 0.5px; text-align: left; }
 
         /* --- MOBILE RESPONSIVE LAYOUT MOTOR ENGINE OVERRIDES --- */
+        @media (max-width: 768px) {
+            .intro-container { flex-direction: column-reverse; text-align: center; gap: 20px; }
+            .intro-text-content { display: flex; flex-direction: column; align-items: center; }
+            .typewriter-cursor { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+        }
+
         @media (max-width: 580px) {
             .player-outer-wrapper { flex-direction: column; gap: 15px; }
             .nav-side-btn { width: 45%; height: 50px; font-size: 1.4rem; display: inline-flex; margin: 0 5px; }
@@ -201,6 +304,18 @@
     </section>
 
     <main id="main-content" class="content-area">
+        
+        <!-- THEME-MATCHED WIDER INTRO SECTION -->
+        <div class="intro-container reveal-element" id="intro-trigger">
+            <div class="intro-text-content">
+                <h2 id="typewriter-text" class="typewriter-cursor"></h2>
+                <p class="intro-desc">Welcome to my space! Explore my socials, check out my favorite tracks, and connect with me. Here's a brief description about what I do and who I am.</p>
+            </div>
+            <div class="intro-image-wrapper">
+                <img src="images/pfp.png" alt="Blinkle Profile Picture">
+            </div>
+        </div>
+
         <h2 class="section-title reveal-element">Socials</h2>
         
         <div class="social-grid">
@@ -212,12 +327,10 @@
 
         <h2 class="player-title reveal-element">Blinkle favorite music</h2>
 
-        <!-- INTERACTIVE PLAYBACK CARD WRAPPER -->
         <div class="player-outer-wrapper reveal-element">
             <button class="nav-side-btn" id="outer-prev-btn" title="Previous Track">&lt;</button>
 
             <div class="spotify-wrapper">
-                <!-- Initial Track Loaded Natively -->
                 <iframe id="spotify-player" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/01MXkFA8sL7at6txavDErt?utm_source=generator&si=986cb1335348428d" width="99%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
 
@@ -265,6 +378,32 @@
 
         revealElements.forEach(el => revealObserver.observe(el));
 
+        /* --- TYPEWRITER EFFECT PIPELINE --- */
+        const typeTarget = document.getElementById('typewriter-text');
+        const textToType = "Hi i'm Blinkle!";
+        let typeIndex = 0;
+        let isTyping = false;
+
+        function typeWriterEffect() {
+            if (typeIndex < textToType.length) {
+                typeTarget.innerHTML += textToType.charAt(typeIndex);
+                typeIndex++;
+                setTimeout(typeWriterEffect, 120); 
+            }
+        }
+
+        const typeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isTyping) {
+                    isTyping = true;
+                    setTimeout(typeWriterEffect, 400); 
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        typeObserver.observe(document.getElementById('intro-trigger'));
+
+
         /* --- SPOTIFY TRACK ROTATION PIPELINE --- */
         const tracks = [
             "https://open.spotify.com/embed/track/01MXkFA8sL7at6txavDErt?utm_source=generator&si=986cb1335348428d",
@@ -287,38 +426,31 @@
             if (isTransitioning) return;
             isTransitioning = true;
 
-            // Step 1: Slide current iframe out of view
             const slideOutClass = direction === 'next' ? 'slide-left' : 'slide-right';
             const slideInClass = direction === 'next' ? 'slide-right' : 'slide-left';
             
             playerFrame.classList.add(slideOutClass);
 
-            // Step 2: Wait for slide-out transition to finish
             setTimeout(() => {
-                // Update track index calculation
                 if (direction === 'next') {
                     currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
                 } else {
                     currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
                 }
                 
-                // Swap URL
                 playerFrame.src = tracks[currentTrackIndex];
 
-                // Step 3: Disable animation temporarily, snap iframe to the opposite side out-of-bounds
                 playerFrame.style.transition = 'none';
                 playerFrame.classList.remove(slideOutClass);
                 playerFrame.classList.add(slideInClass);
 
-                // Force layout reflow execution to register the new position jump instantly
                 playerFrame.offsetHeight;
 
-                // Step 4: Turn transition back on and slide it effortlessly to the center position
                 playerFrame.style.transition = '';
                 playerFrame.classList.remove(slideInClass);
                 
                 isTransitioning = false;
-            }, 280); // Corresponds with CSS 0.28s speed execution timing
+            }, 280);
         }
 
         document.getElementById('outer-prev-btn').addEventListener('click', () => animateTrackChange('prev'));
