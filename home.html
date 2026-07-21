@@ -550,16 +550,37 @@
 
         /* --- TYPEWRITER EFFECT PIPELINE --- */
         const typeTarget = document.getElementById('typewriter-text');
-        const textToType = "Hi i'm Blinkle!";
-        let typeIndex = 0;
+        const prefix = "Hi i'm ";
+        const names = ["Blinkle!", "Varloxy!", "Static Station!"];
+        let nameIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
         let isTyping = false;
 
         function typeWriterEffect() {
-            if (typeIndex < textToType.length) {
-                typeTarget.innerHTML += textToType.charAt(typeIndex);
-                typeIndex++;
-                setTimeout(typeWriterEffect, 120); 
+            const currentName = names[nameIndex];
+            
+            if (isDeleting) {
+                typeTarget.innerHTML = prefix + currentName.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typeTarget.innerHTML = prefix + currentName.substring(0, charIndex + 1);
+                charIndex++;
             }
+
+            let typeSpeed = isDeleting ? 50 : 120;
+
+            if (!isDeleting && charIndex === currentName.length) {
+                // Pause at the end of typing before deleting (this sets up the overall ~10s cycle delay)
+                typeSpeed = 3000; 
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                nameIndex = (nameIndex + 1) % names.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriterEffect, typeSpeed);
         }
 
         const typeObserver = new IntersectionObserver((entries) => {
