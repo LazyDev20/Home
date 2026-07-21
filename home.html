@@ -98,21 +98,22 @@
             transform: translateY(0);
         }
 
-        /* --- CHARACTER SCROLL FIX --- */
+        /* --- CHARACTER BOTTOM FIXED POSITIONING --- */
         .char-wrapper {
             position: fixed;
-            bottom: -350px;
+            bottom: -450px; /* Fully hidden off-screen initially */
             left: 20px;
             width: clamp(150px, 20vw, 300px);
-            z-index: 5;
+            z-index: 999;
             pointer-events: auto;
             transition: bottom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .char-wrapper.visible { 
-            bottom: 0px; 
+            bottom: -15px; /* Anchored directly at the bottom edge */
         }
 
         #scroll-char {
@@ -121,28 +122,27 @@
             display: block;
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        #scroll-char:hover { transform: scale(1.02) translateY(-10px); }
+        #scroll-char:hover { transform: scale(1.02) translateY(-6px); }
 
         .char-tooltip {
             position: absolute;
-            top: 2px;
-            left: 77%;
-            transform: translateX(-50%) translateY(12px);
+            top: -35px; /* Positioned cleanly right above head */
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
             background: var(--accent-1);
             color: #ffffff;
             font-size: 0.85rem;
             font-weight: 900;
-            padding: 5px 30px; 
+            padding: 6px 20px; 
             border-radius: 30px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.6);
             opacity: 0;
-            clip-path: inset(-20px 50% -20px 50%);
-            transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), clip-path 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
             pointer-events: none;
             white-space: nowrap;
             letter-spacing: 1px;
             text-transform: uppercase;
             z-index: 10;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
         
         .char-tooltip::after {
@@ -159,7 +159,6 @@
         .char-wrapper:hover .char-tooltip {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
-            clip-path: inset(-20px -20px -20px -20px); 
         }
 
         /* Top Bar & Hero */
@@ -202,7 +201,6 @@
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Theme Icon Smooth Spinning */
         #themeIcon {
             display: inline-block;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -260,7 +258,6 @@
         .cat-circle-btn img { width: 55%; height: 55%; object-fit: contain; filter: grayscale(90%) brightness(60%); }
         .cat-circle-btn.active img { filter: grayscale(0%) brightness(100%); transform: scale(1.12); }
 
-        /* --- UI ENHANCEMENTS FOR GAME SHOWCASE & SMOOTH SWITCHER --- */
         .game-showcase-container { 
             max-width: 950px; 
             margin: 0 auto; 
@@ -309,7 +306,6 @@
 
         .game-img-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Button Hover Effect Only */
         .game-title-btn {
             background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); 
             color: white; 
@@ -366,13 +362,12 @@
 
         #secret-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 12, 0.85); backdrop-filter: blur(10px); z-index: 3000; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
         #secret-modal.show { opacity: 1; }
-        .secret-content { background: var(--card-gradient); border: 2px solid var(--accent-1); border-radius: 20px; padding: 40px; text-align: center; max-width: 420px; width: 90%; }
+        .secret-content { background: var(--card-gradient); border: 2px solid var(--accent-1); border-radius: 20px; padding: 40px; text-align: center; max-width: 420px; width: 90%; position: relative; }
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: var(--text-muted); cursor: pointer; }
         .secret-content h3 { color: var(--text-muted); font-size: 1.8rem; margin-bottom: 12px; font-weight: 900; }
         .secret-content p { color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem; }
         .visit-btn { display: inline-flex; gap: 12px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); color: white; padding: 14px 35px; border-radius: 50px; font-weight: 700; text-decoration: none; }
 
-        /* Mobile specific fixes */
         @media (max-width: 768px) {
             .intro-container { flex-direction: column-reverse; text-align: center; gap: 20px; }
             .intro-text-content { display: flex; flex-direction: column; align-items: center; }
@@ -475,7 +470,7 @@
             <p>You discovered a hidden secret on the page by clicking Belnooo.</p>
             <a href="https://blinkle.fun/secretegg" class="visit-btn" target="_blank">
                 Visit
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="7" y1="17" x2="17" y2="7"></line>
                     <polyline points="7 7 17 7 17 17"></polyline>
                 </svg>
@@ -501,7 +496,7 @@
             indicator.style.top = `${steamBtn.offsetTop}px`;
         });
 
-        /* --- SMOOTH SYNCHRONIZED THEME SWITCHING --- */
+        /* --- THEME TOGGLE --- */
         const themeToggleBtn = document.getElementById('themeToggleBtn');
         const themeBtnText = document.getElementById('themeBtnText');
         const themeIcon = document.getElementById('themeIcon');
@@ -534,13 +529,13 @@
             }, 300);
         }
         
-        /* --- BELNOOO VERY BOTTOM APPEAR / SCROLL UP DISAPPEAR --- */
+        /* --- BELNO LIGHT EXACT BOTTOM SCROLL TRIGGER --- */
         window.addEventListener('scroll', function() {
             const charWrapper = document.getElementById('char-wrapper');
             const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
             
-            // Check if the user is within 50px of the very bottom of the page
-            if (window.scrollY >= scrollableHeight - 50) {
+            // Trigger strictly when reaching the very bottom (within 15px)
+            if (window.scrollY >= scrollableHeight - 15) {
                 charWrapper.classList.add('visible');
             } else {
                 charWrapper.classList.remove('visible');
@@ -619,39 +614,39 @@
 
         const steamGamesHTML = `
             <a href="https://store.steampowered.com" target="_blank" class="game-card">
-                <div class="game-img-box"><img src="images/game/game1.png" alt="Steam Game 1"></div>
+                <div class="game-img-box"><img src="images/games/game1.png" alt="Steam Game 1"></div>
                 <div class="game-title-btn">Steam Game 1 <span class="material-symbols-outlined">open_in_new</span></div>
             </a>
             <a href="https://store.steampowered.com" target="_blank" class="game-card">
-                <div class="game-img-box"><img src="images/game/game2.png" alt="Steam Game 2"></div>
+                <div class="game-img-box"><img src="images/games/game2.png" alt="Steam Game 2"></div>
                 <div class="game-title-btn">Steam Game 2 <span class="material-symbols-outlined">open_in_new</span></div>
             </a>
             <a href="https://store.steampowered.com" target="_blank" class="game-card">
-                <div class="game-img-box"><img src="images/game/game3.png" alt="Steam Game 3"></div>
+                <div class="game-img-box"><img src="images/games/game3.png" alt="Steam Game 3"></div>
                 <div class="game-title-btn">Steam Game 3 <span class="material-symbols-outlined">open_in_new</span></div>
             </a>
             <a href="https://store.steampowered.com" target="_blank" class="game-card">
-                <div class="game-img-box"><img src="images/game/game4.png" alt="Steam Game 4"></div>
+                <div class="game-img-box"><img src="images/games/game4.png" alt="Steam Game 4"></div>
                 <div class="game-title-btn">Steam Game 4 <span class="material-symbols-outlined">open_in_new</span></div>
             </a>
             <a href="https://store.steampowered.com" target="_blank" class="game-card">
-                <div class="game-img-box"><img src="images/game/game5.png" alt="Steam Game 5"></div>
+                <div class="game-img-box"><img src="images/games/game5.png" alt="Steam Game 5"></div>
                 <div class="game-title-btn">Steam Game 5 <span class="material-symbols-outlined">open_in_new</span></div>
             </a>
             <a href="https://store.steampowered.com" target="_blank" class="game-card">
-                <div class="game-img-box"><img src="images/game/game6.png" alt="Steam Game 6"></div>
+                <div class="game-img-box"><img src="images/games/game6.png" alt="Steam Game 6"></div>
                 <div class="game-title-btn">Steam Game 6 <span class="material-symbols-outlined">open_in_new</span></div>
             </a>
             <a href="https://store.steampowered.com" target="_blank" class="game-card">
-                <div class="game-img-box"><img src="images/game/game7.png" alt="Steam Game 7"></div>
+                <div class="game-img-box"><img src="images/games/game7.png" alt="Steam Game 7"></div>
                 <div class="game-title-btn">Steam Game 7 <span class="material-symbols-outlined">open_in_new</span></div>
             </a>
             <a href="https://store.steampowered.com" target="_blank" class="game-card">
-                <div class="game-img-box"><img src="images/game/game8.png" alt="Steam Game 8"></div>
+                <div class="game-img-box"><img src="images/games/game8.png" alt="Steam Game 8"></div>
                 <div class="game-title-btn">Steam Game 8 <span class="material-symbols-outlined">open_in_new</span></div>
             </a>
             <a href="https://store.steampowered.com" target="_blank" class="game-card">
-                <div class="game-img-box"><img src="images/game/game9.png" alt="Steam Game 9"></div>
+                <div class="game-img-box"><img src="images/games/game9.png" alt="Steam Game 9"></div>
                 <div class="game-title-btn">Steam Game 9 <span class="material-symbols-outlined">open_in_new</span></div>
             </a>
         `;
@@ -697,7 +692,6 @@
 
         gameGrid.innerHTML = steamGamesHTML;
 
-        /* --- SMOOTH CATEGORY SWITCHING FUNCTION --- */
         function switchCategory(category) {
             if (currentCategory === category || isSwitchingCategory) return;
             isSwitchingCategory = true;
@@ -707,7 +701,6 @@
             const robloxBtn = document.getElementById('btn-roblox');
             const targetBtn = category === 'steam' ? steamBtn : robloxBtn;
 
-            // Update Circle Pills Active state & Pill position
             if (category === 'steam') {
                 steamBtn.classList.add('active');
                 robloxBtn.classList.remove('active');
@@ -721,7 +714,6 @@
             categoryIndicator.style.left = `${targetBtn.offsetLeft}px`;
             categoryIndicator.style.top = `${targetBtn.offsetTop}px`;
 
-            // Smooth Transition of Grid
             gameGrid.classList.add('switching');
 
             setTimeout(() => {
