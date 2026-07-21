@@ -26,6 +26,30 @@
             100% { letter-spacing: 4px; opacity: 1; }
         }
 
+        /* --- SMOOTH MULTI-DIRECTIONAL SCROLL REVEAL SYSTEM --- */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(25px); 
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-element, .hero-content, .scroll-btn, .hero h1, .char-wrapper {
+                animation: none !important;
+                transition: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+                letter-spacing: normal !important;
+                bottom: 0 !important;
+            }
+        }
+
         /* --- CHARACTER WRAPPER & TOOLTIP SYSTEM --- */
         .char-wrapper {
             position: fixed;
@@ -47,6 +71,7 @@
 
         #scroll-char {
             width: 100%;
+            cursor: pointer;
             display: block;
         }
 
@@ -59,11 +84,14 @@
             color: #ffffff;
             font-size: 0.85rem;
             font-weight: 900;
+            /* Increased padding makes the bubble physically wider left & right */
             padding: 5px 30px; 
             border-radius: 30px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.6);
             opacity: 0;
+            /* Pinches the tooltip in the dead center so it's invisible */
             clip-path: inset(-20px 50% -20px 50%);
+            /* Adds a bouncy cubic-bezier transition to the expansion */
             transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), clip-path 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             pointer-events: none;
             white-space: nowrap;
@@ -86,6 +114,7 @@
         .char-wrapper:hover .char-tooltip {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
+            /* Unfolds perfectly to the left and right */
             clip-path: inset(-20px -20px -20px -20px); 
         }
 
@@ -140,12 +169,35 @@
 
         .intro-text-content { flex: 1; }
         
-        .intro-title {
+        /* --- NEW CLEAN CURSOR ANIMATION --- */
+        .typewriter-cursor {
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 900;
             color: #a38f78;
             text-shadow: 0 0 15px rgba(163, 143, 120, 0.3);
             margin-bottom: 15px;
+            display: inline-block;
+            position: relative;
+            padding-right: 12px;
+            min-height: 1.2em;
+        }
+        
+        .typewriter-cursor::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10%;
+            height: 80%;
+            width: 4px;
+            background-color: #a38f78;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(163, 143, 120, 0.8), 0 0 20px rgba(163, 143, 120, 0.4);
+            animation: cool-blink 0.85s step-end infinite;
+        }
+        
+        @keyframes cool-blink {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
         }
 
         .intro-desc {
@@ -198,6 +250,50 @@
         .social-text h3 { font-size: clamp(1.1rem, 4vw, 1.5rem); color: #ffffff; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .social-text p { font-size: 0.8rem; color: #a38f78; text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+        /* --- SPOTIFY INTERACTIVE SLIDER LAYOUT --- */
+        .player-title { text-align: center; font-size: clamp(2rem, 6vw, 3rem); font-weight: 900; color: #a38f78; margin: clamp(60px, 10vw, 90px) auto 35px auto; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 0 30px rgba(163, 143, 120, 0.15); }
+        
+        .player-outer-wrapper { display: flex; align-items: center; justify-content: center; gap: clamp(10px, 3vw, 20px); max-width: 900px; margin: 0 auto; position: relative; width: 100%; }
+        
+        .nav-side-btn {
+            background: rgba(20, 20, 24, 0.6); border: 2px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(8px); color: #8e8e9a; font-size: 1.8rem; font-weight: 900; width: 50px; height: 70px; 
+            cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease-out; box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border-radius: 14px; flex-shrink: 0; user-select: none;
+        }
+        .nav-side-btn:hover { color: #ffffff; border-color: rgba(163, 143, 120, 0.6); background-color: rgba(28, 28, 34, 0.9); box-shadow: 0 0 25px rgba(163, 143, 120, 0.35); transform: scale(1.03); }
+        .nav-side-btn:active { transform: scale(0.97); }
+
+        .spotify-wrapper { 
+            flex-grow: 1;
+            min-width: 0;
+            border-radius: 24px; 
+            overflow: hidden; 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: #282828; 
+            line-height: 0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            order: 2;
+        }
+        .spotify-wrapper:hover { 
+            border-color: rgba(163, 143, 120, 0.35); 
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(163, 143, 120, 0.12); 
+        }
+
+        /* --- SLIDING ANIMATION STYLES --- */
+        #spotify-player {
+            transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform, opacity;
+        }
+        .slide-left { transform: translateX(-40%); opacity: 0; }
+        .slide-right { transform: translateX(40%); opacity: 0; }
+        
+        #outer-prev-btn { order: 1; }
+        #outer-next-btn { order: 3; }
+
         /* --- SHOWCASE IMAGE --- */
         .showcase-container { max-width: 1000px; margin: clamp(50px, 8vw, 80px) auto 0 auto; padding: 0; width: 100%; }
         .showcase-image { width: 100%; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; cursor: zoom-in; display: block; user-select: none; -webkit-user-drag: none; }
@@ -209,13 +305,113 @@
         .bottom-bar { width: 100%; background-color: #0b0b0d; padding: 35px 40px; border-top: 1px solid #1a1a1f; position: relative; z-index: 10; }
         .footer-logo { font-weight: 900; color: #a38f78; letter-spacing: 0.5px; text-align: left; }
 
-        /* --- MOBILE RESPONSIVE LAYOUT --- */
+        /* --- SECRET POPUP UI --- */
+        #secret-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        #secret-modal.show {
+            opacity: 1;
+        }
+
+        .secret-content {
+            background: linear-gradient(145deg, #18181c, #111115);
+            border: 2px solid #a38f78;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 0 40px rgba(163, 143, 120, 0.15);
+            transform: translateY(30px) scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            max-width: 420px;
+            width: 90%;
+        }
+
+        #secret-modal.show .secret-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #5a5a64;
+            cursor: pointer;
+            transition: color 0.2s, transform 0.2s;
+            line-height: 1;
+        }
+        .close-btn:hover {
+            color: #f0f0f0;
+            transform: scale(1.1);
+        }
+
+        .secret-content h3 {
+            color: #a38f78;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .secret-content p {
+            color: #b0b0b8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .visit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #a38f78, #8c7a67);
+            color: white;
+            text-decoration: none;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .visit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(163, 143, 120, 0.4);
+        }
+        .visit-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* --- MOBILE RESPONSIVE LAYOUT MOTOR ENGINE OVERRIDES --- */
         @media (max-width: 768px) {
             .intro-container { flex-direction: column-reverse; text-align: center; gap: 20px; }
             .intro-text-content { display: flex; flex-direction: column; align-items: center; }
+            .typewriter-cursor { font-size: clamp(1.8rem, 7vw, 2.5rem); }
         }
 
         @media (max-width: 580px) {
+            .player-outer-wrapper { flex-direction: column; gap: 15px; }
+            .nav-side-btn { width: 45%; height: 50px; font-size: 1.4rem; display: inline-flex; margin: 0 5px; }
+            #outer-prev-btn { order: 2; }
+            #outer-next-btn { order: 3; }
+            .spotify-wrapper { order: 1; width: 100%; }
+            
+            /* --- FORCE HIDE CHARACTER ON ALL MOBILE CLIENTS --- */
             .char-wrapper { display: none !important; }
         }
     </style>
@@ -239,9 +435,9 @@
     <main id="main-content" class="content-area">
         
         <!-- THEME-MATCHED WIDER INTRO SECTION -->
-        <div class="intro-container">
+        <div class="intro-container reveal-element" id="intro-trigger">
             <div class="intro-text-content">
-                <h2 class="intro-title">Hi i'm Blinkle!</h2>
+                <h2 id="typewriter-text" class="typewriter-cursor"></h2>
                 <p class="intro-desc">Yoo welcome to my page! I am just regular gamer in town! You can explore around in this small page and yeah and thats it.. Wow bro impressive.. You can also see my socials below me feel free to visit them!</p>
             </div>
             <div class="intro-image-wrapper">
@@ -249,21 +445,49 @@
             </div>
         </div>
 
-        <h2 class="section-title">My Socials</h2>
+        <h2 class="section-title reveal-element">My Socials</h2>
         
         <div class="social-grid">
-            <a href="https://discord.gg/xzTR7yYUQK" target="_blank" class="social-pill"><div class="social-icon"><img src="images/discord.png" alt="Discord"></div><div class="social-text"><h3>Discord Server</h3><p>Join the Belno Fan Club</p></div></a>
-            <a href="https://steamcommunity.com/id/Varloxy/" target="_blank" class="social-pill"><div class="social-icon"><img src="images/steam.png" alt="Steam"></div><div class="social-text"><h3>Steam Profile</h3><p>Add me if you want!</p></div></a>
-            <a href="https://www.tiktok.com/@whatheheck15" target="_blank" class="social-pill"><div class="social-icon"><img src="images/tiktok.png" alt="TikTok"></div><div class="social-text"><h3>TikTok</h3><p>My tiktok account!</p></div></a>
-            <a href="https://www.roblox.com/users/1408113086/profile" target="_blank" class="social-pill"><div class="social-icon"><img src="images/roblox.png" alt="Roblox"></div><div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div></a>
+            <a href="https://discord.gg/xzTR7yYUQK" target="_blank" class="social-pill reveal-element"><div class="social-icon"><img src="images/discord.png" alt="Discord"></div><div class="social-text"><h3>Discord Server</h3><p>Join the Belno Fan Club</p></div></a>
+            <a href="https://steamcommunity.com/id/Varloxy/" target="_blank" class="social-pill reveal-element"><div class="social-icon"><img src="images/steam.png" alt="Steam"></div><div class="social-text"><h3>Steam Profile</h3><p>Add me if you want!</p></div></a>
+            <a href="https://www.tiktok.com/@whatheheck15" target="_blank" class="social-pill reveal-element"><div class="social-icon"><img src="images/tiktok.png" alt="TikTok"></div><div class="social-text"><h3>TikTok</h3><p>My tiktok account!</p></div></a>
+            <a href="https://www.roblox.com/users/1408113086/profile" target="_blank" class="social-pill reveal-element"><div class="social-icon"><img src="images/roblox.png" alt="Roblox"></div><div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div></a>
         </div>
 
-        <div class="showcase-container">
+        <h2 class="player-title reveal-element">Blinkle favorite music</h2>
+
+        <div class="player-outer-wrapper reveal-element">
+            <button class="nav-side-btn" id="outer-prev-btn" title="Previous Track">&lt;</button>
+
+            <div class="spotify-wrapper">
+                <iframe id="spotify-player" data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/01MXkFA8sL7at6txavDErt?utm_source=generator&si=986cb1335348428d" width="99%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+
+            <button class="nav-side-btn" id="outer-next-btn" title="Next Track">&gt;</button>
+        </div>
+
+        <div class="showcase-container reveal-element">
             <img src="images/wow.png" alt="Showcase" class="showcase-image" onclick="openLightbox()">
         </div>
     </main>
 
     <div id="lightbox" onclick="this.style.display='none'"><img src="images/wow.png" alt="Full Preview"></div>
+
+    <!-- SECRET POPUP UI -->
+    <div id="secret-modal">
+        <div class="secret-content">
+            <span class="close-btn" onclick="closeSecretModal()">&times;</span>
+            <h3>You found something!</h3>
+            <p>You discovered a hidden secret on the page by clicking Belnooo.</p>
+            <a href="https://blinkle.fun/secretegg" class="visit-btn" target="_blank">
+                Visit
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
 
     <footer class="bottom-bar">
         <div class="footer-logo">Belno is the best uma bro</div>
@@ -281,6 +505,126 @@
                 charWrapper.classList.remove('visible');
             }
         });
+
+        /* --- SECRET POPUP LOGIC --- */
+        const charImg = document.getElementById('scroll-char');
+        const secretModal = document.getElementById('secret-modal');
+
+        charImg.addEventListener('click', () => {
+            secretModal.style.display = 'flex';
+            void secretModal.offsetWidth;
+            secretModal.classList.add('show');
+        });
+
+        function closeSecretModal() {
+            secretModal.classList.remove('show');
+            setTimeout(() => {
+                if (!secretModal.classList.contains('show')) {
+                    secretModal.style.display = 'none';
+                }
+            }, 300);
+        }
+
+        secretModal.addEventListener('click', (e) => {
+            if (e.target === secretModal) {
+                closeSecretModal();
+            }
+        });
+
+        /* --- ELEMENT INTERSECTION OBSERVER --- */
+        const revealElements = document.querySelectorAll('.reveal-element');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, {
+            threshold: 0.02,
+            rootMargin: "0px 0px -10px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        /* --- TYPEWRITER EFFECT PIPELINE --- */
+        const typeTarget = document.getElementById('typewriter-text');
+        const textToType = "Hi i'm Blinkle!";
+        let typeIndex = 0;
+        let isTyping = false;
+
+        function typeWriterEffect() {
+            if (typeIndex < textToType.length) {
+                typeTarget.innerHTML += textToType.charAt(typeIndex);
+                typeIndex++;
+                setTimeout(typeWriterEffect, 120); 
+            }
+        }
+
+        const typeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !isTyping) {
+                    isTyping = true;
+                    setTimeout(typeWriterEffect, 400); 
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        typeObserver.observe(document.getElementById('intro-trigger'));
+
+
+        /* --- SPOTIFY TRACK ROTATION PIPELINE --- */
+        const tracks = [
+            "https://open.spotify.com/embed/track/01MXkFA8sL7at6txavDErt?utm_source=generator&si=986cb1335348428d",
+            "https://open.spotify.com/embed/track/0ty88JKVXWxbsz6H5D60iR?utm_source=generator&si=b6c860f0c3984912",
+            "https://open.spotify.com/embed/track/20WC5ZN72x0552U3EwCalR?utm_source=generator&si=34407f0adcf74919",
+            "https://open.spotify.com/embed/track/5PihYbt4uNnVt68l5D1SGb?utm_source=generator&si=43084101a50a4b86",
+            "https://open.spotify.com/embed/track/38mMrNPAJKXMBK2l9actEA?utm_source=generator&si=a720e086549c4b0e",
+            "https://open.spotify.com/embed/track/0luyrm1L6gjtoLekHOf67t?utm_source=generator&si=de34e1634a1b4bc0",
+            "https://open.spotify.com/embed/track/3PgjBOoA5OytNGkglObpOd?utm_source=generator&si=166051dc31fd4ec2",
+            "https://open.spotify.com/embed/track/5L8rp5N79n66aD5mblOjCr?utm_source=generator&si=42da0b1b81d44062",
+            "https://open.spotify.com/embed/track/63OQupATfueTdZMWTxW03A?utm_source=generator&si=d91e0d236ffd41a7",
+            "https://open.spotify.com/embed/track/70LcF31zb1H0PyJoS1Sx1r?utm_source=generator&si=57d4eab9e2ce4268"
+        ];
+
+        let currentTrackIndex = 0;
+        let isTransitioning = false;
+        const playerFrame = document.getElementById('spotify-player');
+
+        function animateTrackChange(direction) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            const slideOutClass = direction === 'next' ? 'slide-left' : 'slide-right';
+            const slideInClass = direction === 'next' ? 'slide-right' : 'slide-left';
+            
+            playerFrame.classList.add(slideOutClass);
+
+            setTimeout(() => {
+                if (direction === 'next') {
+                    currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+                } else {
+                    currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+                }
+                
+                playerFrame.src = tracks[currentTrackIndex];
+
+                playerFrame.style.transition = 'none';
+                playerFrame.classList.remove(slideOutClass);
+                playerFrame.classList.add(slideInClass);
+
+                playerFrame.offsetHeight;
+
+                playerFrame.style.transition = '';
+                playerFrame.classList.remove(slideInClass);
+                
+                isTransitioning = false;
+            }, 280);
+        }
+
+        document.getElementById('outer-prev-btn').addEventListener('click', () => animateTrackChange('prev'));
+        document.getElementById('outer-next-btn').addEventListener('click', () => animateTrackChange('next'));
     </script>
 </body>
 </html>
