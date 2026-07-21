@@ -101,19 +101,18 @@
         /* --- CHARACTER SCROLL FIX --- */
         .char-wrapper {
             position: fixed;
-            bottom: -100%;
+            bottom: -350px;
             left: 20px;
             width: clamp(150px, 20vw, 300px);
             z-index: 5;
             pointer-events: auto;
-            transition: bottom 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: bottom 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .char-wrapper.visible { 
             bottom: 0px; 
-            transition: bottom 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         #scroll-char {
@@ -261,13 +260,30 @@
         .cat-circle-btn img { width: 55%; height: 55%; object-fit: contain; filter: grayscale(90%) brightness(60%); }
         .cat-circle-btn.active img { filter: grayscale(0%) brightness(100%); transform: scale(1.12); }
 
-        /* --- UI ENHANCEMENTS FOR GAME SHOWCASE --- */
-        .game-showcase-container { max-width: 950px; margin: 0 auto; background: var(--card-gradient); border: 2px solid var(--border-color); border-radius: 28px; padding: 35px; box-shadow: 0 25px 50px rgba(0,0,0,0.85); position: relative; }
+        /* --- UI ENHANCEMENTS FOR GAME SHOWCASE & SMOOTH SWITCHER --- */
+        .game-showcase-container { 
+            max-width: 950px; 
+            margin: 0 auto; 
+            background: var(--card-gradient); 
+            border: 2px solid var(--border-color); 
+            border-radius: 28px; 
+            padding: 35px; 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.85); 
+            position: relative; 
+        }
         
         .game-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
             gap: 25px; 
+            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .game-grid.switching {
+            opacity: 0;
+            transform: translateY(15px);
         }
 
         .game-card {
@@ -417,7 +433,7 @@
             <a href="https://www.roblox.com/users/1408113086/profile" target="_blank" class="social-pill reveal-element"><div class="social-icon"><img src="images/roblox.png" alt="Roblox"></div><div class="social-text"><h3>Roblox</h3><p>My roblox profile</p></div></a>
         </div>
 
-        <h2 class="player-title reveal-element">Game Showcase</h2>
+        <h2 class="player-title reveal-element">Favorite Game Showcase</h2>
 
         <div class="game-categories reveal-element" id="game-categories-bar">
             <div class="category-indicator" id="category-indicator"></div>
@@ -518,11 +534,13 @@
             }, 300);
         }
         
-        // --- JAVASCRIPT SCROLL FIX ---
+        /* --- BELNOOO VERY BOTTOM APPEAR / SCROLL UP DISAPPEAR --- */
         window.addEventListener('scroll', function() {
             const charWrapper = document.getElementById('char-wrapper');
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
             
-            if (window.scrollY > 150) {
+            // Check if the user is within 50px of the very bottom of the page
+            if (window.scrollY >= scrollableHeight - 50) {
                 charWrapper.classList.add('visible');
             } else {
                 charWrapper.classList.remove('visible');
@@ -595,9 +613,9 @@
         typeObserver.observe(document.getElementById('intro-trigger'));
 
         const gameGrid = document.getElementById('game-grid');
-        const showcaseContainer = document.getElementById('game-showcase-container');
         const categoryIndicator = document.getElementById('category-indicator');
         let currentCategory = 'steam';
+        let isSwitchingCategory = false;
 
         const steamGamesHTML = `
             <a href="https://store.steampowered.com" target="_blank" class="game-card">
@@ -679,34 +697,38 @@
 
         gameGrid.innerHTML = steamGamesHTML;
 
+        /* --- SMOOTH CATEGORY SWITCHING FUNCTION --- */
         function switchCategory(category) {
-            if (currentCategory === category) return;
+            if (currentCategory === category || isSwitchingCategory) return;
+            isSwitchingCategory = true;
             currentCategory = category;
-
-            showcaseContainer.classList.add('switching');
 
             const steamBtn = document.getElementById('btn-steam');
             const robloxBtn = document.getElementById('btn-roblox');
             const targetBtn = category === 'steam' ? steamBtn : robloxBtn;
 
+            // Update Circle Pills Active state & Pill position
+            if (category === 'steam') {
+                steamBtn.classList.add('active');
+                robloxBtn.classList.remove('active');
+            } else {
+                robloxBtn.classList.add('active');
+                steamBtn.classList.remove('active');
+            }
+
+            categoryIndicator.style.width = `${targetBtn.offsetWidth}px`;
+            categoryIndicator.style.height = `${targetBtn.offsetHeight}px`;
+            categoryIndicator.style.left = `${targetBtn.offsetLeft}px`;
+            categoryIndicator.style.top = `${targetBtn.offsetTop}px`;
+
+            // Smooth Transition of Grid
+            gameGrid.classList.add('switching');
+
             setTimeout(() => {
-                if (category === 'steam') {
-                    steamBtn.classList.add('active');
-                    robloxBtn.classList.remove('active');
-                    gameGrid.innerHTML = steamGamesHTML;
-                } else {
-                    robloxBtn.classList.add('active');
-                    steamBtn.classList.remove('active');
-                    gameGrid.innerHTML = robloxGamesHTML;
-                }
-
-                categoryIndicator.style.width = `${targetBtn.offsetWidth}px`;
-                categoryIndicator.style.height = `${targetBtn.offsetHeight}px`;
-                categoryIndicator.style.left = `${targetBtn.offsetLeft}px`;
-                categoryIndicator.style.top = `${targetBtn.offsetTop}px`;
-
-                showcaseContainer.classList.remove('switching');
-            }, 200);
+                gameGrid.innerHTML = category === 'steam' ? steamGamesHTML : robloxGamesHTML;
+                gameGrid.classList.remove('switching');
+                isSwitchingCategory = false;
+            }, 300);
         }
 
         document.getElementById('btn-steam').addEventListener('click', () => switchCategory('steam'));
