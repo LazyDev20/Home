@@ -550,53 +550,16 @@
 
         /* --- TYPEWRITER EFFECT PIPELINE --- */
         const typeTarget = document.getElementById('typewriter-text');
-        const prefix = "Hi i'm ";
-        const names = ["Blinkle!", "Varloxy!", "Melyk!"];
-        let nameIndex = 0;
-        let charIndex = 0;
-        let prefixIndex = 0;
-        let isDeleting = false;
+        const textToType = "Hi i'm Blinkle!";
+        let typeIndex = 0;
         let isTyping = false;
-        let prefixDone = false;
 
         function typeWriterEffect() {
-            // Step 1: Type out the prefix first
-            if (!prefixDone) {
-                typeTarget.innerHTML = prefix.substring(0, prefixIndex + 1);
-                prefixIndex++;
-                
-                if (prefixIndex === prefix.length) {
-                    prefixDone = true;
-                    setTimeout(typeWriterEffect, 200); 
-                } else {
-                    setTimeout(typeWriterEffect, 120);
-                }
-                return;
+            if (typeIndex < textToType.length) {
+                typeTarget.innerHTML += textToType.charAt(typeIndex);
+                typeIndex++;
+                setTimeout(typeWriterEffect, 120); 
             }
-
-            // Step 2: Cycle through the names
-            const currentName = names[nameIndex];
-            
-            if (isDeleting) {
-                typeTarget.innerHTML = prefix + currentName.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typeTarget.innerHTML = prefix + currentName.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 50 : 120;
-
-            if (!isDeleting && charIndex === currentName.length) {
-                typeSpeed = 3000; 
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                nameIndex = (nameIndex + 1) % names.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(typeWriterEffect, typeSpeed);
         }
 
         const typeObserver = new IntersectionObserver((entries) => {
