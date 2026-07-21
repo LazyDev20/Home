@@ -84,14 +84,11 @@
             color: #ffffff;
             font-size: 0.85rem;
             font-weight: 900;
-            /* Increased padding makes the bubble physically wider left & right */
             padding: 5px 30px; 
             border-radius: 30px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.6);
             opacity: 0;
-            /* Pinches the tooltip in the dead center so it's invisible */
             clip-path: inset(-20px 50% -20px 50%);
-            /* Adds a bouncy cubic-bezier transition to the expansion */
             transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), clip-path 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             pointer-events: none;
             white-space: nowrap;
@@ -114,7 +111,6 @@
         .char-wrapper:hover .char-tooltip {
             opacity: 1;
             transform: translateX(-50%) translateY(0);
-            /* Unfolds perfectly to the left and right */
             clip-path: inset(-20px -20px -20px -20px); 
         }
 
@@ -548,16 +544,36 @@
 
         revealElements.forEach(el => revealObserver.observe(el));
 
-        /* --- TYPEWRITER EFFECT PIPELINE --- */
+        /* --- TYPEWRITER EFFECT PIPELINE (Scroll Reset Enabled) --- */
         const typeTarget = document.getElementById('typewriter-text');
         const prefix = "Hi i'm ";
         const names = ["Blinkle!", "Varloxy!", "Melyk!"];
         let nameIndex = 0;
         let charIndex = 0;
+        let prefixIndex = 0;
         let isDeleting = false;
         let isTyping = false;
+        let prefixDone = false;
+        let typeTimer; // Add a timer reference so we can stop it
 
         function typeWriterEffect() {
+            if (!isTyping) return; // Stop immediately if we scrolled away
+
+            // Step 1: Type out the prefix first
+            if (!prefixDone) {
+                typeTarget.innerHTML = prefix.substring(0, prefixIndex + 1);
+                prefixIndex++;
+                
+                if (prefixIndex === prefix.length) {
+                    prefixDone = true;
+                    typeTimer = setTimeout(typeWriterEffect, 200); 
+                } else {
+                    typeTimer = setTimeout(typeWriterEffect, 120);
+                }
+                return;
+            }
+
+            // Step 2: Cycle through the names
             const currentName = names[nameIndex];
             
             if (isDeleting) {
@@ -571,7 +587,6 @@
             let typeSpeed = isDeleting ? 50 : 120;
 
             if (!isDeleting && charIndex === currentName.length) {
-                // Pause at the end of typing before deleting (this sets up the overall ~10s cycle delay)
                 typeSpeed = 3000; 
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
@@ -580,17 +595,35 @@
                 typeSpeed = 500;
             }
 
-            setTimeout(typeWriterEffect, typeSpeed);
+            typeTimer = setTimeout(typeWriterEffect, typeSpeed);
         }
 
         const typeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !isTyping) {
-                    isTyping = true;
-                    setTimeout(typeWriterEffect, 400); 
+                if (entry.isIntersecting) {
+                    // If it wasn't already typing, reset variables and start fresh
+                    if (!isTyping) {
+                        isTyping = true;
+                        
+                        // Full Reset: Back to square one
+                        nameIndex = 0;
+                        charIndex = 0;
+                        prefixIndex = 0;
+                        isDeleting = false;
+                        prefixDone = false;
+                        typeTarget.innerHTML = "";
+                        
+                        typeTimer = setTimeout(typeWriterEffect, 300); 
+                    }
+                } else {
+                    // When we scroll away, stop it entirely
+                    isTyping = false;
+                    clearTimeout(typeTimer);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { 
+            threshold: 0.2 // Triggers when 20% of the box is visible
+        });
         
         typeObserver.observe(document.getElementById('intro-trigger'));
 
