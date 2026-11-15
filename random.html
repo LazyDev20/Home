@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image Generator</title>
+
+    <!-- Discord Embed Meta Tags -->
+    <meta property="og:title" content="Random Image" />
+    <meta property="og:description" content="Click to view a random image from the collection!" />
+    <meta property="og:type" content="website" />
+    <!-- Discord cannot run JavaScript, so it displays this fallback preview image -->
+    <meta property="og:image" content="https://YOUR_USERNAME.github.io/YOUR_REPO/images2/fallback-preview.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#5865F2" />
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            max-width: 90vw;
+        }
+        #image-wrapper {
+            margin: 20px 0;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+            display: none;
+        }
+        #status {
+            color: #8b949e;
+            font-size: 16px;
+        }
+        button {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        }
+        button:hover {
+            background-color: #2ea043;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Random Image</h1>
+        
+        <div id="image-wrapper">
+            <p id="status">Fetching random image...</p>
+            <img id="random-img" alt="Random Image from GitHub" />
+        </div>
+
+        <div>
+            <button onclick="loadRandomImage()">🔄 Load Another Random Image</button>
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        // Replace these with your actual GitHub username and repository name
+        const GITHUB_USERNAME = "YOUR_USERNAME";
+        const GITHUB_REPO = "YOUR_REPO";
+        const FOLDER_PATH = "images2";
+        // ---------------------
+
+        const validExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.webp'];
+        let cachedImages = [];
+
+        async function fetchImageList() {
+            const apiUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${FOLDER_PATH}`;
+            const response = await fetch(apiUrl);
+            
+            if (!response.ok) {
+                throw new Error(`GitHub API error: ${response.status}`);
+            }
+
+            const files = await response.json();
+            
+            // Filter only valid image files
+            return files.filter(file => {
+                if (file.type !== "file") return false;
+                const lowerName = file.name.toLowerCase();
+                return validExtensions.some(ext => lowerName.endsWith(ext));
+            });
+        }
+
+        async function loadRandomImage() {
+            const imgElement = document.getElementById("random-img");
+            const statusElement = document.getElementById("status");
+
+            statusElement.style.display = "block";
+            statusElement.textContent = "Loading...";
+            imgElement.style.display = "none";
+
+            try {
+                if (cachedImages.length === 0) {
+                    cachedImages = await fetchImageList();
+                }
+
+                if (cachedImages.length === 0) {
+                    statusElement.textContent = "No images found in the /images2 folder.";
+                    return;
+                }
+
+                // Pick a random image from the array
+                const randomIndex = Math.floor(Math.random() * cachedImages.length);
+                const selectedFile = cachedImages[randomIndex];
+
+                // Set image source relative to your domain/repo path
+                imgElement.src = `./${FOLDER_PATH}/${encodeURIComponent(selectedFile.name)}`;
+                
+                imgElement.onload = () => {
+                    statusElement.style.display = "none";
+                    imgElement.style.display = "block";
+                };
+            } catch (error) {
+                console.error(error);
+                statusElement.textContent = "Failed to load images. Make sure your repository is public!";
+            }
+        }
+
+        // Load an image as soon as the page opens or refreshes
+        loadRandomImage();
+    </script>
+
+</body>
+</html>
