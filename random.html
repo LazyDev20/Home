@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Image</title>
 
-    <!-- Discord Embed Meta Tags -->
+    <!-- Discord Embed Meta Tags (Forces a Large Image Card) -->
     <meta property="og:title" content="Random Image" />
+    <meta property="og:description" content="Click to open a random image!" />
     <meta property="og:type" content="website" />
-    <!-- CHANGE THIS to a direct link of one specific image in your repo for Discord to show as the preview -->
-    <meta property="og:image" content="https://raw.githubusercontent.com/LazyDev20/Home/main/images/preview.jpg" />
+    
+    <!-- CRITICAL: Change 'YOUR-PREVIEW-IMAGE.jpg' to a real image filename inside your 'images' folder -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/LazyDev20/Home/main/images/YOUR-PREVIEW-IMAGE.jpg" />
+    
+    <!-- These two tags force Discord to display the image nicely as a big card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/LazyDev20/Home/main/images/YOUR-PREVIEW-IMAGE.jpg" />
 
     <style>
         html, body {
@@ -45,8 +50,6 @@
         let cachedImages = [];
 
         async function loadRandomImage() {
-            const imgElement = id => document.getElementById(id);
-
             try {
                 if (cachedImages.length === 0) {
                     const apiUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${FOLDER_PATH}`;
@@ -64,7 +67,7 @@
                     const randomIndex = Math.floor(Math.random() * cachedImages.length);
                     const selectedFile = cachedImages[randomIndex];
                     
-                    const el = imgElement("random-img");
+                    const el = document.getElementById("random-img");
                     el.src = `./${FOLDER_PATH}/${encodeURIComponent(selectedFile.name)}`;
                     el.style.display = "block";
                 }
